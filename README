@@ -1,0 +1,19 @@
+Notes on my dissertation
+
+Build with
+pdflatex dissertation.tex
+bibtex dissertation
+pdflatex dissertation.tex
+pdflatex dissertation.tex
+
+2.9.15
+Matched WSU formatting up through abstract. (Need to ask WSU Grad School whether
+the formatting needs to be explicitly followed. It sure is ugly.)
+
+Figure out how to format TOC/LOT/LOF:
+  http://texblog.org/2011/09/09/10-ways-to-customize-tocloflot/
+    a list of possible edits to these objects
+  http://texblog.org/2011/09/09/10-ways-to-customize-tocloflot/
+    how to add "Page" above page numbers in TOC
+
+

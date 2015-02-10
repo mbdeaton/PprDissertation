@@ -1,0 +1,162 @@
+\documentclass[12pt]{report}
+% Intended to be built with pdflatex.
+% Labeling convention example: \label{ssec:acknowledge}.
+%   Specifically, use (<=4)-letter class (e.g. chap, sec, ssec, fig, etc.),
+%   followed by a colon, followed by a shortish underscore separated name
+%   (e.g. intro, nu_energy_spectrum).
+
+% packages
+\usepackage{graphicx}             % for \includegraphics
+\usepackage{wsudissertation}      % definitions for WSU-specific formatting
+\usepackage{setspace}             % for \doublespacing
+\usepackage{tocloft}              % to format the TOC/LOT/LOFs
+
+% initializations
+\doublespacing                    % use \begin{singlespace} ... \end{singlespace}
+                                  % for stretches of monospace text
+
+% *******************************************************************************
+\begin{document}
+\pagenumbering{roman}
+
+% *******************************************************************************
+\begin{titlepage}
+  \begin{singlespace}
+    \begin{center}
+      {\uppercase{
+          Neutrinos in Mergers of\\
+          Neutron Stars with\\
+          Black Holes}}\\
+      \vspace{1.47in}
+      By\\
+      \bigskip
+      \uppercase{Michael Brett Deaton}\\
+      \vfill
+      A dissertation submitted in partial fulfillment of\\
+      the requirements for the degree of\\
+      \bigskip
+      \uppercase{Doctor of Philosophy}\\
+      \bigskip \bigskip \bigskip
+      \uppercase{Washington State University}\\
+      Department of Physics and Astronomy\\
+      \bigskip
+      \uppercase{May 2015}\\
+      \bigskip \bigskip \bigskip
+      $\copyright$ Copyright by MICHAEL BRETT DEATON, 2015\\
+      All Rights Reserved
+    \end{center}
+  \end{singlespace}
+\end{titlepage}
+\newpage
+
+% *******************************************************************************
+\thispagestyle{empty} %\addtocounter{page}{-1}
+\begin{center}
+  \begin{singlespace}
+    \null % necessary to get \vfill to work without initial text
+    \vfill
+    $\copyright$ Copyright by \uppercase{Michael Brett Deaton}, 2015\\
+    All Rights Reserved
+  \end{singlespace}
+\end{center}
+\newpage
+
+% *******************************************************************************
+\begin{singlespace}
+  \noindent
+  To the Faculty of Washington State University:\\
+  
+  The members of the Committee appointed to examine the dissertation of
+  \uppercase{Michael Brett Deaton}
+  find it satisfactory and recommend that it be accepted.
+  
+  \begin{flushright}
+    \signhere{Matthew D.\ Duez, Ph.D., Chair}\\
+    \signhere{Sukanta Bose, Ph.D.}\\
+    \signhere{Fred Gittes, Ph.D.}
+  \end{flushright}
+\end{singlespace}
+\newpage
+
+% *******************************************************************************
+\begin{center}
+  \uppercase{Acknowledgement}
+  \addcontentsline{toc}{section}{Acknowledgement} % insert into TOC
+  
+  My advisor, Matt, wrote the core of the general relativistic hydrodynamics code
+  that
+\end{center}
+\newpage
+
+% *******************************************************************************
+\begin{center}
+  \begin{singlespace}
+    \addcontentsline{toc}{section}{Abstract} % insert into TOC
+    \label{ssec:abstract}
+
+    {\uppercase{
+        Neutrinos in Mergers of\\
+        Neutron Stars with\\
+        Black Holes}}\\
+    \bigskip
+    Abstract\\
+    \bigskip \bigskip \bigskip
+    by Michael Brett Deaton, Ph.D.\\
+    Washington State University\\
+    May 2015\\
+    \bigskip \bigskip \bigskip
+    Chair: Matthew D.\ Duez
+  \end{singlespace}
+\end{center}
+  
+Mergers of a neutron star and a black hole are interesting because of the dual
+complexity of strong gravity and nuclear-density fluid. In this dissertation,
+I present a number of models useful in teaching us about the role of neutrinos
+in these events.
+\newpage
+
+\tableofcontents
+\newpage
+
+\listoftables
+\newpage
+
+\listoffigures
+\newpage
+
+\begin{center}
+  \subsection*{Dedication}
+  To my dad, Mike Deaton. For his love and curiosity.
+  \newpage
+\end{center}
+\pagenumbering{arabic}
+
+% Symbol Conventions
+\input{01-conventions}
+\newpage
+
+% Introduction
+\input{10-introduction}
+
+% Global Energy and Composition Changes
+%\input{20-global_changes}
+%\newpage
+
+% Properties of Neutrino Emission
+%\input{30-emission_properties}
+%\newpage
+
+% Conclusion
+%\input{40-conclusion}
+%\newpage
+
+% Appendix
+%\begin{appendix}
+%  \chapter{Things You Should Already Know}
+%  \input{50-appendix}
+%\end{appendix}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

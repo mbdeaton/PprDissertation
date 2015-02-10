@@ -1,0 +1,27 @@
+\ProvidesPackage{wsudissertation}[2015/02/08 v1.0 WSU Dissertation Macros]
+% Macros fulfilling the formatting requirements for Ph.D. dissertations at
+%   Washington State University. Include with \usepackage{wsudissertation}.
+% Brett Deaton -- Feb 2015
+
+% *******************************************************************************
+% define signature line with name centered under it
+\newcommand{\signhere}[1]{
+  \parbox[t][1in][b]{0.5\textwidth}{
+    \centering
+    \rule{0.5\textwidth}{1pt}\\
+    #1
+  }
+}
+
+% Index chapters with the English number words, 'one', 'two', etc
+\usepackage{fmtcount,etoolbox}
+\makeatletter
+\patchcmd{\@makechapterhead}{\thechapter}{\Numberstring{chapter}}{}{}
+\patchcmd{\chaptermark}{\thechapter}{\NUMBERstring{chapter}}{}{}
+\makeatother
+
+% reset TOC/LOT/LOF styles
+\renewcommand{\contentsname}{TABLE OF CONTENTS}
+\renewcommand{\listtablename}{LIST OF TABLES}
+\renewcommand{\listfigurename}{LIST OF FIGURES}
+

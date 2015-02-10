@@ -1,0 +1,24 @@
+# .gitignore file for wsu dissertation
+# Brett Deaton -- Spring 2015
+
+# Directories
+/Images/
+
+# Temporary editor files
+*~
+*.swp
+\#*\#
+.\#*
+
+# TeX products
+*.pdf
+*.aux
+*.log
+*.toc
+#*.nav
+*.out
+#*.snm
+*.bbl
+*.blg
+*.lof
+*.lot
