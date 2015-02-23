@@ -82,9 +82,28 @@
 \begin{center}
   \uppercase{Acknowledgement}
   \addcontentsline{toc}{section}{Acknowledgement} % insert into TOC
-  
-  My advisor, Matt, wrote the core of the general relativistic hydrodynamics code
-  that
+
+  \bigskip
+  My advisor, Matt Duez, wrote the core of the general relativistic hydrodynamics
+  code that I used to evolve the models in this work. I am grateful for his
+  mentorship in research and teaching. His reasoning is always clear and
+  enlivening. I originally applied to his research group based on two educated
+  guesses: that I'd enjoy the topics, and that he was trustworthy.
+  My guesses were good.
+
+  I am grateful to my colleagues Francois Foucart and Evan O'Connor, who taught
+  me hydrodynamics, thermodynamics, and radiation transport through countless
+  emails, video conferences, and a personal visit to the University of Toronto.
+
+  I have always been glad to have Fatemeh Hossein-Nouri as a friend, office-mate,
+  and close colleague. I know few physicists as courageous, wise, and joyful.
+
+  My steadfast friend, Daniel Helms, encouraged me from the East Coast, and
+  called with many black hole jokes.
+
+  And finally, my wife and companion, Darci has lit up the latter years of my
+  studies with her own probing intellect and love.
+
 \end{center}
 \newpage
 
@@ -119,9 +138,11 @@ in these events.
 \newpage
 
 \listoftables
+\addcontentsline{toc}{section}{List of Tables} % insert into TOC
 \newpage
 
 \listoffigures
+\addcontentsline{toc}{section}{List of Figures} % insert into TOC
 \newpage
 
 \begin{center}
@@ -131,12 +152,12 @@ in these events.
 \end{center}
 \pagenumbering{arabic}
 
-% Symbol Conventions
-\input{01-conventions}
-\newpage
-
 % Introduction
 \input{10-introduction}
+
+% Symbol Conventions
+\input{11-conventions}
+\newpage
 
 % Global Energy and Composition Changes
 %\input{20-global_changes}

@@ -16,4 +16,9 @@ Figure out how to format TOC/LOT/LOF:
   http://texblog.org/2011/09/09/10-ways-to-customize-tocloflot/
     how to add "Page" above page numbers in TOC
 
+2.13.15
+No worries about formatting of chapter headings and TOC/LOT/LOF, these are flexible
+as long as I'm consisitent. So make all of these regular text size, and not bold,
+and all caps (Acknowledgements, Abstract, TOC, LOT, LOF). And make everything else
+standard latex book format.
 
