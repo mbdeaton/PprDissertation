@@ -4,6 +4,10 @@
 % Brett Deaton -- Feb 2015
 
 % *******************************************************************************
+% set all margins to 1in
+\usepackage[margin=1in]{geometry}
+
+% *******************************************************************************
 % define signature line with name centered under it
 \newcommand{\signhere}[1]{
   \parbox[t][1in][b]{0.5\textwidth}{
@@ -13,6 +17,7 @@
   }
 }
 
+% *******************************************************************************
 % Index chapters with the English number words, 'one', 'two', etc
 \usepackage{fmtcount,etoolbox}
 \makeatletter
@@ -20,7 +25,9 @@
 \patchcmd{\chaptermark}{\thechapter}{\NUMBERstring{chapter}}{}{}
 \makeatother
 
+% *******************************************************************************
 % reset TOC/LOT/LOF styles
+\usepackage{tocloft}
 \renewcommand{\contentsname}{Table of Contents}
 %\renewcommand{\listtablename}{LIST OF TABLES}
 %\renewcommand{\listfigurename}{LIST OF FIGURES}

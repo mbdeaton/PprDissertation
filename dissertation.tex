@@ -7,13 +7,16 @@
 
 % packages
 \usepackage{graphicx}             % for \includegraphics
-\usepackage{wsudissertation}      % definitions for WSU-specific formatting
+\usepackage{mbdeaton}             % include my special macros
+\usepackage{natbib}               % allows me to define the citation style
 \usepackage{setspace}             % for \doublespacing
-\usepackage{tocloft}              % to format the TOC/LOT/LOFs
+\usepackage{wsudissertation}      % definitions for WSU-specific formatting
 
 % initializations
 \doublespacing                    % use \begin{singlespace} ... \end{singlespace}
                                   % for stretches of monospace text
+\bibliographystyle{abbrvnat}                 % set bibliography style
+\setcitestyle{authoryear,open={(},close={)}} % set citation style not numeric
 
 % *******************************************************************************
 \begin{document}
@@ -82,9 +85,11 @@
 \begin{center}
   \uppercase{Acknowledgement}
   \addcontentsline{toc}{section}{Acknowledgement} % insert into TOC
+  \todo{clean up}
 
   \bigskip
   My advisor, Matt Duez, wrote the core of the general relativistic hydrodynamics
+  \todo{can I left justify this section?}
   code that I used to evolve the models in this work. I am grateful for his
   mentorship in research and teaching. His reasoning is always clear and
   enlivening. I originally applied to his research group based on two educated
@@ -132,6 +137,7 @@ Mergers of a neutron star and a black hole are interesting because of the dual
 complexity of strong gravity and nuclear-density fluid. In this dissertation,
 I present a number of models useful in teaching us about the role of neutrinos
 in these events.
+\todo{350 word max}
 \newpage
 
 \tableofcontents
@@ -177,7 +183,6 @@ in these events.
 %  \input{50-appendix}
 %\end{appendix}
 
-\bibliographystyle{apalike}
 \bibliography{references}
 
 \end{document}
