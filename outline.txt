@@ -15,12 +15,12 @@ Why it matters
   what can nu do? (nunubar heating, nucleosynthesis, energy loss in nuc accretion)
 Historical survey of our knowledge of nsbh & nu
 Basic GRHydro overview
-Global energy and composition changes (leakage)
+Global energy and composition changes (leakage) [2 chapters: methods & results]
   big picture of nus in nsbh mergers
   order of mag estimates
   leakage technical description
   physical results from simulation
-Properties of nu emission (ray tracing)
+Properties of nu emission (ray tracing) [2 chapters: f and nunubar]
   big picture of emission and what's possible (nunubar heating, nu osc)
   ray tracing technical description
   f results, fits to f
