@@ -30,11 +30,11 @@
           Neutrinos in Mergers of\\
           Neutron Stars with\\
           Black Holes}}\\
-      \vspace{1.47in}
+      \vspace{1.63in}
       By\\
       \bigskip
       \uppercase{Michael Brett Deaton}\\
-      \vfill
+      \vspace{2.65in}
       A dissertation submitted in partial fulfillment of\\
       the requirements for the degree of\\
       \bigskip
@@ -44,7 +44,7 @@
       Department of Physics and Astronomy\\
       \bigskip
       \uppercase{May 2015}\\
-      \bigskip \bigskip \bigskip
+      \bigskip \bigskip
       $\copyright$ Copyright by MICHAEL BRETT DEATON, 2015\\
       All Rights Reserved
     \end{center}
@@ -67,7 +67,9 @@
 % *******************************************************************************
 \begin{singlespace}
   \noindent
-  To the Faculty of Washington State University:\\
+  \vspace{1.5in}
+
+  \noindent To the Faculty of Washington State University:\\
   
   The members of the Committee appointed to examine the dissertation of
   \uppercase{Michael Brett Deaton}
@@ -76,7 +78,7 @@
   \begin{flushright}
     \signhere{Matthew D.\ Duez, Ph.D., Chair}\\
     \signhere{Sukanta Bose, Ph.D.}\\
-    \signhere{Fred Gittes, Ph.D.}
+    \signhere{Guy Worthey, Ph.D.}
   \end{flushright}
 \end{singlespace}
 \newpage
@@ -85,31 +87,36 @@
 \begin{center}
   \uppercase{Acknowledgement}
   \addcontentsline{toc}{section}{Acknowledgement} % insert into TOC
-  \todo{clean up}
+\end{center}
 
   \bigskip
   My advisor, Matt Duez, wrote the core of the general relativistic hydrodynamics
-  \todo{can I left justify this section?}
   code that I used to evolve the models in this work. I am grateful for his
   mentorship in research and teaching. His reasoning is always clear and
-  enlivening. I originally applied to his research group based on two educated
-  guesses: that I'd enjoy the topics, and that he was trustworthy.
-  My guesses were good.
+  enlivening. My colleague Francois Foucart is the co-author of that code.
+  Without the robust simulation tool they developed, I could not have done this
+  work. In addition, Francois and another colleague, Evan O'Connor, passed on
+  their knowledge of hydrodynamics, thermodynamics, and radiation transport
+  through emails, video conferences, and during my visit to the University of
+  Toronto.
 
-  I am grateful to my colleagues Francois Foucart and Evan O'Connor, who taught
-  me hydrodynamics, thermodynamics, and radiation transport through countless
-  emails, video conferences, and a personal visit to the University of Toronto.
+  My colleague and friend Fatemeh Hossein-Nouri helped in countless debugging
+  sessions, and shared her relativistic intuition, and love of Hafiz.
+  My friend from the east, Dan Helms, acted as a personal anchor with phone
+  calls, letters, and long-distance bike rides.
+  One of my undergraduate professors, Mike Sadler, stumbled into me
+  not-quite-by-chance at every April APS Meeting. Once, after one of my talks,
+  he told me directly and gently, ``I didn't understand how your findings could
+  be tested.''
+  My mom and dad, Mike and JoEtta, are guides. The path I've walked through
+  these studies, and through academia, is a gift that surely is from them.
+  And the way I've alternately wrestled and been at peace with the role of
+  physics in my life and in society is also a gift.
 
-  I have always been glad to have Fatemeh Hossein-Nouri as a friend, office-mate,
-  and close colleague. I know few physicists as courageous, wise, and joyful.
+  Finally, my wife and companion, Darci has lit up the latter years of my
+  studies with her own probing intellect and love. This work bears the imprint
+  of some of her questions.
 
-  My steadfast friend, Daniel Helms, encouraged me from the East Coast, and
-  called with many black hole jokes.
-
-  And finally, my wife and companion, Darci has lit up the latter years of my
-  studies with her own probing intellect and love.
-
-\end{center}
 \newpage
 
 % *******************************************************************************
@@ -152,8 +159,12 @@ in these events.
 \newpage
 
 \begin{center}
+  \null
+  \vspace{1.5in}
   \subsection*{Dedication}
-  To my dad, Mike Deaton. For his love and curiosity.
+  \bigskip
+  To my dad, Mike Deaton.\\
+  For love and curiosity.
   \newpage
 \end{center}
 \pagenumbering{arabic}
