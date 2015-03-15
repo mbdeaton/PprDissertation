@@ -1,48 +1,55 @@
-Dissertation Outline
+Dissertation Outline & Notes
 
-Notes
-  formatting: use a global description of the phenomenon being discussed at the
-    beginning of each section
-  formatting: calculate/demonstrate order-of-magnitude estimates of quantities at
-    beginning of each section
+Broad Guidelines:
+Use a global description of the phenomenon being discussed and demonstrate
+  order-of-magnitude estimates at the beginning of each section.
+Lean toward short and digestible sections. Many small sections are more readable
+  than a few large ones.
+To minimize busywork, always prefer Leakage Paper's conventions and structure.
+  (But you may still need to modify that paper, for example to refer to earlier
+  equations or expand a section, like ejecta.)
+
+Notes:
+Attributions: much of this work and writing has been given to you freely by
+  others, in particular Matt, Francois, and Andy. Acknowledge them generally in
+  the Acknowledgements, but also indicate their work with a sentence before each
+  section that uses it. (If you're worried about this *thinning* out your
+  dissertation---I am---then prepare a list of all the research you've done over
+  the last five years, and the things that you've given to other folks.)
+Outflows: don't include discussion of Foucart et al 2013's outflows section,
+  because it turns out dynamical outflows don't have much to do with this
+  inquiry.
 
 *********************************************************************************
 Neutrinos in Mergers of Neutron Stars With Black Holes
 
-Why it matters
-  how common nsbh mergers?
-  how common nsns? how similar?
-  what can nu do? (nunubar heating, nucleosynthesis, energy loss in nuc accretion)
-Historical survey of our knowledge of nsbh & nu
-Basic GRHydro overview
-Global energy and composition changes (leakage) [2 chapters: methods & results]
-  big picture of nus in nsbh mergers
-  order of mag estimates
-  leakage technical description
-  physical results from simulation
-Properties of nu emission (ray tracing) [2 chapters: f and nunubar]
-  big picture of emission and what's possible (nunubar heating, nu osc)
-  ray tracing technical description
-  f results, fits to f
-  nunubar heating results
-
-2.23.15
-Some additional sections I thought of this weekend. Four categories:
-1) What other physics is needed to understand this topic?
-   radiation transport: limits of Bmann eqn, optical depth, dist func
-   gr hydro: u^a, 3+1, SpEC algorithm, ref frames, ev eqns, Ein's eqns and solns
-   accretion phys: energy and angular mom transport
-   EOS: polytropes, 3D tables, how constructed, effects on mergers
-   merger param space: how varying different params effects merger, bestiary
-2) What other stuff is needed to motivate this exploration?
-   neutrinos: weak interact with matter, how they become relevant at high rho,T
-   SGRBs: observed props of light, inferred props of jets/engines, energetics
-   nucleosynth: where does r-process come from, types of nucleosynth
-   gwaves (?): nature of gw, confirm detection in EM, EMs expected from SGRB
-   nu-oscillation: mass/flavor eigenstates, matter resonances, nu observations
-3) What has already been done?
-4) What else remains to be done?
-   M1, full transport, MHD, force-free
-
-(Also, it would be great to write the whole thing in digestible chapters. Many
-many chapters.)
+Overview
+  Why it matters
+    how common nsbh mergers?
+    what's possible? (energy drain, comp, nunubar, nu osc, nucleo, direct detect)
+  Historical survey of our knowledge of nsbh & nu
+  Why this particular model
+    why nsbh? how common nsns? how similar?
+    why a*=0.9,q=4 (quick survey of nsbh merger parameter space)
+  Overall scope, trajectory, and conclusions(?) of this dissertation
+Introduction
+  Conventions
+  Timescales of relevant physics
+  Basic GRHydro overview
+  Radiation transport and limits (optical depth, f \propto I)
+Effect of Neutrino Emission on Accretion Disk                       (Leakage)
+  Numerical methods specific to leakage                              Sec2
+  Examine this model's trustworthiness and error                     Sec3
+  Dynamical outflows                                                 Sec4
+  Accretion                                                          Sec5-7
+  Dominant effect of neutrinos on accretion                          Sec8
+Properties of Neutrino Emission                                     (Ray Tracing)
+  Ray tracing technical description
+    general ray tracing code
+    nunubar integral solution
+  What does f look like in this case?
+  What does nunubar heating look like in this case?
+Conclusion
+  Review major effects of neutrinos in this case
+  How relevant to all classes of mergers?
+  What remains to be done? (M1, transport, MHD, force-free, modeling f)
