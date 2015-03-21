@@ -4,31 +4,53 @@
 \section{Conventions}
 \label{sec:conventions}
 
-We adopt the standard general relativists convention of a metric signature
+I adopt the standard general relativists convention of a metric signature
 $(-,+,+,+)$.
-Unless otherwise noted, we display equations in natural geometric units, so that
+Unless otherwise noted, I display equations in natural geometric units, so that
 Newton's gravitational constant, $G$, and the speed of light, $c$, have unit
 value.
-Tensor indices from the middle of the Roman alphabet represent the spatial
-dimensions (e.g.\ $i,j,k\in[1-3]$), while indices from the beginning of the Roman
-alphabet represent the four dimensions of spacetime (e.g.\ $a,b,c\in[0-3]$).
-We display vectors in boldface type.
 
-Some symbols used in this text:
+I use abstract tensor notation in general: a tensor typeset with its indeces
+represents the geometric object in all of its coordinate freedom. In other words
+$T^{\alpha \beta}$ is identical to $T$, and is not $T$'s $\alpha\beta$-th
+component.
+In some equations, I use coordinate index notation accompanied with a warning.
+Spatial tensors are given indices from the Latin alphabet ($\alpha,\beta...$);
+they exist on a 3-dimensional manifold. Spacetime tensors are given indices from
+the Greek alphabet ($a,b...$); they exist on a 4-dimensional manifold.
+In instances of coordinate index notation, it follows naturally that
+$\alpha,\beta...\in\{1,2,3\}$ and $a,b...\in\{0,1,2,3\}$.
 
-\begin{tabular}{lll}
-  \textbf{Symbol}       & \textbf{Object}           & \textbf{Additional Notes} \\
-  $\varrho$             & rest density              & $\langle m_u \rangle n_b $ \\
-  $\langle m_u \rangle$ & average nucleon mass      & \\
-  $n_b$                 & baryon number density     & \\
-  $\varepsilon$         & internal energy density   & not including the mass energy \\
-  $\psi_{ab}$           & spacetime metric          & \\
-  $g_{ij}$              & spatial metric            & \\
-  $\beta^i$             & shift                     & where $\beta_i \equiv \beta^j g_{ij}$ \\
-  $\alpha$              & lapse                     & \\
-  $u$                   & four-velocity             & $u^a=dx^a/d\tau$ \\
-  $d\tau$               & spacetime interval        & $d\tau\equiv-dx^a dx^b \psi_{ab}$ \\
-  $W$                   & Lorentz factor            & $\alpha u^0$ (sans gravity, $W=1/\sqrt{1-v^2}$) \\
-  $v$                   & Lagrangian velocity       & a.k.a.\ transport velocity, $v^i=u^i/u^0$ \\
-  $\tau$                & optical depth             & \\
-\end{tabular}
+Of course some symbols have labels other than their tensor indeces.
+In particular, I use subscript labels before tensor indeces (e.g.\ the
+momentum of a neutrino is $p_{\nu \alpha}$). I allow context to clarify when
+an index ranges over some set other than dimension (e.g.\ the momentum of the
+i-th flavor of neutrino is $p_{\nu_i \alpha}$). The subscript $\nu$ is always
+used as a label, not as a tensor index.
+
+\begin{table}
+  \centering
+  \begin{tabular}{lll}
+    \textbf{Symbol}       & \textbf{Object}           & \textbf{Additional Notes} \\
+    $\varrho$             & rest density              & $\langle m_u \rangle n_b $ \\
+    $\langle m_u \rangle$ & average nucleon mass      & \\
+    $n_b$                 & baryon number density     & \\
+    $\varepsilon$         & internal energy density   & not including the mass energy \\
+    $\psi_{\alpha\beta}$  & spacetime metric          & \\
+    $g_{ij}$              & spatial metric            & \\
+    $\beta^i$             & shift                     & where $\beta_i \equiv \beta^j g_{ij}$ \\
+    $\alpha$              & lapse                     & \\
+    $u^\alpha$            & four-velocity             & $u^a=dx^a/d\tau$ \\
+    $p_\alpha$            & four-momentum 1-form      & \\
+    $d\tau$               & spacetime interval        & $d\tau\equiv-dx^a dx^b \psi_{ab}$ \\
+    $W$                   & Lorentz factor            & $\alpha u^0$ (sans gravity, $W=\Gamma=1/\sqrt{1-v^2}$) \\
+    $v^i$                 & Lagrangian velocity       & a.k.a.\ transport velocity, $v^i=u^i/u^0$ \\
+    $\tau$                & optical depth             & \\
+  \end{tabular}
+  \caption{
+    Some symbols used in this text.
+    Indices are used in the ``Symbol'' column in an abstract sense, and in the
+    ``Additional Notes'' column in a component sense.
+  }
+  \label{tab:conventions}
+\end{table}

@@ -9,7 +9,7 @@ To minimize busywork, always prefer Leakage Paper's conventions and structure.
   (But you may still need to modify that paper, for example to refer to earlier
   equations or expand a section, like ejecta.)
 
-Notes:
+Technical Guidelines:
 Attributions: much of this work and writing has been given to you freely by
   others, in particular Matt, Francois, and Andy. Acknowledge them generally in
   the Acknowledgements, but also indicate their work with a sentence before each
@@ -19,6 +19,9 @@ Attributions: much of this work and writing has been given to you freely by
 Outflows: don't include discussion of Foucart et al 2013's outflows section,
   because it turns out dynamical outflows don't have much to do with this
   inquiry.
+Prefer to use "I", unless it makes more sense to use "we", as throughout the
+  leakage chapter.
+Prefer to use "Sec. 1" and "Fig. 2" than spelling them out.
 
 *********************************************************************************
 Neutrinos in Mergers of Neutron Stars With Black Holes
