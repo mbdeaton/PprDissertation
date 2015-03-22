@@ -17,13 +17,12 @@ We evolve the coupled general relativistic--hydrodyamics system using
 the Spectral Einstein Code (SpEC).
 We employ our standard two-grid pseudospectral/finite difference approach,
 described in detail in earlier papers
-\citep{Scheel2006,Duez:2008rb,Hemberger:2012jz,Foucart:2013a}
-%\citep{Scheel2006,Duez:2008rb,Duez:2009yy,Foucart:2010eq,FoucartEtAl:2011,Hemberger:2012jz,Foucart:2013a}
+\citep{sche2006-dual_frames,duez2008-first_spec_bhns,hemb2012-dynamical_excision,fouc2013-compactness_and_spin}
 and briefly summarized here. The spacetime is described by the 4-metric and
 its time derivative, which we evolve in the generalized harmonic formulation using a multidomain
-pseudospectral algorithm \citep{Lindblom:2007}.
+pseudospectral algorithm \citep{lind2007-gen_harmonic}.
 The coordinates are evolved by enforcing the `frozen' gauge condition described
-in Appendix~A.1 of \cite{Foucart:2013a}.
+in Appendix~A.1 of \cite{fouc2013-compactness_and_spin}.
 The fluid is described by the hydrodynamic fields,
 which we evolve in conservative form using shock-capturing finite-difference
 methods.  The metric and fluid are evolved on separate computational domains;
@@ -56,9 +55,9 @@ the neutrino radiation field appears only through source terms in the
 evolution equations (see Section~\ref{sec:leakage}).
 
 To carry out a timestep, we begin by computing the conservative variable
-fluxes on cell faces using 5th-order WENO reconstruction \citep{Liu1994200,
-Jiang1996202} of $\rho$, $T$, and $u_i$ and an HLL approximate Riemann solver
-\citep{HLL}.  From these
+fluxes on cell faces using 5th-order WENO reconstruction \citep{liu1994-weno,
+jian1996-efficient_weno} of $\rho$, $T$, and $u_i$ and an HLL approximate Riemann solver
+\citep{hart1983-hll}.  From these
 cell boundary fluxes, the conservative variables are advanced forward in time. 
 From the evolved conservative variables, the `primitive' variables $\rho$,
 $T$, and $v^i$ must then be recovered.  This amounts to a two-dimensional
@@ -67,7 +66,7 @@ evolved conservative variables.  For some combinations of conservative
 variables, no corresponding set of primitive variables exists.  For this
 reason, relativistic
 hydrodynamics codes often impose the condition 
-$\tilde S^2 < \tilde\tau (\tilde\tau + 2\rho_*)$~\citep{Etienne:2007jg}.
+$\tilde S^2 < \tilde\tau (\tilde\tau + 2\rho_*)$~\citep{etie2007-first_illinois_bhns}.
 This inequality assumes $h\ge 1$ for all physical values of $\rho$ and $T$. 
 One feature of nuclear-based EOSs is that the internal energy becomes
 negative at sufficiently low densities and temperatures.  For an EOS
@@ -84,7 +83,7 @@ with densities more than a few decades below the maximum, cannot
 be expected to be evolved accurately; high temperatures and velocities tend
 to develop there. We therefore impose a maximum value on
 $T$ and $u^2 \equiv \gamma^{jk} u_j u_k$ in the low-density region outside the
-star, tail, and disk (as in \citealt{Foucart:2013a}, but with modifications).
+star, tail, and disk (as in \citealt{fouc2013-compactness_and_spin}, but with modifications).
 The ceiling on $T$ is the minimum temperature in the EOS table at densities below
 $10^{-5}\rho^{\rm max}(t)$, where $\rho^{\rm max}(t)$ is the instantaneous maximum
 density. We smoothly taper this treatment to densities 10 times larger than the lower
@@ -106,11 +105,11 @@ disruption---noise that is dwarfed by the post-disruption signal anyway.
 In this work we describe the fluid with the Lattimer \& Swesty (hereafter LS) EOS.
 This EOS is derived from a compressible
 liquid-drop model with a Skyrme nuclear force and includes contributions
-from free nucleons, alpha particles, and a single type of heavy nucleus \citep{Lattimer:1991nc}.
+from free nucleons, alpha particles, and a single type of heavy nucleus \citep{latt1991-nuc_eos}.
 We set the nuclear incompressibility parameter, $K_0$, to 220~MeV and the
 symmetry energy $S_v$ to 29.3~MeV.
 Electrons, positrons, and photons are
-added using the routines of \cite{1999ApJS..125..277T}.
+added using the routines of \cite{timm1999-nuc_eos}.
 
 %We construct the maximum mass cold neutron star in neutrinoless $\beta$-equilibrium
 %described by the LS EOS. It has gravitational mass in isolation of 2.04 $M_\odot$,
@@ -128,7 +127,7 @@ $T \in [0.01,251]$~MeV,
 	$N=120$, log spacing;
 $Y_e \in [0.035,0.53]$,
 	$N=100$, linear spacing.
-As in \cite{OConnor2010} we perform tri-linear interpolations
+As in \cite{ocon2010-gr1d} we perform tri-linear interpolations
 for intermediate values. The original table and access routines
 are available at \url{http://www.stellarcollapse.org}.
 Continuous extrapolations of $P$ and $\epsilon$ outside the tabular bounds
@@ -183,13 +182,13 @@ of $12.7$~km.
 
 To compute initial data we solve the extended conformal thin sandwich equations
 using multi-domain pseudospectral methods, as detailed in
-\cite{FoucartEtAl:2008}, using the Spectral Elliptic Solver
-\citep{Pfeiffer2003a,Pfeiffer2003,Pfeiffer2004}.
+\cite{fouc2008-nsbh_initial_data}, using the Spectral Elliptic Solver
+\citep{pfei2003-bbh_initial_data,pfei2003-spells,pfei2004-initial_data}.
 The numerical domain is decomposed into a set of touching but not overlapping
 `subdomains', comprised of spherical shells, filled spheres, cylinders,
 and distorted cubes, arranged to reflect the symmetries in the configuration.
 We use the same method to represent
-the metric in evolutions (see e.g.\ Figures~1 and 2 in~\citealt{Foucart:2013a}).
+the metric in evolutions (see e.g.\ Figures~1 and 2 in~\citealt{fouc2013-compactness_and_spin}).
 One difficulty arising within a spectral framework
 is the spurious Gibbs oscillations that can occur at discontinuities,
 for example at the surface of the star.
@@ -197,13 +196,13 @@ Thus, a critical technique in our method involves capturing the
 surface at a subdomain boundary, where the abutting spectral domains
 have no difficulty representing the non-smooth field.
 For the polytropes used in our previous
-work~\citep{Duez:2009yy,Foucart:2010eq,FoucartEtAl:2011,Foucart2012,Foucart:2013a}
+work~\citep{duez2009-3d_eos_advection,fouc2010-nsbh_bh_spin,fouc2011-10msun_bh,fouc2012-disk_mass,fouc2013-compactness_and_spin}
 the density profile is smooth and
 easy to resolve.  However new difficulties present themselves
 with the complexity of the stellar structure derived from the LS EOS.
 
 Polytropes have density profiles that
-fall off as $\rho \propto (r-r_{*})^n$ close to the surface~\citep{Gundlach:2009ft},
+fall off as $\rho \propto (r-r_{*})^n$ close to the surface~\citep{gund2009-star_surface_sound_waves},
 where $r_{*}$ is the stellar radius, and
 $n$ is related to the polytropic index by $\Gamma \equiv 1+1/n$.
 Thus, density profiles of $\Gamma=2$ polytropes behave linearly at the surface.
@@ -272,7 +271,7 @@ Because the quasi-equilibrium approximation ignores the infall motion
 that should be present initially, using this data directly results
 in eccentric orbits, which could affect the disk and outflow masses.
 Therefore, we perform one iteration of eccentricity reduction (see
-\citealt{Pfeiffer-Brown-etal:2007} for details) to incorporate the initial
+\citealt{pfei2007-ecc_reduction} for details) to incorporate the initial
 infall and to reduce the initial eccentricity to $\sym0.01$.
 
 \subsection{Neutrino Leakage Scheme}
@@ -316,9 +315,9 @@ estimate is not necessary.
 
 For the computation of $Q_{\nu}$ and $R_{\nu}$, our code is
 essentially an extension of the GR1D neutrino leakage
-code~\citep{OConnor2010} to three dimensions.  That code in turn closely
-follows the leakage schemes of \cite{Ruffert1996} and
-\cite{Rosswog:2003rv}.  In optically thin regions,
+code~\citep{ocon2010-gr1d} to three dimensions.  That code in turn closely
+follows the leakage schemes of \cite{ruff1996-leakage_part1} and
+\cite{ross2003-leakage_part2}.  In optically thin regions,
 emission rates should be given by the local rates of
 neutrino-generating interactions for each neutrino species
 $\nu_i$:  $Q_{\nu_i}^{\rm free}$ and $R_{\nu_i}^{\rm free}$.  In
@@ -340,7 +339,7 @@ For free emission rates, we include $\beta$-capture processes
 ($e^{-}p \rightarrow n\nu_{e}$ and $e^{+}n \rightarrow p\overline{\nu}_{e}$),
 electron-positron pair annihilation, plasmon decay, and
 nucleon-nucleon Bremsstrahlung emission.  (For the latter process,
-we use the rate given in \citealt{Burrows2006b}.)  In calculating the opacity,
+we use the rate given in \citealt{burr2006-neutrino_opacities}.)  In calculating the opacity,
 we include scattering on nucleons and heavy nuclei and absorption
 on nucleons.  All particle species, including the neutrinos, are
 assumed to have Fermi-Dirac distribution functions.
@@ -371,7 +370,7 @@ the absorption and scattering cross sections considered have a common neutrino
 energy dependence, $\sigma_{\nu_i}\propto E_{\nu_i}^2$, which can be factored out.
 Using the optical depth, the diffusion rates
 $Q_{\nu_i}^{\rm diff}$ and $R_{\nu_i}^{\rm diff}$ are estimated as in
-\cite{Rosswog:2003rv}.
+\cite{ross2003-leakage_part2}.
 
 The calculation of $\tau_{\nu_i}$ uses interaction cross sections
 that depend on $\mu_{\nu_i}$, and by Equation~\ref{mu_nu}, these
@@ -486,7 +485,7 @@ $t_{\rm merge}$ is the time at which 50\% of the rest mass has depleted.
 We use different scalings for the time-axis before and after 8~ms
 in order to highlight the initial disruption and accretion.
 {\em Top panel}: $L^2$ norm of global generalized harmonic constraint
-violations (see \citealt{Lindblom:2007}). We stop tracking this measure at
+violations (see \citealt{lind2007-gen_harmonic}). We stop tracking this measure at
 $\sym7$~ms when we freeze the spacetime metric and begin the Cowling evolution.
 {\em Middle panel}: baryonic rest mass remaining on the computational
 grid (in units of $M_{\odot}$). The initial decrease beginning at $-1$~ms is
@@ -529,14 +528,14 @@ change in the Kerr spin parameter through the 40~ms of Cowling evolution by
 measuring the change in the angular momentum and mass of the fluid.
 If we were to continue evolving the metric, $a^*$ would decay
 (from $\sym0.9$) by 2\%, pushing out the radius of the innermost stable
-circular orbit by less than 10\% \citep{1972ApJ...178..347B}.
+circular orbit by less than 10\% \citep{bard1972-rotating_bh}.
 We do not expect this effect to play a significant role in the disk evolution.
 Third, the Cowling approximation cannot capture instabilities
 due to the disk's self-gravity. However, this should not qualitatively
 alter perturbations in the bulk of the disk.
 The threshold for gravitational instability can be estimated from Toomre's
 criterion:  $Q_T=\kappa c_s/(\pi G\Sigma) >1$ for stability
-\citep{1960AnAp...23..979S,1964ApJ...139.1217T}, where $c_s$ is the sound
+\citep{safr1960-grav_instability,toom1964-grav_stability}, where $c_s$ is the sound
 speed of the disk, $\kappa$ is the epicyclic frequency, 
 $\Sigma$ is surface density, and $G$ is the gravitational constant.  For
 the disk considered here, the minimum Toomre parameter there is about 20
@@ -665,24 +664,24 @@ neutrino effects are much larger than the differences between resolutions.
 In a BHNS merger, matter expelled at high velocity
 may ultimately become unbound from the central gravitational potential.
 In addition to enriching the interstellar medium with r-process elements
-\citep{1974ApJ...192L.145L,Freiburghaus:1999no,Arnould:2007gh,korobkin:12},
+\citep{latt1974-bhns_ejecta,frei1999-r_process,arno2007-r_process,koro2012-r_process},
 this nuclear matter may emit an electromagnetic signal.
 The radioactive nuclei formed in the neutron-rich fluid
 quickly fission, emitting high-energy beta- and gamma-radiation.
 This heats the ejecta, which becomes optically thin on an expansion
 timescale (days to weeks), and radiates thermalized photons, producing
 an isotropic kilonova (or `macronova', see
-\citealt{Li:1998bw,Roberts2011,metzger:11,Rosswog:2012fn,
-2013MNRAS.430.2121P,Kasen:2013xka,NissankeEtAl:2012})
+\citealt{li1998-transients,robe2011-transients,metz2011-most_promising,ross2012-ejecta,
+pira2013-em_counterparts,kase2013-opacities,niss2012-end_to_end})
 at optical, or perhaps infrared, wavelengths, depending on the highly-uncertain
-opacity properties of the material \citep{Kasen:2013xka}.
+opacity properties of the material \citep{kase2013-opacities}.
 
 Additionally, the high-velocity ejecta form a blast wave in the circumbinary medium.
 At the shock front, magnetic fields amplify and accelerate electrons and positrons,
 thus emitting synchrotron radiation.
 This radio emission continues for a deceleration timescale (months to years)
 dependent upon the density of the surrounding medium
-\citep{metzger:11,Nakar:2011cw,2013MNRAS.430.2121P,NissankeEtAl:2012}.
+\citep{metz2011-most_promising,naka2011-radio,pira2013-em_counterparts,niss2012-end_to_end}.
 
 These transient electromagnetic signals are of sufficient interest
 to warrant a thorough examination of any ejecta in our simulation.
@@ -702,31 +701,31 @@ its mass ($M_{\rm ej}$), kinetic energy ($E_{\rm ej}$),
 distribution of velocities, and composition ($\langle Y_e \rangle_{\rm ej}$).
 
 There are a number of recent studies examining ejecta from
-binary neutron star mergers (e.g.\ \citealt{Rosswog:2012fn,hotokezaka:13}),
-high-eccentricity mergers (e.g.\ \citealt{Stephens:2011as,2012PhRvD..85l4009E,East:2012ww}),
-and mergers including magnetic fields (e.g.\ \citealt{Chawla:2010sw}).
+binary neutron star mergers (e.g.\ \citealt{ross2012-ejecta,hoto2013-ejecta}),
+high-eccentricity mergers (e.g.\ \citealt{step2011-eccentric,east2012-eccentric,east2012-dynamical_capture}),
+and mergers including magnetic fields (e.g.\ \citealt{chaw2010-magnetized}).
 But here we survey results from low-eccentricity, nonmagnetized, BHNS studies
 to emphasize the influence of black hole spin.
-\cite{1974ApJ...192L.145L} made semianalytic estimates in a Schwarzschild spacetime.
+\cite{latt1974-bhns_ejecta} made semianalytic estimates in a Schwarzschild spacetime.
 They found $M_{\rm ej} \sim 0{\rm\,\,to\,\,}0.14\,M_{\odot}$ for stars that disrupt
 close to the black hole; no mass is ejected from stars that disrupt far away.
-\cite{Rosswog:2012fn} simulated two cases of $q\sim4$ and $q\sim7$ in a
+\cite{ross2012-ejecta} simulated two cases of $q\sim4$ and $q\sim7$ in a
 Newtonian potential. He found $M_{\rm ej} \lesssim 0.05\,M_{\odot}$.
 Relativistic simulations have characteristically yielded more
 conservative ejecta estimates.
 Notably, high mass-ratio, compact neutron star, low black hole spin systems do not even
-disrupt. (See \citealt{Pannarale:2010vs} and \citealt{Foucart2012} for phenomenological models
+disrupt. (See \citealt{pann2010-disk_mass} and \citealt{fouc2012-disk_mass} for phenomenological models
 covering this parameter space.)
 In an excellent study focused on unique signatures from BHNS merger ejecta,
-\cite{Kyutoku:2013wxa} simulated a suite of tens of mergers
+\cite{kyut2013-ejecta} simulated a suite of tens of mergers
 with mass ratios of $q=3$ to $7$ and prograde BH spins up to $a^{*}=+0.75$.
 They showed $M_{\rm ej} \sim 0.01\,M_{\odot}$ to $0.07\,M_{\odot}$, with more matter ejected
 if the EOS is stiff.
-Recently, \cite{Foucart:2013a} simulated several
+Recently, \cite{fouc2013-compactness_and_spin} simulated several
 mergers of $q=7$, with large BH spins of $|a^{*}|=0.9$ varying in inclination.
 In cases of aligned spin and orbital angular momentum, they found ejected
 masses of $M_{\rm ej} \sim 0.09\,M_{\odot}$.
-Finally, in a study with nearly-extremal BH spin, \cite{Lovelace:2013vma} found
+Finally, in a study with nearly-extremal BH spin, \cite{love2013-bhns_high_spin} found
 $M_{\rm ej}$ could be as high as $0.3\rm\,M_{\odot}$.
 It appears, then, that for BHNS systems, one parameter region of interest for significant ejecta
 may be the parameter region of high spin.
@@ -761,7 +760,7 @@ radius $\sym400$~km (in our asymptotically flat evolution coordinates)
 at which we remove matter from the grid. Note that we distort the
 coordinate map between the fundamental evolution frame and the
 frame in which the finite difference grid is uniform
-in order to concentrate resolution near the black hole (see \citealt{Duez:2009yy}).
+in order to concentrate resolution near the black hole (see \citealt{duez2009-3d_eos_advection}).
 }
 \label{fig:disruptionsnapshots}
 \end{figure*}
@@ -1025,7 +1024,7 @@ a completely stable disk, one would expect the inner regions, where
 the dynamical timescale is shortest, to settle to a stationary
 axisymmetric state before the outer regions---as was seen, for example,
 in a recent BHNS $\Gamma$-law EOS merger carried out with the same
-code~\citep{Lovelace:2013vma}.  (Unfortunately, we have not performed
+code~\citep{love2013-bhns_high_spin}.  (Unfortunately, we have not performed
 any $\Gamma$-law EOS merger simulations with similar mass ratio and
 black hole spin to the present case, so no proper comparison can be
 made.)  We see instead that it is only the
@@ -1139,7 +1138,7 @@ but for these profiles,
 its effect is much smaller than that of the entropy.  The relativistic
 Solberg-H{\o}iland critera for convective stability of an axisymmetric
 equilibrium fluid are given, for a coordinate basis in which
-$g_{tr}=g_{r\phi}=0$, by \citep{1975ApJ...197..745S}
+$g_{tr}=g_{r\phi}=0$, by \citep{segu1975-rot_stability}
 \begin{eqnarray}
 \label{SH1}
 \vec{\gamma}\cdot\vec{\nabla} L + (\rho h)^{-2}(\partial\mathcal{U}/\partial S)_P
@@ -1178,7 +1177,7 @@ evolution) are sufficient to keep the entropy profile roughly fixed.
 In addition to local instability, the disk could be susceptible to global
 instabilities involving amplification of the unstable mode across its corotation
 radius, located at $r \approx 27\rm\,km$, given the mode's pattern
-speed (e.g \citealt{1985MNRAS.213..799P}).
+speed (e.g \citealt{papa1985-rot_stability}).
 
 The temperature is high ($\sym 8$~MeV) in the inner disk, and in these
 regions, the contribution of trapped neutrinos to the total pressure is as
