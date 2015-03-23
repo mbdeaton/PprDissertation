@@ -286,12 +286,12 @@ radiation pressure $P_{\nu}$ as measured in a local
 Lorentz frame comoving with the fluid.  In such a frame
 \begin{eqnarray}
 \label{LLF1}
-\partial_t (\rho Y_e) &=& -R_{\nu}m_U\ , \\
+\partial_t (\rho Y_e) &=& -R_{\nu}\langle m_U \rangle\ , \\
 \partial_t T^{00} &=& -Q_{\nu}\ , \\
 \label{LLF2}
 \partial_t T_{j0} &=& -\partial_j P_{\nu}\ ,
 \end{eqnarray}
-where $m_U$ is the atomic mass unit,
+where $\langle m_U \rangle$ is the atomic mass unit,
 and $T^{\alpha\beta}$ is the stress tensor.
 Then the energy,
 momentum, and composition source terms
@@ -356,18 +356,18 @@ $\mu_{\nu_i}$ ($\mu^{\rm eq}_{\nu_e}=-\mu^{\rm eq}_{\overline{\nu}_e}
 the energy-averaged optical depth.
 
 Given the primitive variables
-and neutrino chemical potentials, we can compute $\tau_{\nu_i}(E_{\nu_i})$, the
-optical depth of neutrino species $\nu_i$ at energy $E_{\nu_i}$
+and neutrino chemical potentials, we can compute $\tau_{\nu_i}(\varepsilon_{\nu_i})$, the
+optical depth of neutrino species $\nu_i$ at energy $\varepsilon_{\nu_i}$
 along some path parameterized by $\ell$, with the line integral
 \begin{equation}
 \label{tau_integral}
-\tau_{\nu_i}(E_{\nu_i}) = \int [\lambda_{\nu_i}(E_{\nu_i})]^{-1} d\ell
- = E_{\nu_i}^2 \int \hat{\lambda}_{\nu_i}{}^{-1} d\ell\ ,
+\tau_{\nu_i}(\varepsilon_{\nu_i}) = \int [\lambda_{\nu_i}(\varepsilon_{\nu_i})]^{-1} d\ell
+ = \varepsilon_{\nu_i}^2 \int \hat{\lambda}_{\nu_i}{}^{-1} d\ell\ ,
 \end{equation}
-where $\lambda_{\nu_i}(E_{\nu_i})\equiv E_{\nu_i}{}^{-2}\hat{\lambda}_{\nu_i}{}^{-1}$
+where $\lambda_{\nu_i}(\varepsilon_{\nu_i})\equiv \varepsilon_{\nu_i}{}^{-2}\hat{\lambda}_{\nu_i}{}^{-1}$
 is the mean free path, and we have taken advantage of the fact that all
 the absorption and scattering cross sections considered have a common neutrino
-energy dependence, $\sigma_{\nu_i}\propto E_{\nu_i}^2$, which can be factored out.
+energy dependence, $\sigma_{\nu_i}\propto \varepsilon_{\nu_i}^2$, which can be factored out.
 Using the optical depth, the diffusion rates
 $Q_{\nu_i}^{\rm diff}$ and $R_{\nu_i}^{\rm diff}$ are estimated as in
 \cite{ross2003-leakage_part2}.
@@ -383,7 +383,7 @@ $\langle\tau_{\nu_i}\rangle_{\rm approx}$ for use in Equation~\ref{mu_nu}.
 We have tried
 \newline
 1) setting $\langle\tau_{\nu_i}\rangle_{\rm approx}$ equal to
-the energy average of $\tau_{\nu_i}(E_{\nu_i})$ and, as in GR1D, iterating
+the energy average of $\tau_{\nu_i}(\varepsilon_{\nu_i})$ and, as in GR1D, iterating
 to rough convergence
 \newline
 2) limiting the code to one iteration per opacity calculation, starting
@@ -447,14 +447,14 @@ one of these is labeled: $\rm d^1$.
 
 The most costly part of the leakage scheme is the estimate of the
 optical depth.  To compute this, we first interpolate the opacity
-(factoring out the $E_{\nu}^2$ neutrino energy dependence, as discussed
+(factoring out the $\varepsilon_{\nu}^2$ neutrino energy dependence, as discussed
 above) onto a lower resolution 3D grid.  Then we compute
 line integrals of this quantity in 7 directions to the computational boundary:
 one integral forward and backward on each coordinate axis, excluding $-z$ because of our
 grid's reflection symmetry, plus two diagonals based on the `most
 promising' of the coordinate directions (see Fig.~\ref{fig:chi_opacity_grid}).
 The minimum line integral gives the optical depth.
-(More precisely, the optical depth is $E_{\nu}^2$ times this integral.)
+(More precisely, the optical depth is $\varepsilon_{\nu}^2$ times this integral.)
 
 To test our implementation of the leakage scheme, we have constructed
 spherically symmetric configurations of hot gas and compared our
