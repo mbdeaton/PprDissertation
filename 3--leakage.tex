@@ -427,6 +427,7 @@ The diffusion rates are determined using $\tau_{\nu_i}$ as computed in
 Equation~\ref{tau_integral}.
 
 \begin{figure}
+\centering
 \includegraphics[width=8.2cm]{Figures/chi_opacity_grid}
 \caption[Schematic of optical depth calculation]{
 Schematic of the optical depth calculation. The fine (dotted) grid
@@ -476,8 +477,9 @@ $\sqrt{\psi_{00}}$.
 \section{Trustworthiness and Error}
 \label{sec:grhydroconvergence}
 
-\begin{figure*}[t] \centering
-\includegraphics[width=18cm]{Figures/convergence_measures}
+\begin{figure}
+\centering
+\includegraphics[width=16cm]{Figures/convergence_measures}
 \caption[Global convergence measures]{
 Global convergence measures,
 showing the three resolutions with leakage.
@@ -500,7 +502,7 @@ discussed in Section~\ref{sec:outflow}.
 as measured at $r \rightarrow \infty$.
 }
 \label{fig:convergence}
-\end{figure*}
+\end{figure}
 
 Our evolution begins with a coordinate separation of 83~km
 between the centers of the two compact objects.
@@ -606,8 +608,9 @@ L1 resolution, without neutrino leakage.  We label this
 run `L1no$\nu$'.  Comparing L1no$\nu$ to L1 lets us isolate
 the effects of the neutrinos on the fluid.
 
-\begin{figure*} \centering
-\includegraphics[width=18cm]{Figures/global_measures}
+\begin{figure}
+\centering
+\includegraphics[width=16cm]{Figures/global_measures}
 \caption[Secular chemical and thermal evolution of the disk]{
 Secular chemical and thermal evolution of the disk for the three resolutions
 with leakage, and also L1no$\nu$.
@@ -619,7 +622,7 @@ initial accretion, and loss of the tidal tail from the outer boundary.
 $k_B\rm\,baryon^{-1}$.
 }
 \label{fig:globalevolution}
-\end{figure*}
+\end{figure}
 
 In Figures~\ref{fig:convergence} and~\ref{fig:globalevolution},
 we show the evolution of several main global quantities for all runs. 
@@ -746,8 +749,9 @@ a radius of $\sym400$~km, where we allow the tail to fall off of the grid.
 From its formation until its exit, the tidal tail is evolved on the computational domain
 for $\sym5$~ms.
 
-\begin{figure*} \centering
-\includegraphics[width=18cm]{Figures/rho_unbound_1ms_2ms_3ms}
+\begin{figure}
+\centering
+\includegraphics[width=16cm]{Figures/rho_unbound_1ms_2ms_3ms}
 \caption[Time sequence of dynamical ejecta]{
 Equatorial slices of rest density from L3
 during disruption and tidal tail formation at 1, 2, and 3~ms after merger
@@ -763,7 +767,7 @@ frame in which the finite difference grid is uniform
 in order to concentrate resolution near the black hole (see \citealt{duez2009-3d_eos_advection}).
 }
 \label{fig:disruptionsnapshots}
-\end{figure*}
+\end{figure}
 
 For a stationary spacetime, $u_t$ (the projection of the 4-velocity along
 the timelike Killing vector field) is a constant of motion for geodesics. 
@@ -808,7 +812,8 @@ reduce this source of error, an important consideration for future
 simulations.
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/unbound_mass_and_energy_over_time}
+\centering
+\includegraphics[width=9cm]{Figures/unbound_mass_and_energy_over_time}
 \caption[Unbound matter mass and kinetic energy]{
 Integrals of the unbound fluid on the grid.
 {\em Top panel}: total asymptotic kinetic energy.
@@ -853,7 +858,8 @@ of grid-based methods; smoothed-particle hydrodyanmics methods neatly overcome t
 limit, but find their handicap in evolving accurate initial conditions for the tail.
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/unbound_velocity_histogram}
+\centering
+\includegraphics[width=9cm]{Figures/unbound_velocity_histogram}
 \caption[Unbound matter asymptotic velocity]{
 Unbound rest mass binned by magnitude of the asymptotic fluid velocity.
 We show L1, L2, and L3 at $~\sym2.7$~ms, just before the peak in
@@ -989,10 +995,11 @@ to all species of neutrinos, with optical depths (averaged over
 neutrino energy) of order 10.
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/3D-Q0phys_meridional}
-\includegraphics[width=8.2cm]{Figures/3D-rho0phys_meridional}
-\includegraphics[width=8.2cm]{Figures/3D-rho0phys_equatorial}
-\caption[Three dimensional colorplots of disk density and neutrino energy losses]{
+\centering
+\includegraphics[width=9cm]{Figures/3D-Q0phys_meridional}
+\includegraphics[width=9cm]{Figures/3D-rho0phys_meridional}
+\includegraphics[width=9cm]{Figures/3D-rho0phys_equatorial}
+\caption[Three-dimensional colorplots of disk density and neutrino energy losses]{
 Three-dimensional distribution of neutrino energy loss and fluid density
 from L3, 30~ms after merger, depicted in evolution coordinates at a slanted view.
 {\em Top panel}: effective local neutrino power, $Q_{\nu}$ (no redshift applied),
@@ -1007,8 +1014,9 @@ are 110~km and 45~km, respectively.
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/thickness}
-\caption[Radial profile of disk density and opacity]{{\em Top panel}: azimuthally-averaged profiles of the
+\centering
+\includegraphics[width=9cm]{Figures/thickness}
+\caption[Radial profiles of disk density and opacity]{{\em Top panel}: azimuthally-averaged profiles of the
 density $\rho$ together with its RMS deviation from axisymmetry,
 $\delta\rho_{\rm rms}\equiv \langle(\rho-\langle\rho\rangle)^2\rangle^{1/2}$,
 plotted as functions of the circumferential radius
@@ -1086,8 +1094,9 @@ it settles and even shows episodes of growth, which may indicate that
 instabilities are stimulating these modes.
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/EandL}
-\caption[Radial profile of disk orbital energy and angular momentum]{
+\centering
+\includegraphics[width=9cm]{Figures/EandL}
+\caption[Radial profiles of disk orbital energy and angular momentum]{
 Energy and angular momentum of the disk 40~ms after merger.
 {\em Top panel}: azimuthally-averaged equatorial orbital energy
 $E\equiv-u_t-1$.
@@ -1101,7 +1110,8 @@ circular orbit equilibrium (i.e. including pressure) motion.
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/ModeEnergy}
+\centering
+\includegraphics[width=9cm]{Figures/ModeEnergy}
 \caption[Disk equilibrium over time]{The deviation of the accretion disk from
 equilibrium, as measured by the difference between the
 actual and equilibrium orbital energy.}
@@ -1109,7 +1119,8 @@ actual and equilibrium orbital energy.}
 \end{figure}
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/profiles}
+\centering
+\includegraphics[width=9cm]{Figures/profiles}
 \caption[Radial profiles of disk thermodynamics]{
 Profiles of the azimuthally- and vertically-averaged pressure, entropy, temperature, and
 electron fraction 40~ms after merger. For the pressure, we plot separately
@@ -1190,8 +1201,9 @@ negligible.
 \subsubsection{Disk Neutrino Luminosity}
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/neutrinos_by_species}
-\caption[Neutrinos emission by species]{
+\centering
+\includegraphics[width=9cm]{Figures/neutrinos_by_species}
+\caption[Neutrinos emission characteristics by species]{
 Neutrino emission characteristics by species.
 {\em Top panel}: lepton number luminosity, $R_{\nu_i}$
 (in units of $10^{57}\rm\,s^{-1}$).
@@ -1287,7 +1299,8 @@ on the entropy evolution reassures us that numerical dissipation
 is not dominating the thermal evolution of the disk.
 
 \begin{figure}
-\includegraphics[width=8.2cm]{Figures/thermal_evolution}
+\centering
+\includegraphics[width=9cm]{Figures/thermal_evolution}
 \caption[Analysis of the thermal evolution of the disk]{
 The thermal evolution of the disk during its cooling phase. 
 $L_{\nu}$ is the neutrino luminosity, $(dE_{\rm thermal}/dt)_{\rm outflow}$
