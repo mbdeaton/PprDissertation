@@ -1,0 +1,29 @@
+% From egreg at http://tex.stackexchange.com/questions/86082/rendering-only-the-table-of-contents
+\documentclass[12pt]{report} % use the same class
+%\usepackage[italian]{babel} % if you use babel (same options!)
+%% Add other packages that act on the page shape
+%% you load in the main file
+\usepackage{amssymb}              % don't know why this is required
+\usepackage{amsmath}              % for \text
+\usepackage{booktabs}             % for \toprule
+\usepackage{graphicx}             % for \includegraphics
+\usepackage{hyperref}             % for \url and \href
+\usepackage{mbdeaton}             % include my special macros
+\usepackage{natbib}               % allows me to define the citation style
+\usepackage{setspace}             % for \doublespacing
+\usepackage{wsudissertation}      % definitions for WSU-specific formatting
+\doublespacing                    % use \begin{singlespace} ... \end{singlespace}
+                                  % for stretches of monospace text
+
+\begin{document}
+%\frontmatter
+\pagenumbering{roman}
+:\setcounter{page}{5} % if the original toc starts page iii
+
+\chapter{\contentsname}
+
+\makeatletter
+\input{dissertation.toc}
+\makeatother
+
+\end{document}

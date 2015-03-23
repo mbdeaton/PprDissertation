@@ -9,6 +9,7 @@
 
 # TeX products
 /dissertation.pdf
+/printtoc.pdf
 *.aux
 *.log
 *.toc
