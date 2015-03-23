@@ -32,20 +32,32 @@ used as a label, not as a tensor index.
   \centering
   \begin{tabular}{rll}
     \textbf{Symbol}       & \textbf{Object}           & \\%\textbf{Additional Notes} \\
-    $\varrho$             & rest density              & $\langle m_u \rangle n_b $ \\
-    $\langle m_u \rangle$ & average nucleon mass      & \\
+    $\langle m_U \rangle$ & average nucleon mass      & \\
     $n_b$                 & baryon number density     & \\
-    $\varepsilon$         & internal energy density   & not including the mass energy \\
+    $\rho$                & rest density              & $\rho=\langle m_U \rangle n_b $ \\
+    $\epsilon$            & specific internal energy  & not including the mass energy \\
+    $h$                   & specific enthalpy         & $h=1+\epsilon+P/\rho$\\
+    $P$                   & pressure                  & \\
+    $T$                   & temperature               & \\
+    $T^{\alpha \beta}$    & stress-energy tensor      & \\
+    $Y_e$                 & electron fraction         & $Y_e=n_e/n_b$\\
+    $\rho_*$              & density evolution variable& $\rho_*=\sqrt{g}W\rho$ \\
+    $\tilde\tau$          & energy evolution variable & $\tilde\tau=\rho_*(hW-1)-\sqrt{g}P$ \\
+    $\tilde S$            & momentum evolution variable & $\tilde S=\rho_*hu_i$\\
+    $v^i$                 & Lagrangian velocity       & a.k.a.\ transport velocity, $v^i=u^i/u^0$ \\
+    $u^\alpha$            & four-velocity             & $u^a=dx^a/d\tau$ \\
+    $d\tau$               & spacetime interval        & $d\tau=-dx^a dx^b \psi_{ab}$ \\
+    $W$                   & Lorentz factor            & $\alpha u^0$ (if no gravity $W=1/\sqrt{1-v^2}$) \\
     $\tau$                & optical depth             & \\
+    $Q_\nu$               & local energy emission rate& \\
+    $R_\nu$               & local lepton number rate  & \\
+    $\mu$                 & chemical potential        & $\mu=T\eta$ \\
+    $p_\alpha$            & momentum 1-form           & \\
+    $\varepsilon$         & neutrino energy           & used for asymptotic and local \\
     $\psi_{\alpha\beta}$  & spacetime metric          & \\
     $g_{ij}$              & spatial metric            & \\
-    $\beta^i$             & shift                     & where $\beta_i \equiv \beta^j g_{ij}$ \\
+    $\beta^i$             & shift                     & where $\beta_i = \beta^j g_{ij}$ \\
     $\alpha$              & lapse                     & \\
-    $u^\alpha$            & four-velocity             & $u^a=dx^a/d\tau$ \\
-    $p_\alpha$            & four-momentum 1-form      & \\
-    $d\tau$               & spacetime interval        & $d\tau\equiv-dx^a dx^b \psi_{ab}$ \\
-    $W$                   & Lorentz factor            & $\alpha u^0$ (sans gravity, $W=\Gamma=1/\sqrt{1-v^2}$) \\
-    $v^i$                 & Lagrangian velocity       & a.k.a.\ transport velocity, $v^i=u^i/u^0$ \\
   \end{tabular}
   \caption[Symbols used in the text]{
     Some symbols used in this text.
