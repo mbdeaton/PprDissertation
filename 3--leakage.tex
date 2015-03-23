@@ -45,8 +45,8 @@ enthalpy $h=1+\epsilon+P/\rho$.  From $v^i$, one can compute the Lorentz
 factor $W=\alpha u^t$, $\alpha$ being the lapse and $u^t$ being the time
 component of the 4-velocity.  The hydrodynamic evolution equations take
 the form of conservation laws for a set of `conservative' variables.  These
-include a density variable, $\rho_*=\sqrt{\gamma}W\rho$, an energy variable,
-$\tilde\tau=\rho_*(hW-1)-\sqrt{\gamma}P$, a momentum variable
+include a density variable, $\rho_*=\sqrt{g}W\rho$, an energy variable,
+$\tilde\tau=\rho_*(hW-1)-\sqrt{g}P$, a momentum variable
 $\tilde S_i=\rho_*hu_i$, and a composition variable $\rho_*Y_e$, where
 $\gamma$ is the determinant of the 3-metric, and $u_i$ are the covariant
 components of the 4-velocity.  Note that we do not include neutrino
@@ -298,12 +298,12 @@ momentum, and composition source terms
 follow directly from putting the above in generally
 covariant form.  In the comoving Lorentz frame of
 Equations~\ref{LLF1}-\ref{LLF2}, $u^0=1$, $u^j=0$,
-and $g_{\alpha\beta}=\eta_{\alpha\beta}$,
+and $\psi_{\alpha\beta}=\eta_{\alpha\beta}$,
 so a covariant form of the neutrino sources is
 \begin{eqnarray}
   \nabla_{\alpha}(\rho Y_e u^{\alpha}) &=& -R_{\nu}U\ , \\
   \nabla_{\alpha}T^{\alpha\beta} &=& -Q_{\nu}u^{\beta}
-  - (g^{\alpha\beta}+u^{\alpha}u^{\beta})\nabla_{\alpha}P_{\nu}\ .
+  - (\psi^{\alpha\beta}+u^{\alpha}u^{\beta})\nabla_{\alpha}P_{\nu}\ .
 \end{eqnarray}
 For the time derivative of $P_{\nu}$, we assume simple
 advection $u^{\alpha}\nabla_{\alpha}P_{\nu}=0$, which is
@@ -468,10 +468,10 @@ As expected, the two codes agreed.
 The emission rates also allow us to compute the total neutrino energy
 and number luminosity radiated to infinity by performing proper integrals
 over $Q_{\nu}$ and $R_{\nu}$.  For the energy luminosity at $r\rightarrow\infty$, $L_{\nu}$,
-we multiply the integrand by a redshift factor $g_{00}$:  one factor of
-$\sqrt{g_{00}}$ for the time dilation and one factor for the energy redshift. 
+we multiply the integrand by a redshift factor $\psi_{00}$:  one factor of
+$\sqrt{\psi_{00}}$ for the time dilation and one factor for the energy redshift. 
 For the integral of $R_{\nu}$, we multiply by a redshift factor of
-$\sqrt{g_{00}}$.
+$\sqrt{\psi_{00}}$.
 
 \section{Trustworthiness and Error}
 \label{sec:grhydroconvergence}
@@ -796,7 +796,7 @@ orders of magnitude below the maximum density in the tail.
 We check the validity of our assumption that the spacetime has become
 stationary by estimating the timescale that $u_t$ will change due to changes
 in the metric.  For a nonrelativistic geodesic, the leading order term for
-the time derivative is $\dot{u}_t\approx g_{tt,t}$, so the timescale on which
+the time derivative is $\dot{u}_t\approx \psi_{tt,t}$, so the timescale on which
 metric nonstationarity can produce a large relative change in energy is
 $\approx (-u_t-1)/\dot{u}_t$.  This is $\sim$~50~ms to 1~s for our ejecta
 when near the edge of the computational domain.  On the other hand, the
@@ -1138,7 +1138,7 @@ but for these profiles,
 its effect is much smaller than that of the entropy.  The relativistic
 Solberg-H{\o}iland critera for convective stability of an axisymmetric
 equilibrium fluid are given, for a coordinate basis in which
-$g_{tr}=g_{r\phi}=0$, by \citep{segu1975-rot_stability}
+$\psi_{tr}=\psi_{r\phi}=0$, by \citep{segu1975-rot_stability}
 \begin{eqnarray}
 \label{SH1}
 \vec{\gamma}\cdot\vec{\nabla} L + (\rho h)^{-2}(\partial\mathcal{U}/\partial S)_P
@@ -1151,7 +1151,7 @@ $g_{tr}=g_{r\phi}=0$, by \citep{segu1975-rot_stability}
 \end{eqnarray}
 where $\mathcal{U}=\rho+\rho\epsilon$ is the total energy density and
 \begin{equation}
-\vec{\gamma} = (u^0u_0)^2[(1-v^2)(g_{\phi\phi})^{-1}u_0{}^2\vec{\nabla}L
+\vec{\gamma} = (u^0u_0)^2[(1-v^2)(\psi_{\phi\phi})^{-1}u_0{}^2\vec{\nabla}L
 -\vec{\nabla}\Omega]\ .
 \end{equation}
 Equations \ref{SH1} and \ref{SH2} correspond to the familiar Newtonian
