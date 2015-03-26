@@ -8,6 +8,11 @@ Lean toward short and digestible sections. Many small sections are more readable
 To minimize busywork, always prefer Leakage Paper's conventions and structure.
   (But you may still need to modify that paper, for example to refer to earlier
   equations or expand a section, like ejecta.)
+If there's time, include helper sections: 1) derive the fluid equations in 
+  minkowski space, to compare the GRHD eqns to, 2) derive all the radiation
+  transport equations and quantities for the examples of a hot radiating star
+  and a homogeneous emitting medium, 3) discuss accretion and radiation in the
+  context of Cyg X-1 to compare to (\sigma_T=6.7e-29 m^2, L_edd=?).
 
 Technical Guidelines:
 Attributions: much of this work and writing has been given to you freely by
