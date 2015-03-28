@@ -32,9 +32,8 @@ used as a label, not as a tensor index.
   \centering
   \begin{tabular}{rll}
     \textbf{Symbol}       & \textbf{Object}           & \\%\textbf{Additional Notes} \\
-    $\langle m_U \rangle$ & average nucleon mass      & \\
     $n_b$                 & baryon number density     & \\
-    $\rho$                & rest density              & $\rho=\langle m_U \rangle n_b $ \\
+    $\rho$                & rest density              & $\rho=m_U n_b $ \\
     $\epsilon$            & specific internal energy  & not including the mass energy \\
     $h$                   & specific enthalpy         & $h=1+\epsilon+P/\rho$\\
     $P$                   & pressure                  & \\
@@ -65,4 +64,26 @@ used as a label, not as a tensor index.
     ``Additional Notes'' column in a component sense.
   }
   \label{tab:conventions}
+\end{table}
+
+\begin{table}
+  \centering
+  \begin{tabular}{rlll}
+    \textbf{Symbol} & \textbf{Value}       & \textbf{Units}           & \textbf{Description} \\
+    $G$             & $6.67\times10^{-8}$  & cm$^3$ g$^{-1}$ s$^{-2}$ & Newton's gravitational constant \\
+    $c$             & $3.00\times10^{10}$  & cm s$^{-1}$              & speed of light in vacuum \\
+    $k_{\rm B}$     & $8.62\times10^{-11}$ & MeV K$^{-1}$             & Boltzmann's constant \\
+    $G_{\rm F}/(\hbar c)^3$ & $1.17\times10^{-11}$ & MeV$^{-2}$       & Fermi coupling constant \\
+    $\sin^2\theta_w$& 0.231                &                          & weak-mixing angle \\
+    $m_e$           & 0.511                & MeV c$^{-2}$             & mass of electron \\
+    $m_U$           & 939                  & MeV c$^{-2}$             & average nucleon mass, $(m_n+m_p)/2$ \\
+    $\hbar$         & $6.58\times10^{-22}$ & MeV s                    & reduced Planck's constant, $h/2\pi$ \\
+  \end{tabular}
+  \caption[Physical constants used in the text]{
+    Some physical constants used in this text. Taken from the Particle Data
+    Group, Particle Physics Booklet \citep{oliv2014-pdg}.
+    Since I am only interested in scales, I present only three significant
+    figures here.
+  }
+  \label{tab:constants}
 \end{table}
