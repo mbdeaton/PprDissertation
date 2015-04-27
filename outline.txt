@@ -27,6 +27,8 @@ Outflows: don't include discussion of Foucart et al 2013's outflows section,
 Prefer to use "I", unless it makes more sense to use "we", as throughout the
   leakage chapter.
 Prefer to use "Sec. 1" and "Fig. 2" than spelling them out.
+Denote a particular tensor components by replacing the index by the standard
+  symbol for that component: u^t not u^0.
 
 *********************************************************************************
 Neutrinos in Mergers of Neutron Stars With Black Holes
