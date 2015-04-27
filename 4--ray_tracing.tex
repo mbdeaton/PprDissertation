@@ -107,11 +107,11 @@ is simply the Fermi-Dirac distribution:
 \begin{equation}
   \label{eqn:f_fermi_dirac}
   f(x^\alpha;p_k) =
-  \left(\exp\left(\frac{p_\beta u^\beta}{T(x_0^\alpha)}-\eta \right)+1\right)^{-1}
+  \left(\exp\left(\frac{-p_\beta u^\beta(x_0^\alpha)}{T(x_0^\alpha)}-\eta(x_0^\alpha) \right)+1\right)^{-1}
 \end{equation}
-where $T(x_0^\alpha)$ is the fluid temperature at the neutrinosurface, and $\eta$
-is the neutrino chemical potential scaled by temperature. We use $\eta$ estimated
-by the leakage scheme (Eqn.~\ref{mu_nu}).
+where $T(x_0^\alpha)$ is the fluid temperature at the neutrinosurface, and
+$\eta(x_0^\alpha)$ is the neutrino chemical potential scaled by $T$.
+We use $\eta$ estimated by the leakage scheme (Eqn.~\ref{mu_nu}).
 \todo{other choices for $\eta$}
 
 \section{$f_\nu$ for this Case}
