@@ -1,8 +1,124 @@
 \chapter{Properties of Neutrino Emission}
 \label{chap:ray_tracing}
 
-\section{Numerical Methods for Ray Tracing}
+The leakage approximation used in Chap.~\ref{chap:leakage} gives us a beginning
+understanding of the cooling effects of neutrinos on the accretion disk, or
+how the disk changes as it radiates. Through that approximation we have been able
+to estimate changes in the energy and composition of the fluid at the position
+$x^\alpha$ due to the emission of neutrinos at $x^\alpha$.
 
-\section{Neutrino Distribution Function for this Case}
+However, the leakage approximation teaches us very little about the properties of
+that emission. We \emph{can} extract some rough global measures:
+1) the sum of the energy losses from all positions in the disk (i.e.\
+the volume integral of $Q_{\nu_i}$ defined in Sec.~\ref{sec:leakage})
+gives us the total energy luminosity, $L_{\nu_i}$, at any epoch,
+2) likewise the sum of $R_{\nu_i}$ gives us the total lepton number luminosity
+(also denoted $R_{\nu_i}$),
+3) and the ratio of these two luminosities gives us the average neutrino energy,
+$\langle E_{\nu_i} \rangle$. These three calculations are presented in
+Fig.~\ref{fig:neutrinos_by_species}.
 
-\section{Neutrino Annihilation for this Case}
+But to answer some of the questions presented in Chap.~\ref{chap:overview}, we
+need to know more about the radiation field outside of the disk, particularly
+how it varies with position, $x^\alpha$, and how it is distributed in energy and
+angle, $p_k$.
+That is, we need to develop an estimate of the neutrino distribution function,
+$f_{\nu_i}(x^\alpha;p_k)$.
+
+Where the mean free path of the neutrinos is long with respect to local fluid
+\todo{show this is the case}
+scales at $x^\alpha$, $f(x^\alpha)$ is dependent upon the state of matter far
+away from $x^\alpha$. In lieue of solving the Boltzmann equation in full
+\todo{ref eqn in Chap.~\ref{chap:intro}}
+(which would involve an evolution of a scalar field like those presented in
+Chap.~\ref{chap:leakage} for fluid and metric fields, but over a 6-dimensional
+phase space manifold with coordinates $\{x^j,p_k\}$, and therefore
+computationally out of reach today),
+we can capture this nonlocality with a ray tracing solution.
+In ray tracing, $f(x^\alpha;p_k)$ is computed by tracing a neutrino trajectory
+backwards from $x^\alpha$ with a momentum $p_k$, keeping track of additions
+and depletions to the neutrino number density along that trajectory.
+Each ray yields an approximate solution to the Boltzmann equation at a
+single point on the phase space manifold of interest. A ray
+tracing solution to the Boltzmann equation places an observer at $x^\alpha$,
+points him in the direction $p_k$, and asks ``how many neutrinos from that
+direction?''
+This approximation neglects additions to the neutrino number density due to
+scattering into the line of sight (the kind of scattering that gives to the
+moon or a streetlamp a halo on a foggy night).
+\todo{ref later discussion}
+
+In this chapter I present a ray-tracing algorithm for estimating
+$f_{\nu_i}(x^\alpha;p_k)$ in relativistic numerical spacetimes and fluid
+distributions, I calculate $f_{\nu_i}$ describing neutrino
+emission from the model accretion disk from Chap.~\ref{chap:leakage},
+and I use these $f$s to estimate $q_{\nu\bar{\nu}}$, the heating due to
+neutrino-antineutrino annihilation in the funnel of the disk.
+Because of large uncertainties,
+this last calculation should be considered a proof-of-concept for future
+calculations. It may also be considered a back-of-the-envelope answer to
+the question, ``Can a neutron star--black hole merger drive a gamma ray burst
+jet by neutrino processes alone?''
+
+Sec.~\ref{sec:f_algorithm} gives a technical overview of the ray tracing
+algorithm and two code tests. Sec.~\ref{sec:f_this_case} presents the distribution
+function of the three 'leakage' neutrino species around this model accretion
+disk. Secs.~\ref{sec:q_algorithm}~and~\ref{sec:q_this_case} describe the
+algorithm for and results from a neutrino-antineutrino annihilation heating
+calculation for this model.
+
+\section{Calculating $f_\nu$: Ray Tracing Algorithm}
+\label{sec:f_algorithm}
+
+In the most comprehensive treatment, a ray-tracing solution for $f$ is calculated
+by solving the rendering equation backwards along a trajectory terminating at
+$x^a$ with momentum $p_k$:
+\todo{derive rendering eqn, or check/ref below}
+\begin{equation}
+  \label{eqn:rendering}
+  f(x^\alpha;p_k) = \int_{x^a}^{\rm far\,away} \diff \lambda \, \mathcal{E}(p_k)
+  \exp\left(-\int_{x^a}^\lambda  \diff \lambda' \, \mathcal{A}(p_k)\right)
+\end{equation}
+where $\mathcal{E}$ and $\mathcal{A}$ are the invariant emissivity and opacity
+defined in Chap.~\ref{chap:intro}.
+\todo{ref eqns}
+For isotropic scattering, $p_k$ only enters $\mathcal{E}$ and $\mathcal{A}$ in the
+form $-p_\beta u^\beta$, the neutrino energy in the rest frame of the fluid.
+Furthermore, $p_\beta$ may be calculated from $p_i$ by invoking the neutrino mass,
+$-m_{\nu_i}^2=p_\beta p^\beta$.
+All the neutrino masses are vanishingly small in the case of nuclear
+accretion disks, with fluid energy scales of a few MeV. So in the following we
+set $m_{\nu_i}=0$.
+
+As $f$ accumulates along the ray, the integrand in Eqn.~\ref{eqn:rendering}
+gets attenuated by the exponential term, which is the optical depth defined in
+Chap.~\ref{chap:intro}.
+\todo{ref eqn}
+At large optical depths, the integrand vanishes exponentially, because fluid
+properties on the far side of opaque matter cannot affect the neutrino
+distribution function on this side. The exponential behavior of the integrand
+leads us to pose a further approximation, that all neutrinos are emitted from
+a single point along the trajectory, the neutrinosurface.
+
+In this treatment, the ray is traced backwards until the optical depth becomes
+large ($\tau\sim1$). This defines the neutrinosurface at $x_0^\alpha$. The
+neutrinos are assumed to decouple from the matter at this surface, and so f
+is simply the Fermi-Dirac distribution:
+\begin{equation}
+  \label{eqn:f_fermi_dirac}
+  f(x^\alpha;p_k) =
+  \left(\exp\left(\frac{p_\beta u^\beta}{T(x_0^\alpha)}-\eta \right)+1\right)^{-1}
+\end{equation}
+where $T(x_0^\alpha)$ is the fluid temperature at the neutrinosurface, and $\eta$
+is the neutrino chemical potential scaled by temperature. We use $\eta$ estimated
+by the leakage scheme (Eqn.~\ref{mu_nu}).
+\todo{other choices for $\eta$}
+
+\section{$f_\nu$ for this Case}
+\label{sec:f_this_case}
+
+\section{Caclculating $q_{\nu \bar{\nu}}$: Integration Algorithm}
+\label{sec:q_algorithm}
+
+\section{$q_{\nu \bar{\nu}}$ for this case}
+\label{sec:q_this_case}
