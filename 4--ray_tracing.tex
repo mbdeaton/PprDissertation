@@ -107,7 +107,8 @@ is simply the Fermi-Dirac distribution:
 \begin{equation}
   \label{eqn:f_fermi_dirac}
   f(x^\alpha;p_k) =
-  \left(\exp\left(\frac{-p_\beta u^\beta(x_0^\alpha)}{T(x_0^\alpha)}-\eta(x_0^\alpha) \right)+1\right)^{-1}
+  \left(\exp\left(\frac{-p_\beta u^\beta(x_0^\alpha)}{T(x_0^\alpha)}
+  -\eta(x_0^\alpha) \right)+1\right)^{-1}
 \end{equation}
 where $T(x_0^\alpha)$ is the fluid temperature at the neutrinosurface, and
 $\eta(x_0^\alpha)$ is the neutrino chemical potential scaled by $T$.
@@ -129,20 +130,21 @@ axisymmetric and stationary on the timescale of a neutrino-crossing time
 ($\sym1$~ms), we trace our geodesics through a single time slice of data,
 rather than taking timesteps backwards through previous data slices,
 interpolating in between slices. This greatly reduces the memory demands (each
-time slice comprises 0.5--1~GB of data) and complexity of the calculation.
-\todo{estimate how much disk changes in 1~ms, from response to leakage referee}
+time slice comprises $\sym$1~GB of data) and complexity of the calculation.
+\todo{estimate disk changes over 1~ms: from response to leakage referee}
 
 \subsection{Geodesic Equations}
 \label{ssec:geodesic}
 In a general spacetime like that of our disk model, neutrinos do not follow
-straight Euclidean paths, but rather geodesics. Neutrinos have rest masses less
-than a few eV/$c^2$ \citep{oliv2014-pdg}. Therefore, at the neutrino energy scale
-of this problem (a few MeV, see Fig.~\ref{fig:neutrinos_by_species}), the
-geodesics are essentially null.
-\todo{add simple derivation of geo eqns, from research notes}
-Geodesics obey the geodesic equation, $p^\alpha \nabla_\alpha p^\beta=0$, which
-may be split into two first order equations by choosing the affine
-parameterization $\lambda$ such that $dx^\alpha/d\lambda=p^\alpha$ and
+straight Euclidean paths, but curves that obey the geodesic equation,
+\begin{equation}
+  \label{eqn:geodesic}
+  0=\frac{d^2x^\alpha}{d\lambda^2} + \Gamma^\beta_{\alpha\gamma}
+  \frac{dx^\alpha}{d\lambda}\frac{dx^\gamma}{d\lambda},
+\end{equation}
+This 2nd-order equation may be split into two coupled 1st-order equations
+by choosing the affine parameterization $\lambda$ such that
+$dx^\alpha/d\lambda=p^\alpha$ and
 $dp^\beta/d\lambda=\Gamma^\beta_{\alpha\gamma}p^\alpha p^\gamma$.
 \todo{umm, check p eqn}
 The connection coefficients may be calculated from derivatives of the metric,
@@ -153,6 +155,64 @@ The connection coefficients may be calculated from derivatives of the metric,
   &=& \frac{1}{2} \psi^{\beta\mu}
   (\psi_{\mu\alpha,\gamma} + \psi_{\mu\gamma,\alpha} - \psi_{\alpha\gamma,\mu}).
 \end{eqnarray}
+
+Neutrinos have rest masses less than a few eV \citep{oliv2014-pdg}.
+Therefore, at the neutrino energy scale
+of this problem (a few MeV, see Fig.~\ref{fig:neutrinos_by_species}), the
+geodesics are essentially null.
+\todo{say why this matters}
+
+We integrate the geodesic equations parameterized by coordinate time, in the 3+1
+splitting of our numerical spacetime, using the formulation introduced by
+\cite{hugh1994-eh_finding}.
+The extensive framework to integrate the \citeauthor{hugh1994-eh_finding}\
+equations through a numerical spacetime demands efficient handling of
+pointwise interpolation of metric fields to arbitrary positions, reading from
+disk and reconstructing into memory the metric data dumped from a previous
+simulation, and accurate integration of a system of ordinary differential
+equations.
+All of this was implemented by a graduate student at Cornell, Andy Bohn, in order
+to find event horizons and compute gravitational lensing; the latter was
+published in \cite{bohn2015-lensing}.
+I piggy backed my ray tracing code on top of his general and efficient framework.
+
+In addition to equations for $x^j$ and $p_k$, we integrate $\tau$, the optical
+depth along the ray. Thus our entire system of equations is
+\begin{eqnarray}
+  \label{eqn:geo_x}
+  \frac{dx^j}{dt} &=& g^{ji}\frac{p_i}{p^t} - \beta^j \\
+  \label{eqn:geo_p}
+  \frac{dp_k}{dt} &=& -\alpha \alpha_{,k}p^t + \beta^i_{,k}p_i
+  - \frac{1}{2}g^{ji}_{,k} \frac{p_jp_i}{p^t} \\
+  \label{eqn:geo_tau}
+  \frac{d\tau}{dt} &=& \frac{\varepsilon^3}{p^t} \zeta,
+\end{eqnarray}
+where $\alpha$ is the lapse, $\beta^j$ the shift, $g^{ij}$ the inverse
+induced metric on the spatial slice, and $\varepsilon$ is the neutrino
+energy in the frame comoving with the fluid.
+
+A word on $p^t$, used in Eqns.~\ref{eqn:geo_x}--\ref{eqn:geo_tau}.
+As is well-known, $p_t$ does not change along a geodesic trajectory if the
+spacetime is stationary. (This result may be derived directly from the geodesic
+equation, Eqn.~\ref{eqn:geodesic}.)
+However, $p^t$, in general, \emph{does} change. We may calculate it in the
+following steps: 1) enforce $p_\alpha p^\alpha=0$ by calculating
+$p_t=p_i\beta^i-\alpha\sqrt{p_ip_jg^{ij}}$, so that all four components of the
+momentum 1-form are known, then 2) calculate the time-component of the dual of
+this 1-form, $p^t=\psi^{t\alpha}p_\alpha$, where $\psi^{\alpha\beta}$ may be
+computed from the lapse, shift, and induced spatial metric by matrix inversion.
+
+A word on $\varepsilon=-p_\alpha u^\alpha$, used in Eqn.~\ref{eqn:geo_tau}.
+In our simulations we don't store $u^\alpha$ directly, but rather the spatial
+components of the fluid four-velocity 1-form, $u_i$, and the fluid Lorentz
+factor, $W$. (The Lorentz factor doesn't need to be stored, since it may
+be calculated from the normalization of $u^\alpha$, by
+$W=(u_iu_jg^{ij}+1)^{1/2}$. However it is used throughout our code in enough
+places that storing $W$ improves our code's efficiency.)
+From these variables, we may calculate
+\begin{equation}
+  \varepsilon = -p_t W/\alpha -p_i(u_j g^{ij}-\beta^i W/\alpha).
+\end{equation}
 
 \section{$f_\nu$ for this Case}
 \label{sec:f_this_case}
