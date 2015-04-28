@@ -220,32 +220,126 @@ Eqns.~\ref{eqn:geo_x}--\ref{eqn:geo_tau} are solved by discretizing time and
 performing a numerical integration.
 I describe that process here.
 
-These first-order ordinary differential equations have the form
+A first-order ordinary differential equation has the form
 \begin{equation}
   \partial_t u = L(u),
 \end{equation}
 which may be discretized into timesteps.
 The value of $u$ at the $n$-th timestep is updated to its value
-$\Delta t$ later by a fifth-order-accurate Dormand-Prince algorithm
-(represented here abstractly as DP[...]):
+$\Delta t$ later by a fifth-order-accurate Dormand-Prince algorithm,
+represented here abstractly as DP5[...]:
 \todo{cite?}
 \begin{equation}
-  u^{n+1} = {\rm DP}[L(u),u^n,\Delta t]
+  u^{n+1} = {\rm DP5}[L,u^n,\Delta t].
 \end{equation}
-The Dormand-Prince scheme is an embedded Runge-Kutta algorithm, designed to yield
-a fourth-order-accurate solution with minimum additional evaluations of $L(u)$.
-The difference in $u^{n+1}$ between the fourth- and fifth-order-accurate
-solutions gives an estimate of the error for that stepsize. If this error is
-larger than some threshold, we reduce the time step, and try again from $u^n$.
-\todo{AbsRel explicit}
 
-We terminate the ray when $\tau=1$, where the neutrinosurface is defined.
-Because there's no way a priori of knowing how much optical depth will accumulate
-over a given time step along a ray, we simply terminate when $\tau\geq1$, and
-perform a bisection root solve over the length of the last time step to find the
-\todo{bisec or newton-raph?}
-position of the neutrinosurface, that is find the $t_0$ for which $\tau(t_0)-1=0$
-\todo{explain further? expected convergence order?}
+As a high-order integration method, DP5 consists of a series of sub-steps.
+Each sub-step evaluates the equation's right hand side, $L(u)$, using $u$ from
+the previous step.
+\todo{also dense output}
+DP5 is an embedded Runge-Kutta algorithm, designed to also yield
+a fourth-order-accurate solution with few additional evaluations of $L(u)$.
+The difference in $u^{n+1}$ between the fourth- and fifth-order-accurate
+solutions gives an estimate of the error for that step size. If this error is
+larger than some threshold, we reduce the time step, and try again from $u^n$.
+\todo{Abs-Rel explicit}
+
+The DP5 algorithm works as well for a system of coupled equations,
+like the seven components of Eqns.~\ref{eqn:geo_x}--\ref{eqn:geo_tau}:
+$\{x^x,x^y,x^z,p_x,p_y,p_z,\tau\}$.
+In this case, the above prescription holds, but we think of $u$ as a
+vector and $L$ as a vector-valued vector function.
+
+We terminate the ray at the neutrinosurface, where $\tau=1$.
+Because a priori we do not know how much optical depth will accumulate
+over a given time step, we simply overstep the neutrinosurface, terminating at
+step N for which $\tau^{N-1}<1$ and $\tau^N\geq1$. Using the DP5 sub-steps
+to interpolate $\tau$ to any time between $t^{N-1}$ and $t^{N}$, we search
+this domain for the time $t_0$ that solves the equation
+$\tau(t)=1$, using a robust Newton-Raphson root finding algorithm.
+\todo{expected convergence order}
+
+\subsection{Code Tests}
+\label{ssec:f_tests}
+To test our code, we compute $f$ in two scenarios for which the analytic solution
+is known.
+
+\subsubsection{Homogeneous Minkowski}
+In a homogeneous medium of temperature $T$, opacity $\zeta$, and neutrino chemical
+potential $\eta$, on a flat spacetime manifold, $f$ is isotropic and homogeneous:
+\begin{equation}
+  f(x^\alpha;p_k) \rightarrow f(\varepsilon)
+  =(e^{\varepsilon/k_{\rm B}T-\eta}+1)^{-1}
+\end{equation}
+The solution is scale-invariant because the observer sits inside of a
+neutrinosurface which emits the same number of neutrinos per angle per energy
+whether the surface is near (for high-energy rays) or far (for low-energy rays).
+
+Despite this scale-invariance, we may calculate the length of a ray of energy
+$\varepsilon=-p_t=p^t$ from Eqn.~\ref{eqn:geo_tau}:
+$\ell \equiv c\Delta t = \Delta \tau/\zeta\varepsilon^2$, in order to test the
+opacity integration by ray tracing code.
+
+In our code test, we used volume data:
+$T=5$~MeV,
+$\zeta_{\nu_i}=\{0.01,0.005,0.001\}$~km$^{-1}$~MeV$^{-2}$, and
+$\eta_{\nu_i}=\{0.1,-0.1,0\}$.
+We sampled the distribution functions at energy $\varepsilon=1$~MeV, and found
+neutrinosurfaces at distances of $\ell=\{100,111.1?,?\}$~km for each species
+respectively, as expected.
+\todo{calculate these}
+And the distribution functions were computed to be $f_{\nu_i}=\{?,?,?\}$,
+as expected.
+
+\subsubsection{Asano-Fukuyama Sphere}
+Outside of a hot, compact, non-rotating star in dynamical equilibrium, the
+spacetime is spherically symmetric and stationary. The only solution of that
+kind satisfying Einstein's equations is the Schwarzschild spacetime. In
+Schwarzschild spherical polar coordinates, $\psi_{tt}(r)=-(1-R_g/r)$ and
+$\psi_{rr}(r)=(1-R_g/r)^{-1}$.
+(Note, this scenario was examined semi-analytically by Asano and Fukuyama (2000),
+\todo{cite properly}
+to estimate the neutrino-antineutrino annihilation power outside of a collapsed
+stellar core.)
+
+If the neutrinosphere has a surface at radius
+$R_\nu$, a neutrino emitted with energy $\varepsilon$ in the
+fluid rest frame
+%(with $u^\alpha:=(-\sqrt{\psi_{tt}(R_\nu)},0,0,0)$, so that
+%$p_{\nu t}=\sqrt{\psi_{tt}(R_\nu)}\varepsilon$),
+will be measured by a stationary
+observer at $r$
+%(for whom $U^\alpha:=(-\sqrt{\psi_{tt}(r)},0,0,0)$),
+as having an energy lower by a factor of $\sqrt{\psi_{tt}(R_\nu)/\psi_{tt}(r)}$.
+Therefore in the direction of the neutrinosphere,
+$f$ will be Fermi-Dirac, with an effetive temperature,
+$T_{\rm eff}=T\sqrt{\psi_{tt}(R_\nu)/\psi_{tt}(r)}$, where $T$ is the temperature
+measured in the fluid rest frame, and the energy argument is
+$\varepsilon=p_t\sqrt{\psi_{tt}(r)}$.
+
+However, we use $p_t$, not $\varepsilon$ as the argument of $f$ because we're
+interested in measuring energies transported to large distances from the emitter.
+Then we have
+\begin{equation}
+  \label{eqn:asano_fukuyama_f}
+  f(x^\alpha;p_k) \rightarrow f(r;p_t,\alpha)
+  =\left\{
+  \begin{matrix}
+    (e^{\varepsilon/k_{\rm B}\sqrt{(1-R_g/R_\nu)}T-\eta}+1)^{-1} & \alpha \leq \alpha_{\rm max}(r) \\
+    0                                                            & \alpha > \alpha_{\rm max}(r)
+  \end{matrix}
+  \right.
+\end{equation}
+where $\alpha$ is the angle $p_k$ makes with a radial ray, and
+$\alpha_{\rm max}$ is the half-angular size of the star as viewed from $r$.
+In a flat spacetime it's simple: $\sin \alpha_{\rm max} = R_\nu/r$.
+But in the Schwarzschild spacetime, where neutrino trajectories bend around the
+star,
+\begin{equation}
+  \sin \alpha_{\rm max} = \frac{R_\nu}{r} \sqrt{\frac{1-R_g/r}{1-R_g/R_\nu}},
+\end{equation}
+as derived by Asano-Fukuyama (2000).
+\todo{cite properly}
 
 \section{$f_\nu$ for this Case}
 \label{sec:f_this_case}
@@ -253,5 +347,5 @@ position of the neutrinosurface, that is find the $t_0$ for which $\tau(t_0)-1=0
 \section{Caclculating $q_{\nu \bar{\nu}}$: Integration Algorithm}
 \label{sec:q_algorithm}
 
-\section{$q_{\nu \bar{\nu}}$ for this case}
+\section{$q_{\nu \bar{\nu}}$ for this Case}
 \label{sec:q_this_case}
