@@ -142,7 +142,7 @@ straight Euclidean paths, but curves that obey the geodesic equation,
   0=\frac{d^2x^\alpha}{d\lambda^2} + \Gamma^\beta_{\alpha\gamma}
   \frac{dx^\alpha}{d\lambda}\frac{dx^\gamma}{d\lambda},
 \end{equation}
-This 2nd-order equation may be split into two coupled 1st-order equations
+This second-order equation may be split into two coupled first-order equations
 by choosing the affine parameterization $\lambda$ such that
 $dx^\alpha/d\lambda=p^\alpha$ and
 $dp^\beta/d\lambda=\Gamma^\beta_{\alpha\gamma}p^\alpha p^\gamma$.
@@ -213,6 +213,39 @@ From these variables, we may calculate
 \begin{equation}
   \varepsilon = -p_t W/\alpha -p_i(u_j g^{ij}-\beta^i W/\alpha).
 \end{equation}
+
+\subsection{Numerical Integration}
+\label{ssec:timestepping}
+Eqns.~\ref{eqn:geo_x}--\ref{eqn:geo_tau} are solved by discretizing time and
+performing a numerical integration.
+I describe that process here.
+
+These first-order ordinary differential equations have the form
+\begin{equation}
+  \partial_t u = L(u),
+\end{equation}
+which may be discretized into timesteps.
+The value of $u$ at the $n$-th timestep is updated to its value
+$\Delta t$ later by a fifth-order-accurate Dormand-Prince algorithm
+(represented here abstractly as DP[...]):
+\todo{cite?}
+\begin{equation}
+  u^{n+1} = {\rm DP}[L(u),u^n,\Delta t]
+\end{equation}
+The Dormand-Prince scheme is an embedded Runge-Kutta algorithm, designed to yield
+a fourth-order-accurate solution with minimum additional evaluations of $L(u)$.
+The difference in $u^{n+1}$ between the fourth- and fifth-order-accurate
+solutions gives an estimate of the error for that stepsize. If this error is
+larger than some threshold, we reduce the time step, and try again from $u^n$.
+\todo{AbsRel explicit}
+
+We terminate the ray when $\tau=1$, where the neutrinosurface is defined.
+Because there's no way a priori of knowing how much optical depth will accumulate
+over a given time step along a ray, we simply terminate when $\tau\geq1$, and
+perform a bisection root solve over the length of the last time step to find the
+\todo{bisec or newton-raph?}
+position of the neutrinosurface, that is find the $t_0$ for which $\tau(t_0)-1=0$
+\todo{explain further? expected convergence order?}
 
 \section{$f_\nu$ for this Case}
 \label{sec:f_this_case}
