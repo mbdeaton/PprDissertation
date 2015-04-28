@@ -15,7 +15,7 @@ gives us the total energy luminosity, $L_{\nu_i}$, at any epoch,
 2) likewise the sum of $R_{\nu_i}$ gives us the total lepton number luminosity
 (also denoted $R_{\nu_i}$),
 3) and the ratio of these two luminosities gives us the average neutrino energy,
-$\langle E_{\nu_i} \rangle$. These three calculations are presented in
+$\langle \varepsilon_{\nu_i} \rangle$. These three calculations are presented in
 Fig.~\ref{fig:neutrinos_by_species}.
 
 But to answer some of the questions presented in Chap.~\ref{chap:overview}, we
@@ -113,6 +113,46 @@ where $T(x_0^\alpha)$ is the fluid temperature at the neutrinosurface, and
 $\eta(x_0^\alpha)$ is the neutrino chemical potential scaled by $T$.
 We use $\eta$ estimated by the leakage scheme (Eqn.~\ref{mu_nu}).
 \todo{other choices for $\eta$}
+
+Because neutrino scattering processes scale with
+$\varepsilon^2=(-p_{\nu}^\beta u^\beta)^2$,
+\todo{ref intro}
+we use the energy-factored opacity $\zeta=\chi/\varepsilon^2$, where $\chi$ is
+the cumulative opacity:
+\begin{equation}
+  \chi = \sum\limits_{{\rm processes}\, i} \chi_i.
+\end{equation}
+We consider scattering by nucleons and nuclei and absorption onto nucleons,
+as described in Sec.~\ref{sec:leakage}.
+Because the fluid and spacetime configuration at this late time is approximately
+axisymmetric and stationary on the timescale of a neutrino-crossing time
+($\sym1$~ms), we trace our geodesics through a single time slice of data,
+rather than taking timesteps backwards through previous data slices,
+interpolating in between slices. This greatly reduces the memory demands (each
+time slice comprises 0.5--1~GB of data) and complexity of the calculation.
+\todo{estimate how much disk changes in 1~ms, from response to leakage referee}
+
+\subsection{Geodesic Equations}
+\label{ssec:geodesic}
+In a general spacetime like that of our disk model, neutrinos do not follow
+straight Euclidean paths, but rather geodesics. Neutrinos have rest masses less
+than a few eV/$c^2$ \citep{oliv2014-pdg}. Therefore, at the neutrino energy scale
+of this problem (a few MeV, see Fig.~\ref{fig:neutrinos_by_species}), the
+geodesics are essentially null.
+\todo{add simple derivation of geo eqns, from research notes}
+Geodesics obey the geodesic equation, $p^\alpha \nabla_\alpha p^\beta=0$, which
+may be split into two first order equations by choosing the affine
+parameterization $\lambda$ such that $dx^\alpha/d\lambda=p^\alpha$ and
+$dp^\beta/d\lambda=\Gamma^\beta_{\alpha\gamma}p^\alpha p^\gamma$.
+\todo{umm, check p eqn}
+The connection coefficients may be calculated from derivatives of the metric,
+\begin{eqnarray}
+  \label{eqn:christoffel}
+  \Gamma^\beta_{\alpha\gamma}
+  &=& \psi^{\beta\mu}\Gamma_{\mu\alpha\gamma} \nonumber \\
+  &=& \frac{1}{2} \psi^{\beta\mu}
+  (\psi_{\mu\alpha,\gamma} + \psi_{\mu\gamma,\alpha} - \psi_{\alpha\gamma,\mu}).
+\end{eqnarray}
 
 \section{$f_\nu$ for this Case}
 \label{sec:f_this_case}
