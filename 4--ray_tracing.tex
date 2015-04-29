@@ -48,7 +48,7 @@ scattering into the line of sight (the kind of scattering that gives to the
 moon or a streetlamp a halo on a foggy night).
 \todo{ref later discussion}
 
-In this chapter I present a ray-tracing algorithm for estimating
+In this chapter I present a ray tracing algorithm for estimating
 $f_{\nu_i}(x^\alpha;p_k)$ in relativistic numerical spacetimes and fluid
 distributions, I calculate $f_{\nu_i}$ describing neutrino
 emission from the model accretion disk from Chap.~\ref{chap:leakage},
@@ -70,7 +70,7 @@ calculation for this model.
 \section{Calculating $f_\nu$: Ray Tracing Algorithm}
 \label{sec:f_algorithm}
 
-In the most comprehensive treatment, a ray-tracing solution for $f$ is calculated
+In the most comprehensive treatment, a ray tracing solution for $f$ is calculated
 by solving the rendering equation backwards along a trajectory terminating at
 $x^a$ with momentum $p_k$:
 \todo{derive rendering eqn, or check/ref below}
@@ -446,7 +446,7 @@ with $\zeta=10^6\,{\rm Msun}^{-1}\,{\rm MeV}^{-2}$ inside the star.
 This scenario represents an unphysically compact star (in fact, this
 neutrinosphere coincides with the radius of circular neutrino orbits), but it
 serves its purpose here to stress-test the ray tracing code in strong gravity.
-For comparison, in the same figure we also show a ray-tracing sampling of $f$
+For comparison, in the same figure we also show a ray tracing sampling of $f$
 at the same coordinate viewing position for the same star embedded in flatspace.
 Both the angular extent of the stars in Fig.~\ref{fig:f_hot_ns}, and the
 intensity of neutrinos emitted by their surfaces at this energy agree
@@ -529,6 +529,42 @@ steeply upon the neutrino energies.
 
 \section{$f_\nu$ for this Accretion Disk}
 \label{sec:f_this_case}
+
+Let us examine the neutrino emission from the post-merger accretion disk model
+presented in Chap.~\ref{chap:leakage}. Here we sample $f$ at two positions,
+on the rotation axis and on the equator, about 120~km from the black hole
+and at a late time, about 40~ms after merger. At this time the disk has reached
+a quasi-equilibrium accretion state, with most of the asymmetry of the merger
+having been smeared out by differential rotation, making the model ideal for our
+time-independent ray tracing approximation. The disk's luminosity in neutrinos
+has decayed to approximately $10^{53}$~erg~s$^{-1}$
+(Fig.~\ref{fig:globalevolution}). In this sense, our later calculation of
+neutrino-antineutrino annihilation power will provide a lower bound for energy
+available to drive a jet.
+
+In fact, 40~ms after a realistic merger with these bulk parameters, we expect
+magnetic effects to play a significant role in hte accretion dynamics,
+\todo{cite someone}
+increasing the accretion rate via the magneto-rotational instability, and heating
+the disk through a turbulent transport of energy from large scales (bulk kinetic
+energy) to small scales (random thermal energy). In thismodel we neglect this
+important physics, and again, in this sense, our later neutrino-antineutrino
+annihilation power calculation will provide a lower bound on jet energetics.
+
+%\begin{figure}
+%  \centering
+%  \begin{subfigure}{.7\textwidth}
+%    \centering
+%    \includegraphics[width=1\linewidth]{Figures/}
+%  \end{subfigure}
+%  \begin{subfigure}{.7\textwidth}
+%    \centering
+%    \includegraphics[width=1\linewidth]{Figures/}
+%  \end{subfigure}
+%  \caption[Accretion disk emission as seen from rotation axis]{
+%  }
+%  \label{fig:f_disk_axis}
+%\end{figure}
 
 \section{Calculating $q_{\nu \bar{\nu}}$: Integration Algorithm}
 \label{sec:q_algorithm}
