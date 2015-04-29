@@ -214,6 +214,102 @@ From these variables, we may calculate
   \varepsilon = -p_t W/\alpha -p_i(u_j g^{ij}-\beta^i W/\alpha).
 \end{equation}
 
+\subsection{Momentum Conventions}
+\label{ssec:p_conventions}
+Because of the natural symmetries of our spacetime, it is more convenient to use
+momentum components in spherical polar than in cartesian representation. We
+describe the map between these representations here.
+
+The neutrino's 4-momentum is fully specified by three numbers, the fourth being
+constrained by the mass of the neutrino, which vanishes with respect to the
+energies in this problem. Instead of using three of the spherical polar
+components, we define a Euclidean magnitude, $p$, and two angles $\alpha$,
+$\beta$ which map to the cartesian components of the covariant 4-momentum by
+the standard spherical polar map
+\begin{align}
+  &p_x = p\sin\alpha\cos\beta \\
+  &p_y = p\sin\alpha\sin\beta \\
+  &p_z = p\cos\alpha,
+\end{align}
+so that $p = (p_x^2+p_y^2+p_z^2)^{1/2}$.
+Fig.~\ref{fig:p_conventions} provides a visual reference for these definitions.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/spherical_polar_map}
+  \end{subfigure}
+  \begin{subfigure}{.45\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{Figures/neutrino_momentum_conventions}
+  \end{subfigure}
+  \caption[Conventions for momentum components]{
+    In both diagrams, the broad yellow arrow represents the neutrino's momentum.
+    \emph{Left Figure}:
+    Spatial basis vectors ($\vec{e}_i\equiv\partial/\partial x^i$)
+    at a representative position on the manifold.
+    The coordinates $\{r,\theta,\phi\}$ are defined with respect to
+    $\{x,y,z\}$ by the standard spherical polar to cartesian map
+    (e.g.\ $x=r\sin\theta\cos\phi$).
+    The spherical basis vectors are blue, and the cartesian basis vectors black.
+    \emph{Right Figure}:
+    The cotangent space at the neutrino's position.
+    The neutrino momentum 1-form, $p_\mu$,
+    may be written componentwise using the basis dual to $\vec{e}_i$
+    ($\underline{e}^i\equiv dx^i$).
+    The neutrino momentum is completely specified by three numbers.
+    We use $\{p_t$,$\alpha$,$\beta\}$, which describe the cartesian spatial
+    components of $p_\mu$ with the standard spherical polar to cartesian map
+    (e.g.\ $p_x=p\sin\alpha\cos\beta$).
+    The $p$ in these formulae is the Euclidean magnitude,
+    $p = (p_x^2+p_y^2+p_z^2)^{1/2}$, related to $p_t$ by
+    Eqns.~\ref{eqn:p_to_pt}~and~\ref{eqn:angular_factor}.
+    (Note, we draw the neutrino's momentum vector embedded in the
+    spatial manifold in the left figure, even though it properly lives only in
+    the cotangent space in the right figure.)
+    }
+  \label{fig:p_conventions}
+\end{figure}
+
+To clean up some future calculations, we also define a 1-form on the
+spatial manifold, $\Omega_i$, so that
+\begin{align}
+  &\Omega_i :\equiv (\sin \alpha \cos \beta, \sin \alpha \sin \beta, \cos \alpha) \\
+  &p_i = p\,\Omega_i.
+\end{align}
+
+The fourth component of the momentum is constrained by the null condition,
+$0=\psi^{\mu\gamma}p_\mu p_\gamma$.
+In the 3+1 foliation of spacetime, we have
+\begin{equation}
+  \psi^{\mu\gamma}p_\mu p_\gamma
+  = -\frac{1}{\alpha^2} p_t^2 + \frac{2}{\alpha^2} \beta^i \Omega_i p\, p_t
+  + (g^{ij}-\frac{\beta^i \beta^j}{\alpha^2}) \Omega_i \Omega_j p^2, \nonumber
+\end{equation}
+whose solution is
+\begin{equation}
+  \label{eqn:p_to_pt}
+  p_t = C(\Omega_i) \, p
+\end{equation}
+\begin{equation}
+  \label{eqn:angular_factor}
+  C(\Omega_i) \equiv \beta^i \Omega_i \pm
+  \alpha \sqrt{g^{ij} \Omega_i \Omega_j}.
+\end{equation}
+
+As a check it is easy to confirm that for
+$\psi_{\mu \nu}=\eta_{\mu \nu}:=\text{diag}(-1,1,1,1)$,
+$C \rightarrow -1$, recovering the flat space connection between time and space
+components of momentum. This check also confirms that we use the minus sign in
+Eqn.~\ref{eqn:angular_factor}.
+
+In some cases I will break from this convention with a simple rotation, in order
+to have a momentum basis oriented with respect to the radial direcion, $\hat{r}$.
+I label momentum colatitude and azimuthal angles in the rotated frame as $A$
+and $B$ respectively. These angles are related to $\alpha$ and $\beta$ by a
+simple Euler rotation, the specifics of which are irrelevant to this thesis.
+
 \subsection{Numerical Integration}
 \label{ssec:timestepping}
 Eqns.~\ref{eqn:geo_x}--\ref{eqn:geo_tau} are solved by discretizing time and
@@ -284,62 +380,64 @@ In our code test, we used volume data:
 $T=5$~MeV,
 $\zeta_{\nu_i}=\{0.01,0.005,0.001\}$~km$^{-1}$~MeV$^{-2}$, and
 $\eta_{\nu_i}=\{0.1,-0.1,0\}$.
-We sampled the distribution functions at energy $\varepsilon=1$~MeV, and found
-neutrinosurfaces at distances of $\ell=\{100,111.1?,?\}$~km for each species
-respectively, as expected.
-\todo{calculate these}
-And the distribution functions were computed to be $f_{\nu_i}=\{?,?,?\}$,
-as expected.
+We sampled the distribution functions by tracing rays of energy
+$\varepsilon=10$~MeV, and found neutrinosurfaces at distances of
+$\ell_{\nu_i}=\{2.00,1.00,10.0\}$~km and neutrino number densities of
+$f_{\nu_i}=\{0.109,0.130,0.119\}$ for each species respectively,
+as expected. These results were exact to double precision because the fields
+varied smoothly, and interpolation was exact.
 
 \subsubsection{Asano-Fukuyama Sphere}
 Outside of a hot, compact, non-rotating star in dynamical equilibrium, the
 spacetime is spherically symmetric and stationary. The only solution of that
-kind satisfying Einstein's equations is the Schwarzschild spacetime. In
-Schwarzschild spherical polar coordinates, $\psi_{tt}(r)=-(1-R_g/r)$ and
-$\psi_{rr}(r)=(1-R_g/r)^{-1}$.
+kind satisfying Einstein's equations is the Schwarzschild spacetime.
+In the 3+1 splitting of Schwarzschild spherical polar coordinates, the metric
+takes the form
+$\psi_{\mu\gamma}(r):={\rm diag}\left(-\alpha^2(r),\alpha^{-2}(r),r^2,r^2\sin^2\theta\right)$,
+where the lapse is $\alpha(r)=(1-R_g/r)^{1/2}$, and the gravitating mass is
+$M=R_g/2$.
 (Note, this scenario was examined semi-analytically by Asano and Fukuyama (2000),
 \todo{cite properly}
 to estimate the neutrino-antineutrino annihilation power outside of a collapsed
 stellar core.)
 
-If the neutrinosphere has a surface at radius
-$R_\nu$, a neutrino emitted with energy $\varepsilon$ in the
-fluid rest frame
-%(with $u^\alpha:=(-\sqrt{\psi_{tt}(R_\nu)},0,0,0)$, so that
-%$p_{\nu t}=\sqrt{\psi_{tt}(R_\nu)}\varepsilon$),
-will be measured by a stationary
-observer at $r$
-%(for whom $U^\alpha:=(-\sqrt{\psi_{tt}(r)},0,0,0)$),
-as having an energy lower by a factor of $\sqrt{\psi_{tt}(R_\nu)/\psi_{tt}(r)}$.
-Therefore in the direction of the neutrinosphere,
-$f$ will be Fermi-Dirac, with an effetive temperature,
-$T_{\rm eff}=T\sqrt{\psi_{tt}(R_\nu)/\psi_{tt}(r)}$, where $T$ is the temperature
-measured in the fluid rest frame, and the energy argument is
-$\varepsilon=p_t\sqrt{\psi_{tt}(r)}$.
+A neutrino is emitted from the neutrinosphere at $R_\nu$, with energy
+$\varepsilon'$ in the fluid rest frame.
+%(with $u^\beta:=(-\alpha(R_\nu),0,0,0)$, so that
+%$p_{\nu t}=-\alpha(R_\nu)\varepsilon'$),
+It will be measured by a stationary observer at $r$
+%(for whom $U^\beta:=(-\alpha(r),0,0,0)$),
+as having a lower energy
+$\varepsilon=\varepsilon' \, \alpha(R_\nu)/\alpha(r)$.
+Therefore, for momentum angles in the direction of the neutrinosphere,
+$f(\varepsilon)=\left(\exp(\varepsilon/k_{\rm B}T_{\rm eff}-\eta)+1\right)^{1/2}$,
+with an effective temperature $T_{\rm eff}=T \, \alpha(R_\nu)/\alpha(r)$,
+where $T$ is the fluid temperature measured in the fluid rest frame.
 
-However, we use $p_t$, not $\varepsilon$ as the argument of $f$ because we're
-interested in measuring energies transported to large distances from the emitter.
-Then we have
+Or in terms of our conventional momentum arguments $(p_t,\alpha,\beta)$
+introduced in Sec.?,
+\todo{reference this section when you add it}
+we have
 \begin{equation}
   \label{eqn:asano_fukuyama_f}
-  f(x^\alpha;p_k) \rightarrow f(r;p_t,\alpha)
+  f(x^\alpha;p_k) \rightarrow f(r;p_t,A)
   =\left\{
   \begin{matrix}
-    (e^{\varepsilon/k_{\rm B}\sqrt{(1-R_g/R_\nu)}T-\eta}+1)^{-1} & \alpha \leq \alpha_{\rm max}(r) \\
-    0                                                            & \alpha > \alpha_{\rm max}(r)
+    (e^{\varepsilon/k_{\rm B}\sqrt{(1-R_g/R_\nu)}T-\eta}+1)^{-1} & A \leq A_{\rm max}(r) \\
+    0                                                            & A > A_{\rm max}(r)
   \end{matrix}
   \right.
 \end{equation}
-where $\alpha$ is the angle $p_k$ makes with a radial ray, and
-$\alpha_{\rm max}$ is the half-angular size of the star as viewed from $r$.
-In a flat spacetime it's simple: $\sin \alpha_{\rm max} = R_\nu/r$.
+where $A$ is the angle $p_k$ makes with a radial ray, and
+$A_{\rm max}$ is the half-angular size of the star as viewed from $r$.
+In a flat spacetime it's simple: $\sin A_{\rm max} = R_\nu/r$.
 But in the Schwarzschild spacetime, where neutrino trajectories bend around the
 star,
 \begin{equation}
-  \sin \alpha_{\rm max} = \frac{R_\nu}{r} \sqrt{\frac{1-R_g/r}{1-R_g/R_\nu}},
+  \sin A_{\rm max} = \frac{R_\nu}{r} \sqrt{\frac{1-R_g/r}{1-R_g/R_\nu}},
 \end{equation}
 as derived by Asano-Fukuyama (2000).
-\todo{cite properly}
+\todo{cite properly, and fix, this isn't your angle $A$}
 
 \section{$f_\nu$ for this Case}
 \label{sec:f_this_case}
