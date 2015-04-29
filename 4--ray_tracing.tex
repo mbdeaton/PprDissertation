@@ -162,9 +162,8 @@ of this problem (a few MeV, see Fig.~\ref{fig:neutrinos_by_species}), the
 geodesics are essentially null.
 \todo{say why this matters}
 
-We integrate the geodesic equations parameterized by coordinate time, in the 3+1
-splitting of our numerical spacetime, using the formulation introduced by
-\cite{hugh1994-eh_finding}.
+We integrate the geodesic equations parameterized by coordinate time,
+using the formulation introduced by \cite{hugh1994-eh_finding}.
 The extensive framework to integrate the \citeauthor{hugh1994-eh_finding}\
 equations through a numerical spacetime demands efficient handling of
 pointwise interpolation of metric fields to arbitrary positions, reading from
@@ -337,7 +336,7 @@ DP5 is an embedded Runge-Kutta algorithm, designed to also yield
 a fourth-order-accurate solution with few additional evaluations of $L(u)$.
 The difference in $u^{n+1}$ between the fourth- and fifth-order-accurate
 solutions gives an estimate of the error for that step size. If this error is
-larger than some threshold, we reduce the time step, and try again from $u^n$.
+larger than some threshold, we reduce the timestep, and try again from $u^n$.
 \todo{Abs-Rel explicit}
 
 The DP5 algorithm works as well for a system of coupled equations,
@@ -347,13 +346,15 @@ In this case, the above prescription holds, but we think of $u$ as a
 vector and $L$ as a vector-valued vector function.
 
 We terminate the ray at the neutrinosurface, where $\tau=1$.
-Because a priori we do not know how much optical depth will accumulate
-over a given time step, we simply overstep the neutrinosurface, terminating at
-step N for which $\tau^{N-1}<1$ and $\tau^N\geq1$. Using the DP5 sub-steps
+However, because a priori we do not know how much optical depth will accumulate
+over a given timestep, we simply overstep the neutrinosurface, terminating at
+the step N for which $\tau^{N-1}<1$ and $\tau^N\geq1$. Using the DP5 sub-steps
 to interpolate $\tau$ to any time between $t^{N-1}$ and $t^{N}$, we search
 this domain for the time $t_0$ that solves the equation
 $\tau(t)=1$, using a robust Newton-Raphson root finding algorithm.
 \todo{expected convergence order}
+We examine the error associated with the uncertainty in the location of the
+neutrinosurface in Sec.~\ref{sssc:af_sphere}.
 
 \subsection{Code Tests}
 \label{ssec:f_tests}
@@ -388,11 +389,11 @@ as expected. These results were exact to double precision because the fields
 varied smoothly, and interpolation was exact.
 
 \subsubsection{Asano-Fukuyama Sphere}
+\label{sssc:af_sphere}
 Outside of a hot, compact, non-rotating star in dynamical equilibrium, the
 spacetime is spherically symmetric and stationary. The only solution of that
 kind satisfying Einstein's equations is the Schwarzschild spacetime.
-In the 3+1 splitting of Schwarzschild spherical polar coordinates, the metric
-takes the form
+In Schwarzschild spherical polar coordinates, the metric takes the form
 $\psi_{\mu\gamma}(r):={\rm diag}\left(-\alpha^2(r),\alpha^{-2}(r),r^2,r^2\sin^2\theta\right)$,
 where the lapse is $\alpha(r)=(1-R_g/r)^{1/2}$, and the gravitating mass is
 $M=R_g/2$.
@@ -413,17 +414,14 @@ Therefore, for momentum angles in the direction of the neutrinosphere,
 $f(\varepsilon)=\left(\exp(\varepsilon/k_{\rm B}T_{\rm eff}-\eta)+1\right)^{1/2}$,
 with an effective temperature $T_{\rm eff}=T \, \alpha(R_\nu)/\alpha(r)$,
 where $T$ is the fluid temperature measured in the fluid rest frame.
-
-Or in terms of our conventional momentum arguments $(p_t,\alpha,\beta)$
-introduced in Sec.?,
-\todo{reference this section when you add it}
-we have
+In terms of the conventional momentum variables $\{p_t,\alpha,\beta\}$
+introduced in Sec.~\ref{ssec:p_conventions}, we have
 \begin{equation}
   \label{eqn:asano_fukuyama_f}
   f(x^\alpha;p_k) \rightarrow f(r;p_t,A)
   =\left\{
   \begin{matrix}
-    (e^{\varepsilon/k_{\rm B}\sqrt{(1-R_g/R_\nu)}T-\eta}+1)^{-1} & A \leq A_{\rm max}(r) \\
+    (e^{-p_t/k_{\rm B}T\sqrt{(1-R_g/R_\nu)}-\eta}+1)^{-1} & A \leq A_{\rm max}(r) \\
     0                                                            & A > A_{\rm max}(r)
   \end{matrix}
   \right.
@@ -434,16 +432,106 @@ In a flat spacetime it's simple: $\sin A_{\rm max} = R_\nu/r$.
 But in the Schwarzschild spacetime, where neutrino trajectories bend around the
 star,
 \begin{equation}
+  \label{eqn:angular_extent}
   \sin A_{\rm max} = \frac{R_\nu}{r} \sqrt{\frac{1-R_g/r}{1-R_g/R_\nu}},
 \end{equation}
 as derived by Asano-Fukuyama (2000).
 \todo{cite properly, and fix, this isn't your angle $A$}
 
-\section{$f_\nu$ for this Case}
+Fig.~\ref{fig:f_hot_ns} shows $f(p_t=20\,{\rm MeV})$ across all angles for
+a patch of sky centered on the emitter. The spacetime and the emitter are
+characterized by $T=5$~MeV, $\eta=0.1$, $R_g=2\,M_\odot$, $R_\nu=3\,M_\odot$.
+To impose a sharp neutrinosphere at $R_\nu$, we use a step function opacity
+with $\zeta=10^6\,{\rm Msun}^{-1}\,{\rm MeV}^{-2}$ inside the star.
+This scenario represents an unphysically compact star (in fact, this
+neutrinosphere coincides with the radius of circular neutrino orbits), but it
+serves its purpose here to stress-test the ray tracing code in strong gravity.
+For comparison, in the same figure we also show a ray-tracing sampling of $f$
+at the same coordinate viewing position for the same star embedded in flatspace.
+Both the angular extent of the stars in Fig.~\ref{fig:f_hot_ns}, and the
+intensity of neutrinos emitted by their surfaces at this energy agree
+with the analytical predictions given by
+Eqns.~\ref{eqn:angular_extent}~and~\ref{eqn:asano_fukuyama_f}.
+
+For this test we use a fixed timestep, $\Delta t = 0.2\,M_\odot$,
+because the adaptive timestepper described in Sec.~\ref{ssec:timestepping} is
+not very effective with discontinuous fields, like $\zeta$. In physical
+fluid configurations, we expect to encounter discontinuities also (though
+probably not as extreme), and we may have to used fixed timesteps in those
+cases also.
+
+In Fig.~\ref{fig:f_hot_ns}, the Schwarzschild case, the variation in $f$
+across the surface of the star is a spurious artifact of our finite timestep:
+the redshift is greater along directions whose rays yield an estimate of the
+neutrinosurface at $r<R_\nu$, and lesser for neutrinosurfaces at $r>R_\nu$.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.8\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/fnue_Alpha_vs_Beta-asano_fukuyama_gr}
+  \end{subfigure}
+  \begin{subfigure}{.8\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/fnue_Alpha_vs_Beta-asano_fukuyama_flat}
+  \end{subfigure}
+  \caption[Monochromatic sky map of $f$ for the hot compact star]{
+    $f$ across a patch of sky in a single energy band, $p_t=20$~MeV.
+    The source is a hot compact star: $R_g=2\,M_\odot$, $R_\nu=3\,M_\odot$,
+    $T=5$~MeV, and $\eta=0.1$.
+    The observer is stationary at Schwarzschild radius $5\,M_\odot$.
+    \emph{Top Figure}: Schwarzschild spacetime.
+    \emph{Bottom Figure}: Minkowski spacetime.
+    These two stars have identical coordinate radii, and identical local fluid
+    properties at their neutrinospheres.
+  }
+  \label{fig:f_hot_ns}
+\end{figure}
+
+Fig.~\ref{fig:f_spectrum_hot_ns} presents the energy spectrum emitted by this
+surface over the broad band $p_t\in[0.01,100]~MeV$, for both Schwarzschild
+and Minkowski cases.
+We also show the relative errors in $f(p_t)$, with respect to the analytic
+solution $f_{\rm ex}(p_t)$. The Minkowski calculation is exact to machine
+precision, because location of the neutrinosurface has no effect on $f$.
+But the relative errors in the Schwarzschild case are large, and grow to
+20\% at 100~MeV. (It is important to keep in mind that this is not the case
+generally, but only when the neutrinosurface is in a steep gravitational
+potential.
+This will be an important consideration in Sec.~\ref{sec:q_algorithm}:
+spectral information at energies near 100~MeV can be important in the
+neutrino-antineutrino annihlation calculation because the process depends very
+steeply upon the neutrino energies.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.7\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/fnue_vs_E-asano_fukuyama}
+  \end{subfigure}
+  \begin{subfigure}{.7\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/fnueError_vs_E-asano_fukuyama}
+  \end{subfigure}
+  \caption[Asymptotic energy spectrum of the hot compact star]{
+    The $p_t$ spectrum of the hot compact star from the same viewing
+    position as in Fig.~\ref{fig:f_hot_ns}. These plots show $f$ sampled by
+    the $\cos A=0$, $B=0$ rays.
+    \emph{Top Figure}: $f(p_t)$ in the case of a curved and flat spacetime.
+    The exact distribution functions $f_{\rm ex}$ are represented as solid lines,
+    which lie directly beneath the data points.
+    \emph{Bottom Figure}: The relative error in $f$ for these two cases.
+    For the flat spacetime distribution function, the error bottoms out at
+    machine roundoff.
+  }
+  \label{fig:f_spectrum_hot_ns}
+\end{figure}
+
+\section{$f_\nu$ for this Accretion Disk}
 \label{sec:f_this_case}
 
-\section{Caclculating $q_{\nu \bar{\nu}}$: Integration Algorithm}
+\section{Calculating $q_{\nu \bar{\nu}}$: Integration Algorithm}
 \label{sec:q_algorithm}
 
-\section{$q_{\nu \bar{\nu}}$ for this Case}
+\section{$q_{\nu \bar{\nu}}$ for this Accretion Disk}
 \label{sec:q_this_case}
