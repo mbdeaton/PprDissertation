@@ -543,31 +543,588 @@ neutrino-antineutrino annihilation power will provide a lower bound for energy
 available to drive a jet.
 
 In fact, 40~ms after a realistic merger with these bulk parameters, we expect
-magnetic effects to play a significant role in hte accretion dynamics,
+magnetic effects to play a significant role in the accretion dynamics,
 \todo{cite someone}
 increasing the accretion rate via the magneto-rotational instability, and heating
 the disk through a turbulent transport of energy from large scales (bulk kinetic
-energy) to small scales (random thermal energy). In thismodel we neglect this
+energy) to small scales (random thermal energy). In this model we neglect this
 important physics, and again, in this sense, our later neutrino-antineutrino
 annihilation power calculation will provide a lower bound on jet energetics.
 
-%\begin{figure}
-%  \centering
-%  \begin{subfigure}{.7\textwidth}
-%    \centering
-%    \includegraphics[width=1\linewidth]{Figures/}
-%  \end{subfigure}
-%  \begin{subfigure}{.7\textwidth}
-%    \centering
-%    \includegraphics[width=1\linewidth]{Figures/}
-%  \end{subfigure}
-%  \caption[Accretion disk emission as seen from rotation axis]{
-%  }
-%  \label{fig:f_disk_axis}
-%\end{figure}
+\subsubsection{From the Rotation Axis}
+\label{sssc:f_this_case_A}
+
+In Figs.~\ref{fig:f_disk_axis_13MeV}~and~\ref{fig:f_disk_axis_34MeV} I display
+$f(\Omega_i)$ over the whole sky, as viewed from the rotation axis, at the
+characteristic energies of 13~MeV and 34~MeV. These figures are analagous to
+Fig.~\ref{fig:f_hot_ns}. I've sampled $f$ at these energies because the first is
+near the average neutrino energy (see for example
+Fig.~\ref{fig:neutrinos_by_species}), and the latter gives us a feel for the
+angular distribution of high-energy emission. At lower energies our opaque
+disk assumption begins to break down: the disk is transparent to neutrinos at
+energies $\lesssim5$~MeV.
+\todo{confirm, cite later $\nu\bar{\nu}$ discussion of energy bounds}
+
+All three species of neutrinos represented in the leakage scheme are represented
+in these figures: $\nu_e$, $\nu_a \equiv \bar{\nu}_e$, and
+$\nu_x \equiv \{\nu_\mu,\bar{\nu}_\mu,\nu_\tau,\bar{\nu}_\tau\}$.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nue-A-13MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nua-A-13MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nux-A-13MeV}
+  \end{subfigure}
+  \caption[Disk emission as seen from rotation axis: at average energy]{
+    Neutrino distribution functions from the accretion disk over the sky in a
+    single energy band, $p_t=13$~MeV. The observer is stationary on the rotation
+    axis at coordinate radius 120~km from the black hole. The panels from
+    left to right depict $f_{\nu_e}$, $f_{\nu_a}$, $f_{\nu_x}$.
+  }
+  \label{fig:f_disk_axis_13MeV}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nue-A-34MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nua-A-34MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nux-A-34MeV}
+  \end{subfigure}
+  \caption[Disk emission as seen from rotation axis: at high energy]{
+    Same as Fig.~\ref{fig:f_disk_axis_13MeV}, but in the energy band $p_t=34$~MeV.
+    Left to right, the panels depict $f_{\nu_e}$, $f_{\nu_a}$, and $f_{\nu_x}$.
+  }
+  \label{fig:f_disk_axis_34MeV}
+\end{figure}
+
+Several observations:
+\begin{enumerate}
+  \item The neutrino surface is larger at higher energy.
+    This is because of the opacities' energy dependence,
+    $\chi\propto\varepsilon^2$. The higher-energy neutrinosurfaces are further
+    away from the black hole, where redshift effects are smaller, than the
+    lower-energy neutrinosurfaces. Thus, we may infer that a realistic neutrino
+    spectrum is suppressed at low energy compared to that obtained from a
+    simple Newtonian calculation.
+  \item The brightest ring of emission is not at the extreme inner edge, even
+    though the disk temperature is consistently high all the way to the inner
+    edge (see for example Fig.~\ref{fig:profiles}). This is a straightforward
+    effect of the stronger redshift operating near the black hole.
+  \item $f_{\nu_a}$ is brighter than $f_{\nu_e}$
+    and emitted from a smaller region.
+    \label{item:zeta}
+    This is because the disk is less opaque
+    to $\bar{\nu}_e$ (see Fig.~\ref{fig:zeta_meridional}). The dominant
+    charged-current processes make this clear: in a neutron-rich fluid like that
+    of this disk (again see Fig.~\ref{fig:profiles}), $\nu_e$ absorption via
+    $\nu_e\,n \rightarrow p\,e^{-}$
+    is favored over $\bar{\nu}_e$ absorption via
+    $\bar{\nu}_e\,p \rightarrow n\,e^{+}$.
+    So the $\bar{\nu}_e$s decouple from the fluid from deeper within the disk,
+    at a hotter temperature, and are therefore more luminous.
+  \item The $\nu_a$- and $\nu_x$-surfaces are sharp-edged at low energy,
+    with little sign of the limb-darkening seen in the $\nu_e$ surfaces.
+    \label{item:eta}
+    This is perhaps an unrealistic effect of our choice of leakage neutrino
+    chemical potentials, described in Sec.~\ref{sec:leakage}.
+
+    In the leakage scheme, $\eta_{\nu_i}$ is calculated using local fluid
+    properties and a rough estimate of whether the neutrinos at that location are
+    trapped or free: $\langle \tau_{\nu_i} \rangle$, the energy-averaged optical
+    depth.
+    This skews the ray tracing calculation of $f$ at energies very different
+    than $\langle \varepsilon_{\nu_i} \rangle$.
+    %At energies below
+    %$\langle \varepsilon_{\nu_i} \rangle$, the neutrinosurface found by ray
+    %tracing will be deep in the disk, where the leakage scheme estimated
+    %the neutrinos to be trapped. Whether this amplifies or suppresses the
+    %emission depends on the local fluid properties at the neutrinosurface.
+    Deep in the disk, where $\langle \tau_{\nu_i} \rangle \gtrsim 1$,
+    $\eta_{\nu_e}$ and $\eta_{\nu_a}$ are calculated by assuming equilibrium
+    of the charged current reactions described in observation~\ref{item:zeta},
+    so that $\eta_{\nu_e}=-\eta_{\nu_a}$.
+    Also, due to the $n$-richness of the disk, $\eta_{\nu_e}<\eta_{\nu_a}$.
+    These two conditions for the neutrino chemical potentials constrain
+    $\eta_{\nu_a}>0$ deep in the disk, as can be seen in
+    Fig.~\ref{fig:eta_meridional}.
+    This amplifies $f_{\nu_a}$ at low energies.
+
+    (Note, because of lower interaction rates for heavy lepton neutrinos,
+    $\eta_{\nu_x}$ is set identically to zero in our leakage approximation.)
+    \todo{why does this make $f$ sharp?}
+  \item $f_{\nu_a}$ and $f_{\nu_x}$ appear similar at these two energies.
+    This may be a special coincidence of this late time, when $\nu_a$ and
+    $\nu_x$ opacities are similar (see Fig.~\ref{fig:zeta_meridional}).
+
+    In fact, if these two distribution functions
+    are similar across the entire energy spectrum (I have not yet examined this,
+    but it's likely since the opacities are smooth fields in the disk),
+    the luminosities estimated by ray tracing and leakage would be
+    inconsistent (see Fig.~\ref{fig:neutrinos_by_species}).
+
+    %We expect $\nu_x$ to decouple from the fluid deeper in the disk than
+    %the $e$-type neutrinos, because the disk is less opaque to the former.
+    %The only scattering processes for $\nu_x$ at these energies involve
+    %neutral-current weak interactions, to which $e$-type neutrinos are also
+    %subject. But the The $e$-type neutrinos additionally have the power to
+    %interact with nuclear matter via charged-current processes.
+    %Only at unphysically high energies ($m_{\mu}\sim100$~MeV,
+    %$m_{\tau}\sim2$~GeV) do the charged current processes become available to
+    %the heavy-lepton neutrinos.
+    %\todo{is this true?}
+    %So the similarity of $f_{\nu_a}$ and $f_{\nu_x}$ raises a suspicion about
+    %this calculation.
+
+    However, our use of leakage chemical potentials to construct the neutrino
+    distribution functions (as discussed in observation~\ref{item:eta}) may contribute
+    to the similarity of these two $f$s. Even though the $\nu_x$-surface is
+    a little deeper in the disk and at a slightly higher temperature than the
+    $\nu_a$-surface (effectively boosting $\nu_x$ emission),
+    its chemical potential is lower (effectively suppressing $\nu_x$ emission).
+    In this case, at this late time, the two effects approximately cancel.
+
+    As this observation highlights, the leakage and ray tracing estimates of
+    neutrino luminosity are not self-consistent by construction: they are
+    different approximations. The former accounts for local energy losses
+    throughout the fluid volume, the latter accounts for energy losses from a
+    surface.
+\end{enumerate}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.31\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/zetae_meridional}
+  \end{subfigure}
+  \begin{subfigure}{.31\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/zetaa_meridional}
+  \end{subfigure}
+  \begin{subfigure}{.31\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/zetax_meridional}
+  \end{subfigure}
+  \caption[Disk opacities]{
+    Meridional slices of disk opacities for each neutrino species,
+    $\zeta_{\nu_i}$, in geometrized units of $M_\odot^{-2}$~MeV$^{-1}$.
+    The axes are labeled in units of $M_\odot\sim1.5$~km.
+    Decadal density contours, in units of $M_\odot^{-2}\sim10^{18}$~g~cm$^{-3}$,
+    are provided to give a sense of the matter distribution.
+  }
+  \label{fig:zeta_meridional}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.31\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/etae_meridional}
+  \end{subfigure}
+  \begin{subfigure}{.31\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/etaa_meridional}
+  \end{subfigure}
+  \caption[Disk neutrino chemical potentials]{
+    Meridional slices of neutrino chemical potentials for $\nu_e$ and
+    $\nu_a$. The chemical potential for $\nu_x$ is zero by construction
+    in the leakage scheme: the heavy-lepton neutrinos are assumed to
+    stream freely.
+    The axes are labeled in units of $M_\odot\sim1.5$~km.
+    Decadal density contours, in units of $M_\odot^{-2}\sim10^{18}$~g~cm$^{-3}$,
+    are provided to give a sense of the matter distribution.
+  }
+  \label{fig:eta_meridional}
+\end{figure}
+
+\subsubsection{From the Equator}
+\label{sssc:f_this_case_E}
+
+In Figs.~\ref{fig:f_disk_eq_13MeV}~and~\ref{fig:f_disk_eq_34MeV} I display
+$f(\Omega_i)$ over the whole sky, as viewed from the equator, at the
+same characteristic energies as in
+Figs.~\ref{fig:f_disk_axis_13MeV}~and~\ref{fig:f_disk_axis_34MeV}.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nue-E-13MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nua-E-13MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nux-E-13MeV}
+  \end{subfigure}
+  \caption[Disk emission as seen from equatorial plane: at average energy]{
+    Neutrino distribution functions from the accretion disk over the sky in a
+    single energy band, $p_t=13$~MeV. The observer is stationary in the
+    equatorial plane at coordinate radius 120~km from the black hole.
+    The panels from left to right depict $f_{\nu_e}$, $f_{\nu_a}$,
+    and $f_{\nu_x}$.
+  }
+  \label{fig:f_disk_eq_13MeV}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nue-E-34MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nua-E-34MeV}
+  \end{subfigure}
+  \begin{subfigure}{.3\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/f_nux-E-34MeV}
+  \end{subfigure}
+  \caption[Disk emission as seen from equatorial plane: at high energy]{
+    Same as Fig.~\ref{fig:f_disk_eq_13MeV}, but in the energy band $p_t=34$~MeV.
+    Left to right, the panels depict $f_{\nu_e}$, $f_{\nu_a}$, and $f_{\nu_x}$.
+  }
+  \label{fig:f_disk_eq_34MeV}
+\end{figure}
+
+Several observations:
+\begin{enumerate}
+  \item The back side of the neutrinosurface behind the black hole, is visible
+    when the front side of the neutrinosurface is not so large it geometrically
+    obscures it.
+    This due to the bending of rays by the spacetime curvature of the black
+    hole. This has the effect of enlarging the emission surface copmared to
+    that obtained by a simple Newtonian calculation. See
+    Fig.~\ref{fig:schematic_ray_bending} for a schematic of this effect.
+  \item The left side of the neutrinosurface (which is actually the right
+    side of the disk in physical space---the image is reflected vertically and
+    horizontally, as by a pinhole camera) is less intense. In the cases of
+    $f_{\nu_a}$ and $f_{\nu_x}$, it actually vanishes.
+    This is due to the relativistic fluid velocities: the left side of the disk
+    image is moving away from, and the right side toward the viewer.
+    Neutrinos emitted from the left side are doppler shifted to lower energies
+    than those from the right side. See Fig.~\ref{fig:schematic_ray_doppler}
+    for schematic.
+\end{enumerate}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=10cm]{Figures/seeing_back_of_disk}
+  \caption[Schematic of ray bending around the disk]{
+    Cartoon reference of a meridional slice of the disk,
+    explaining how the viewer on the right
+    can see the far side of the neutrinosurface. The fluid is represented as
+    a blue blob, and representative neutrino trajectories as dashed lines.
+  }
+  \label{fig:schematic_ray_bending}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=10cm]{Figures/seeing_disk_doppler_shift}
+  \caption[Schematic of doppler shift due to disk rotation]{
+    Cartoon reference of an equatorial slice of the disk,
+    explaining the doppler shift observed by the viewer on the
+    right. The fluid velocity field is represented by arrows: longer is faster.
+    The fluid at the bottom of the cartoon is moving roughly toward the viewer,
+    boosting its neutrino emission; the opposite is true of the fluid at the top
+    of the cartoon.
+    The differential rotation of the disk makes this effect more pronounced
+    for neutrinosurfaces deeper within the disk.
+  }
+  \label{fig:schematic_ray_doppler}
+\end{figure}
 
 \section{Calculating $q_{\nu \bar{\nu}}$: Integration Algorithm}
 \label{sec:q_algorithm}
+The standard model for gamma ray bursts consists of an ultrarelativistic jet
+driven by rapid accretion onto a stellar-mass black hole. One of the missing
+links in this model is the physical mechanism connecting the accretion to the
+jet. How does the gravitational energy released by the transport of matter
+toward and eventually into the black hole end up powering a highly-collimated
+low-density plasma moving away from the black hole with a Lorentz factor of
+10s or 100s? The link likely takes the form of one or both of the following
+processes:
+\begin{itemize}
+  \item \emph{Magnetic fields}: If there are strong magnetic fields present, the
+    Blandford-Znajek process \citep{blan1977-blandford_znajek} can extract
+    rotational energy from the black hole and accelerate plasma out along its
+    rotation axis. Additionally, magnetic fields in the accretion disk may
+    centrifugally accelerate plasma, tapping the rotational energy of the
+    disk itself \citep{blan1982-blandford_payne}.
+  \item \emph{Neutrino heating}: Highly energetic neutrino-antineutrino pairs
+    can annihilate into into electron-positron pairs
+    ($\nu \, \bar{\nu} \rightarrow e^{-} \, e^{+}$)
+    with excess energy from the interaction going into the kinetic energy of the
+    lepton pair.
+    This process is particularly efficient at high neutrino energies and large
+    collision angles, conditions found in the funnel of the accretion disk.
+    This $e^{-}\,e^{+}$ gas rapidly thermalizes via electromagnetic interactions,
+    and the superheated plasma expands away from the disk explosively. The inner
+    walls of the funnel may act to confine the plasma, collimating it into a jet.
+\end{itemize}
+
+Simulations indicate that the first process is extremely sensitive to the
+\todo{ask fatemeh for ref}
+initial magnetic field configuration, with no jet structure forming if there is
+no initially large-scale poloidal field in the accretion disk.
+I won't explore the magnetic processes further here.
+
+The second process is sensitive to the geometry and spectrum of the emission
+\todo{cite geneology of $\nu\bar{\nu}$ studies}
+and in the context of neutron star--black hole mergers, has only been studied
+in highly-idealized models of analytical accretion disks or Newtonian gravity.
+\todo{maybe add technical specs of GRBs and nuclear accretion sites}
+
+Let us explore the viability of the neutrino-antineutrino annihilation process
+in the case of the accretion disk presented in Chap.~\ref{chap:leakage}.
+
+\subsubsection{Brief History of Neutrino-Antineutrino Annihilation Studies}
+\label{sssc:nunubar_review}
+In the late 1980s, \cite{good1987-nunubar} and \cite{bere1987-nunubar}
+\todo{fix cite}
+independently proposed neutrino-antineutrino annihilation as a process that could
+transfer a fraction of the neutrino energy released by stellar collapse, as in
+Type II supernovae, into an electron-positron pair plasma. Their calculations
+were performed assuming Newtonian gravity, but they found efficiencies of a
+fraction of a percent of the total neutrino luminosity.
+\todo{add paczynski 1990}
+\todo{add Meszaros \& Rees 1992}
+
+\cite{salm1999-nunubar} examined the same process in a general relativistic
+\todo{fix cite}
+formulation and discovered and enhancement of efficiency to a few percent.
+They assumed a Schwarzschild geometry, a spherical emitter, and a Fermi-Dirac
+\todo{check}
+neutrino spectrum.
+
+\cite{asan2000-nunubar} studied the same process in a Schwarzschild geometry,
+\todo{fix cite}
+examining both a spherical and disk emitter, and considering the
+redshift of energy as its carrier travels away from the gravitational source.
+They found that gravitational bending of rays enhances, but gravitational
+redshift suppresses the efficiency of the process by about the same factor,
+bringing efficiencies back down to a fraction of a percent.
+\todo{check}
+
+\cite{ruff1999-nsns_i,ruff1999-nsns_ii,ruff1999-nsns_iii} and
+\cite{ross2003-nsns_i,ross2003-nsns_ii,ross2003-nsns_iii} innaugurated the
+\todo{fix cites}
+construction of realistic neutron star--neutron star merger models, using
+three-dimensional hydrodynamical simulations.
+They used pseudo-Newtonian gravitational potentials and also found a
+neutrino-antineutrino annihilation efficiency of fractions of a percent,
+insufficient to power all but the least-energetic of the observed
+short gamma ray bursts.
+\todo{point out approximate calc of $q_{\nu\bar{\nu}}$}
+
+\cite{seti2006-nunubar} used one of the disk models computed in
+\cite{ruff1999-nsns_i}
+\todo{fix cites}
+as the initial configuration for pseudo-Newtonian simulations of the
+accretion disk's evolution, varying phenomenological parameters like inner disk
+radius (as a proxy for black hole spin) and viscosity (related to the
+accretion rate). Only in their most optimistic cases (high spin, high
+accretion rate) did they find annihilation
+efficiencies that could release GRB-equivalent energies.
+
+\cite{birk2007-nunubar} examined the process for four different phenomenological
+\todo{fix cite}
+emission geometries, embedded in a Kerr spacetime, varying the spin of the
+central black hole. They found that spin effects could enhance the annihilation
+efficiency by a factor of 2, and cautiously concluded that from their most
+optimistic models, neutrino-antineutrino annihilation alone could account for
+even the most distant GRBs.
+\todo{isn't it least energetic GRBs?}
+
+\cite{hari2010-nunubar} examined this process in the context of collapsars,
+\todo{fix cite}
+the leading model for long gamma ray bursts. They developed a ray tracing code,
+solving the Boltzmann equation around an accretion disk formed in a massive
+stellar collapse. Their results, however, were relevant to energy deposition
+in the star, to drive the explosion, not to jet energetics.
+
+\cite{zala2011-nunubar} used ray tracing in analytical disk models, assuming
+\todo{fix cite}
+all neutrinos were emitted from a single neutrinosurface, and no scattering
+occured after emission. They derived a scaling between annihilation deposition
+energy, black hole spin, and accretion rate for their models. For nearly
+extremal spins and large accretion rates, they estimated this process was
+sufficient to generate GRBs with the observed energies.
+
+\subsection{Heating Integral}
+\label{ssec:nunubar_integral}
+Our goal is to calculate the total heating rate, $Q_{\nu \bar{\nu}}$ (erg~s$^{-1}$)
+due to $\nu\,\bar{\nu} \rightarrow e^{-}\,e^{+}$ by summing up the contributions
+of the deposition rate per volume for this process,
+$q_{\nu \bar{\nu}}(x^\alpha)$:
+\begin{equation}
+  Q_{\nu \bar{\nu}} \equiv \int \diff^3 x\,q_{\nu \bar{\nu}}(x^\alpha) \nonumber
+\end{equation}
+$q_{\nu \bar{\nu}}(x^\alpha)$ is an inherently frame-dependent quantity but is
+analogous to the frame-independent annihilation rate per volume,
+$n_{\nu \bar{\nu}}(x^\alpha)$:
+\begin{equation}
+  n_{\nu \bar{\nu}}(x^\alpha) \equiv
+  \frac{\diff N}{\diff \bar{t} \, \diff \bar{V}} =
+  c \frac{\diff N}{\sqrt{-\psi}\,\diff^4 x}
+\end{equation}
+where $\psi$ is the determinant of the 4-metric, and we have defined
+$n_{\nu \bar{\nu}}$ in the first expression in an orthonormal tetrad erected at
+$x^\alpha$. In the second expression we have written it in general curvilinear
+coordinates, emphasizing its Lorentz invariance: it is composed of scalars
+particle number and proper volume. $\diff^4 x$ are the contravariant components
+of the spacetime volume, in cartesian coordinates
+$\diff t \, \diff x \, \diff y \, \diff z$.
+
+The annihilation rate is written in a tetrad as \cite{goodman87}:
+\todo{fix cite}
+\begin{align}
+  \label{eqn:qdot_orig}
+  n_{\nu \bar{\nu}}(x^\alpha)
+  &= \int \diff^3p_{\nu} \diff^3p_{\bar{\nu}} \,\,
+  f_{\nu}(x^j;p_{\nu k})
+  f_{\bar{\nu}}(x^j;p_{\bar{\nu} k})
+  \sigma |v_\nu-v_{\bar{\nu}}| \nonumber \\
+  &= \int \diff^3p_\nu \diff^3p_{\bar{\nu}} \,\,
+  f_{\nu}(x^j;p_{\nu k})
+  f_{\bar{\nu}}(x^j;p_{\bar{\nu} k})
+  \frac{\sigma c}{p_{\nu}^t p_{\bar{\nu}}^t} (p_{\nu \alpha}  p_{\bar{\nu}}^\alpha) \nonumber \\
+  &= \int \diff^3p_{\nu} \diff^3p_{\bar{\nu}} \,\,
+  f_{\nu}(x^j;p_{\nu k})
+  f_{\bar{\nu}}(x^j;p_{\bar{\nu} k})
+  \frac{2 c^3 K G_F^2}{p_{\nu}^t p_{\bar{\nu}}^t}
+  (p_{\nu \alpha} p_{\bar{\nu}}^\alpha)^2
+\end{align}
+\todo{clean up/simplify}
+where $\diff^3p$ are the covariant components of the spatial momentum volume,
+$\diff p_x \diff p_y \diff p_z$.
+Eqn.~\ref{eqn:qdot_orig} is covariant since all of its constituents are
+invariants: $f$, $\diff^3p/p^t$, and $(p_{\nu \alpha} p_{\bar{\nu}}^\alpha)$.
+\todo{ref Chap.~\ref{chap:intro}}
+
+$K$ is given in the Standard Model as:
+\begin{equation}
+  K \left\{{e \atop \mu \, \tau}\right\} = \frac{1}{6\pi}
+  (1 \, \left\{{+ \atop -}\right\}
+  \, 4 \sin^2 \theta_w + 8 \sin^4 \theta_w) \nonumber
+\end{equation}
+where the upper (lower) sign is used for light (heavy) lepton neutrinos,
+the difference arising because only $e$-type neutrinos can interact with
+matter via the charged-current at energies less than $m_\mu\sim100$~MeV
+and $m_\tau\sim2000$~MeV.
+\todo{is this right?}
+The Fermi constant is $G_F^2 = 5.29 \times 10^{-44} \text{cm}^2 \text{MeV}^{-2}$,
+and the Weinberg angle is $\sin^2 \theta = 0.23$.
+\todo{cite constants}
+
+To calculate $q_{\nu \bar{\nu}}(x^\alpha)$ we weight the kernel in
+Eqn.~\ref{eqn:qdot_orig} by the total energy of the neutrinos
+$\varepsilon_{\nu} + \varepsilon_{\bar{\nu}}$ \cite{asano00, salmonson99}.
+\todo{fix cites}
+Since the energy is only one component of a proper 4-vector, this becomes an
+inherently frame-dependent calculation.
+(Alternatively we could weight the kernel by the total 4-momentum of the
+neutrinos, but that would increase our computational work by a factor of 4.)
+
+So which observer makes sense for this calculation? That depends. Since we are
+asking how much energy is available to power a relativistic jet which eventually
+shocks into the interstellar medium far away from the gravitational
+neighborhood of the emitter, we want to account for
+the redshift losses to the energy. So we weight our kernel by
+$\varepsilon=-p_t c$, the energy redshifted to infinity, because the metric in
+our numerical coordinates is stationary and asymptotically flat.
+If, however, we were asking how much energy to add as a source term in the
+hydrodynamic equations, to compute the evolution of the shock, we would weight
+our kernel by a local energy $\varepsilon=-p_\alpha u^\alpha$, the energy
+measured in the fluid rest frame. For notational simplicity, we use
+$\varepsilon$ to represent the first choice in the following calculations.
+
+So the heating rate at $x^\alpha$ measured by an observer at infinite distance is
+\begin{equation}
+  \label{eqn:qdot}
+  q_{\nu \bar{\nu}}(x^\alpha)
+  = A \int \diff^3p_{\nu} \diff^3p_{\bar{\nu}} \,\,
+  f_{\nu}(x^j;p_{\nu k})
+  f_{\bar{\nu}}(x^j;p_{\bar{\nu} k})
+  \frac{  \varepsilon_{\nu}+\varepsilon_{\bar{\nu}}}{p_{\nu}^t p_{\bar{\nu}}^t}
+  (p_{\nu \alpha} p_{\bar{\nu}}^\alpha)^2
+\end{equation}
+where we have defined $A \equiv 2 c^3 K G_F^2$ and $\varepsilon$ as described above.
+
+To compute the integral in general curvilinear coordinates we first write the
+momenta in Eqn.~\ref{eqn:qdot} in spherical polar components
+$\{p_t,p_r,p_{\theta},p_{\phi}\}$ (see Fig.~\ref{fig:p_conventions}).
+The volume element in momentum space is
+$\diff^3p\equiv\diff p_x\wedge\diff p_y\wedge\diff p_z=\left|\frac{\partial(p_r,p_\theta,p_\phi)}{\partial(p_x,p_y,p_z)}\right|\diff p_r\wedge\diff p_{\theta}\wedge\diff p_{\phi}$.
+\todo{clarify}
+
+Eqn.~\ref{eqn:qdot} becomes
+\begin{align}
+  \label{eqn:qdot_general_orig}
+  q_{\nu \bar{\nu}}(x^\alpha)
+  &= A \int \diff p_{\nu r} \diff p_{\bar{\nu} r} \,\,
+  p_{\nu r}^2 \diff\Omega_{\nu} p_{\bar{\nu} r}^2 \diff\Omega_{\bar{\nu}} \,\,
+  f_{\nu}(x^j;p_{\nu k}) f_{\bar{\nu}}(x^j;p_{\bar{\nu} k})
+  \frac{\varepsilon_{\nu} + \varepsilon_{\bar{\nu}}}{p_{\nu}^t p_{\bar{\nu}}^t}
+  (p_{\nu \alpha} p_{\bar{\nu}}^\alpha)^2
+\end{align}
+
+Furthermore, employing the momentum relations from Sec.~\ref{ssec:p_conventions}
+we can write Eqn.~\ref{eqn:qdot_general_orig} explicitly in terms of energy
+scale and direction:
+\begin{equation}
+  \begin{split}
+    \label{eqn:qdot_general}
+    q_{\nu \bar{\nu}}(x^\alpha)
+    &= A \int \diff p_{\nu t} \diff p_{\bar{\nu} t} \,\,
+    \diff (\cos \alpha_{\nu}) \diff (\cos \alpha_{\bar{\nu}}) \,\, \diff \beta_{\nu} \diff \beta_{\bar{\nu}} \\
+    & \qquad \qquad \qquad
+    \times f_{\nu}(x^j;p_{\nu t},\Omega_{\nu})
+    f_{\bar{\nu}}(x^j;p_{\bar{\nu} t},\Omega_{\bar{\nu}}) \\
+    & \qquad \qquad \qquad
+    \times \frac{(\varepsilon_{\nu} + \varepsilon_{\bar{\nu}})(p_{\nu t} p_{\bar{\nu} t})^2}
+           {p_{\nu}^t p_{\bar{\nu}}^t} \\
+           & \qquad \qquad \qquad
+           \times \frac {(p_{\nu \alpha} p_{\bar{\nu}}^\alpha)^2}
+                  {(C(\Omega_{\nu k})C(\Omega_{\bar{\nu} k}))^3}
+  \end{split}
+\end{equation}
+
+The only terms not chosen explicitly, $p_{\nu \alpha} p_{\bar{\nu}}^\alpha$
+and $p^t$, are calculated with the help of the metric.
+
+To sum this integral at a single point $x^\alpha$,
+we sample the integrand in the 6-dimensional space:
+$p_{\nu t}$,
+$p_{\bar{\nu} t}$,
+$\cos \alpha_{\nu}$,
+$\cos \alpha_{\bar{\nu}}$,
+$\beta_{\nu}$,
+$\beta_{\bar{\nu}}$.
+We integrate over $\cos \alpha$ in order to distribute rays isotropically over
+the sky.
+
+\subsection{Monte-Carlo Integration of the Integral}
+\label{ssec:monte_carlo}
 
 \section{$q_{\nu \bar{\nu}}$ for this Accretion Disk}
 \label{sec:q_this_case}
