@@ -809,32 +809,47 @@ Figs.~\ref{fig:f_disk_axis_13MeV}~and~\ref{fig:f_disk_axis_34MeV}.
 
 Several observations:
 \begin{enumerate}
-  \item The back side of the neutrinosurface behind the black hole, is visible
-    when the front side of the neutrinosurface is not so large it geometrically
-    obscures it.
-    This due to the bending of rays by the spacetime curvature of the black
-    hole. This has the effect of enlarging the emission surface copmared to
-    that obtained by a simple Newtonian calculation. See
-    Fig.~\ref{fig:schematic_ray_bending} for a schematic of this effect.
-  \item The left side of the neutrinosurface (which is actually the right
-    side of the disk in physical space---the image is reflected vertically and
-    horizontally, as by a pinhole camera) is less intense. In the cases of
-    $f_{\nu_a}$ and $f_{\nu_x}$, it actually vanishes.
+  \item The back side of the neutrinosurface, behind the black hole, is visible
+    as a ring on the top and bottom of the image.
+    This is due to the bending of rays by the spacetime curvature of the black
+    hole. This has the effect of enlarging the emission surface compared to
+    that obtained by a simple Newtonian calculation, an effect seen even in
+    the simple case of the hot compact star (Fig.~\ref{fig:f_hot_ns}).
+    See Fig.~\ref{fig:schematic_ray_bending} for an explanatory cartoon.
+  \item The left side of the neutrinosurface---which is actually the right
+    side of the disk in physical space (the image is reflected vertically and
+    horizontally, as by a pinhole camera)---is less intense. In the cases of
+    $f_{\nu_a}$ and $f_{\nu_x}$, it actually vanishes at low energy.
     This is due to the relativistic fluid velocities: the left side of the disk
     image is moving away from, and the right side toward the viewer.
+    See Fig.~\ref{fig:schematic_ray_doppler} for an explanatory cartoon.
     Neutrinos emitted from the left side are doppler shifted to lower energies
-    than those from the right side. See Fig.~\ref{fig:schematic_ray_doppler}
-    for schematic.
+    than those from the right side. At these energies,
+    $p_t\gtrsim\langle\varepsilon_\nu\rangle$,
+    this has the effect of decreasing the intensity, i.e.\ decreasing
+    $f_\nu(p_t)$.
+    The effect is reversed at energies for which
+    $\partial_{p_t}f_\nu(p_t)>0$.
+  \item The image of the disk is offset to the left. This is an effect of the
+    rotation of the central black hole, which communicates a sympathetic spin
+    to the spacetime. This is a well-known and experimentally-verified effect
+    \todo{ref theory and GravB}
+    called frame dragging, or gravitomagnetism.
+    According to a viewer at rest very far away from the disk, neutrinos
+    streaming away from its surface follow trajectories curving away from
+    the spin of the black hole, forming a whirlpool shape.
+    \todo{add cartoon or computed ray trajectories}
 \end{enumerate}
 
 \begin{figure}
   \centering
   \includegraphics[width=10cm]{Figures/seeing_back_of_disk}
   \caption[Cartoon of neutrino rays bending over the disk]{
-    Cartoon reference of a meridional slice of the disk,
-    explaining how the viewer on the right
-    can see the far side of the neutrinosurface. The fluid is represented as
-    a blue blob, and representative neutrino trajectories as dashed lines.
+    Cartoon showing how a viewer (on the right) can see parts of the
+    neutrinosurface that would be obscured in Euclidean geometry.
+    This is a meridional slice of the disk. The fluid is shown in blue, the
+    black hole is black, and several neutrino trajectories are shown as dashed
+    lines.
   }
   \label{fig:schematic_ray_bending}
 \end{figure}
@@ -843,14 +858,15 @@ Several observations:
   \centering
   \includegraphics[width=10cm]{Figures/seeing_disk_doppler_shift}
   \caption[Cartoon of the doppler shift due to disk rotation]{
-    Cartoon reference of an equatorial slice of the disk,
-    explaining the doppler shift observed by the viewer on the
-    right. The fluid velocity field is represented by arrows: longer is faster.
-    The fluid at the bottom of the cartoon is moving roughly toward the viewer,
-    boosting its neutrino emission; the opposite is true of the fluid at the top
-    of the cartoon.
-    The differential rotation of the disk makes this effect more pronounced
-    for neutrinosurfaces deeper within the disk.
+    Cartoon showing how a viewer (on the right) experiences a differential
+    doppler shift. This is an equatorial slice of the disk.
+    The fluid is shown in blue and its velocity field by white arrows, longer
+    representing faster. The black hole is black, and two neutrino trajectories
+    are shown as dashed lines. The left side of the disk (downward in the
+    cartoon) is moving roughly toward the viewer, boosting its neutrino emission;
+    the opposite is true of the right side of the disk.
+    Furthermore, the differential rotation of the disk makes this effect more
+    pronounced for neutrinosurfaces deeper within the disk.
   }
   \label{fig:schematic_ray_doppler}
 \end{figure}
