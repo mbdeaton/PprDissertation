@@ -13,22 +13,33 @@ If there's time, include helper sections: 1) derive the fluid equations in
   transport equations and quantities for the examples of a hot radiating star
   and a homogeneous emitting medium, 3) discuss accretion and radiation in the
   context of Cyg X-1 to compare to (\sigma_T=6.7e-29 m^2, L_edd=?).
+Outflows: don't include discussion of Foucart et al 2013's outflows section,
+  because it turns out dynamical outflows don't have much to do with this
+  inquiry.
 
 Technical Guidelines:
+"prefer to..." below means break the rule if it makes sense to.
 Attributions: much of this work and writing has been given to you freely by
   others, in particular Matt, Francois, and Andy. Acknowledge them generally in
   the Acknowledgements, but also indicate their work with a sentence before each
   section that uses it. (If you're worried about this *thinning* out your
   dissertation---I am---then prepare a list of all the research you've done over
   the last five years, and the things that you've given to other folks.)
-Outflows: don't include discussion of Foucart et al 2013's outflows section,
-  because it turns out dynamical outflows don't have much to do with this
-  inquiry.
 Prefer to use "I", unless it makes more sense to use "we", as throughout the
-  leakage chapter.
+  leakage chapter, or when you're taking the tone of, "come, let's inquire
+  together."
 Prefer to use "Sec. 1" and "Fig. 2" than spelling them out.
 Denote a particular tensor components by replacing the index by the standard
   symbol for that component: u^t not u^0.
+Capitalization: prefer to homogeneously capitalize titles of Chaps, Secs,
+  Subsecs, and Subsubsecs, but only captialize the first first word of titles of
+  Tables, and Figures.
+Prefer to use "neutron star--black hole" to "black hole--neutron star", because
+  this study focuses on the neutron star.
+Acronyms: prefer to write things in words not letters: e.g. don't use "NSBH".
+  (Long names don't harm anyone: they take the same amount of time to read as
+  acronyms. But acronyms harm outsiders---maybe even insiders.) More generally
+  avoid abbreviated symbols too, e.g. try to use f_\nu rather than f.
 
 *********************************************************************************
 Neutrinos in Mergers of Neutron Stars With Black Holes
