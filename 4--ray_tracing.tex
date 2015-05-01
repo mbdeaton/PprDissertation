@@ -1232,3 +1232,195 @@ underestimating $q_{\nu\bar{\nu}}$ by about 15\% at the highest resolution.
 
 \section{$q_{\nu \bar{\nu}}$ for this Accretion Disk}
 \label{sec:q_this_case}
+We calculate $q_{\nu\bar{\nu}}$ above the accretion disk, on a unigrid, to make
+an estimate of
+\begin{equation}
+  Q_{\nu\bar{\nu}}=\int\diff^3 x\,q_{\nu\bar{\nu}},
+\end{equation}
+the power at infinite separation from the source, available to drive a jet.
+In cartesian coordinates, $\diff^3 x=\sqrt{-g}\, \diff x\,\diff y\,\diff z$.
+\todo{add redshift factor for time}
+Because of the approximate axial- and reflection-symmetry of the disk, we only
+calculate $q_{\nu\bar{\nu}}$ over one octant and multiply $Q_{\nu\bar{\nu}}$ by
+eight.
+\todo{explain treatment of on-axis points}
+The octant is shown in a meridional slice in Fig.~\ref{fig:q_grid}.
+Because of the steep dependence of the annihilation rate on the relative angles
+between incoming neutrino trajectories, $q_{\nu\bar{\nu}}$ falls off steeply
+with distance from the bright inner region of the funnel: the rate decreases with
+$r^{-8}$ at large enough distances that the source is approximately spherical
+\citep{seti2006-nunubar}.
+\todo{fix cite}
+Thus, the annihilation rate at points outside the integration grid is negligible.
+In fact, the computed local annihilation rate, shown in
+Fig.~\ref{fig:q_rate_meridional},
+confirms that $q_{\nu\bar{\nu}}$ falls off by many orders of magnitude at the
+edges of this grid.
+\todo{how large $N$?}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=10cm]{Figures/annihilation-slice}
+  \caption[Grid Used for the Volume Integral of $q_{\nu\bar{\nu}}$]{
+    Meridional slice of the grid used to compute the spatial volume
+    integral $Q_{\nu\bar{\nu}}=\int\diff^3 x\,q_{\nu\bar{\nu}}$ over one octant
+    of the disk. The grid is composed of $4\times4\times9=144$~points,
+    and extends 90~km, 90~km, and 192~km in the x-, y-, and z-directions,
+    respectively.
+    Decades of fluid rest density are plotted in units of
+    $M_\odot^{-2}\sim10^{18}$~g~cm$^{-3}$.
+  }
+  \label{fig:q_grid}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=13cm]{Figures/annihilation_rate_x-1}
+  \caption[$q_{\nu\bar{\nu}}$ at the Grid Points]{
+    Meridional slice of the annihilation rate in the y-z plane of the grid
+    depicted in Fig.~\ref{fig:q_grid}. The axes are labeled in units of
+    $M_\odot\sim1.5$~km.
+  }
+  \label{fig:q_rate_meridional}
+\end{figure}
+
+\subsection{Excluding some Points from the Integral}
+\label{ssec:excluding_pts}
+
+The goal of our calculation is to estimate the free energy available to drive
+a jet---energy carried by a superheated electron-positron pair plasma expanding
+primarily away from the disk. But the simple volume integral of the points in
+Fig.~\ref{fig:q_rate_meridional} includes the thermal energy of some plasma
+that is headed for the black hole, and some plasma that that will be re-absorbed
+by the nuclear fluid via the $\beta$-capture reactions,
+$e^{-}\,p \rightarrow \nu_e\,n$ and
+$e^{+}\,n \rightarrow \bar{\nu}_e\,p$.
+We account for both of these losses in an approximate way by discarding points
+from the volume integral at which these processes happen faster than the
+explosion.
+
+We can compare the timescales of these processes to the explosion timescale,
+%which is a local estimate for how rapidly the plasma evacuates its place of
+%origin, $x^j$:
+%\begin{equation}
+%  T_{\rm exp}(x^j) \sim \frac{q_{\nu\bar{\nu}}}{\rho}
+%\end{equation}
+%where $\rho$ is the rest density, which we can estimate from
+%Fig.~\ref{fig:q_grid} as $\sym10^{-11}\,M_\odot^{-2}$ in the funnel region.
+%\todo{untrustworthy; that's atmosphere}
+which is a global estimate for how rapidly the plasma evacuates the funnel:
+\begin{equation}
+  T_{\rm exp} \sim \frac{L}{c_s}
+\end{equation}
+where $L\sim100\,M_\odot\sim0.5$~ms is the characteristic size of the funnel, and
+$c_s\sim1$ is the sound speed, which is very high at these densities and
+temperatures;
+\todo{check $c_s$}
+thus we estimate $T_{\rm exp} \sim 1$~ms.
+Energy transfer processes occuring on a timescale shorter than this will quench
+the explosion. We examine the processes of accretion and $\beta$-capture below.
+
+\subsubsection{Accretion}
+\label{sssc:accretion_timescale}
+Very near the black hole, accretion dominates the energy transfer processes:
+radiative and kinematic processes can't compete.
+Energy deposited by neutrino-antineutrino annihilation in these regions
+disappears into the black hole. Fig.~\ref{fig:timescales} shows the
+advection timescale:
+\begin{equation}
+  T_{\rm adv} \sim \frac{r}{v^r}
+\end{equation}
+where $r$ is the radial distance from the black hole, and $v^r$ the radial
+component of the fluid velocity.
+Only within $r<30$~km does this process compete with the explosion.
+However, this is a very rough estimate. The noise visible in the funnel region
+of Fig.~\ref{fig:timescales} is due to the low densities there, where we cannot
+accurately evolve the hydrodynamics equations, and where at some points,
+we impose a slow-moving, low-density atmosphere, as described in
+Sec.~\ref{sec:Methods}.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.45\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/timescales-slice-tadv}
+  \end{subfigure}
+  \begin{subfigure}{.45\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{Figures/timescales-slice-tbeta}
+  \end{subfigure}
+  \caption[Colormaps of explosion-quenching timescales]{
+    Meridional slices of the timescales of two explosion-quenching processes,
+    zoomed-in on the region $r\lesssim40$~km.
+    The red density contour is drawn at $10^9\,{\rm g\,cm^{-3}}$.
+    The oval in the center is the black hole horizon.
+    Where $T\lesssim1$~ms, that process quenches the explosion.
+    \emph{Left panel}: $T_{\rm adv}$ is noisy, and we can't really trust it in the
+    funnel region, where we impose a false atmosphere at some points (described in
+    Sec.~\ref{sec:Methods}).
+    But I estimate that it is less than 1~ms within
+    approximately three horizon-radii of the center.
+    \emph{Right panel}: $T_\beta$ is clearly less than 1~ms only within the
+    bulk of the disk.
+  }
+  \label{fig:timescales}
+\end{figure}
+
+\subsubsection{$\beta$-Capture}
+\label{sssc:accretion_beta}
+Deep inside the disk, the electron-positron pair plasma created by the
+neutrino-antineutrino annihilation gets recaptured by nucleons, transferring
+energy away from the plasma.
+
+Fig.~\ref{fig:timescales} shows the $\beta$-capture timescale:
+\begin{equation}
+  T_\beta \sim \frac{n_b}{R_{\nu_e}+R_{\bar{\nu}_e}}
+\end{equation}
+where $n_b$ is the baryon number density, and $R_{\nu_e}$ and $R_{\bar{\nu}_e}$
+are the local leakage lepton-number emission rates, a rough estimate for the
+\todo{how good?}
+rates of the $\beta$-capture reactions (see Sec.~\ref{sec:leakage}).
+This timescale is much larger than 1~ms inside the funnel, where it may be
+neglected, and much less than 1~ms inside the disk, where it quenches the
+explosion.
+
+\subsection{Back-of-the-Envelope Estimate of $Q_{\nu\bar{\nu}}$}
+\label{ssec:back_of_envelope_Q}
+Excluding points affected by these explosion-quenching processes, we can make an
+estimate of the power at infinite separation:
+\begin{equation}
+  Q_{\nu\bar{\nu}} \approx 4 \pm 0.5 \times 10^{52}\, {\rm erg\,s^{-1}}\nonumber,
+\end{equation}
+where I have summed $q_{\nu\bar{\nu}}$ using a simple midpoint-rule
+\todo{include $\pm$ order-of-mag for numer res}
+\todo{add/explain redshift term}
+numerical integration,
+\todo{estimate midpoint err, goes as $q_{\nu\bar{\nu}}''$}
+and the uncertainty is the volume integral of the uncertainties estimated by the
+Monte Carlo algorithm, which we guess to be an underestimate, from the results
+of the Asano-Fukuyama test in Sec.~\ref{sssc:q_af_sphere}.
+
+To order-of-magnitude, this power is maintained for the lifetime of the disk,
+$T_{\rm dep}\sim200$~ms (see Sec.~\ref{sec:scales}). Thus
+\begin{equation}
+  E_{\rm jet} \approx 10^{52} \, {\rm erg} \nonumber,
+\end{equation}
+which is comparable to the brightest luminosities and durations observed for
+shoft duration gamma ray bursts:
+\todo{cite Nakar 2007}
+\begin{eqnarray}
+  L &\sim& 10^{50\text{--}52} \, {\rm erg s^{-1}} \nonumber\\
+  \langle T_{90} \rangle &\sim& 100 \,{\rm ms}. \nonumber
+\end{eqnarray}
+\todo{actually, $E_{\rm jet}$ is larger by factor of 10}
+We conclude that in this case of a high-spin black hole and massive accretion
+disk, neutrino-antineutrino annihilation is a viable candidate alone to power a
+gamma ray burst.
+
+The two serious limitations of this back-of-the-envelope calculation,
+however, is 1) the error in the numerical integration over the spatial volume,
+which we could improve with a Monte Carlo integration over that volume,
+and 2) the numerical noise and lack of information about the state of the matter
+in the funnel.
+\todo{also related to lack of info about baryon loading}
+
