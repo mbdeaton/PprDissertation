@@ -1129,7 +1129,7 @@ the sky.
 Eqn.~\ref{eqn:qdot_general} is six-dimensional, and integrating it is a
 computational challenge.
 A straightforward trapezoidal integration with a grid of only 10
-points along each dimension requires $10^6$ samplings of $f_\nu$ and
+points along each dimension requires $10^6$ samples of $f_\nu$ and
 $f_{\bar{\nu}}$, each requiring a separate geodesic integration taking
 $\sym1$~s; on one processor this would take weeks of walltime.
 Additionally, 10 points is a very low-resolution integration, and we wish
@@ -1147,7 +1147,7 @@ heavily those regions that contribute most to the integral.
 In tests with analytic integrands mimicking the expected distribution functions,
 I found the numerical estimate to converge to the true integral faster than
 $N^{1/2}$, as expected for a statistical estimate. This test required
-$N\sim3\times10^4$ for 10\% accuracy.
+$N\sim10^4$ for 10\% accuracy.
 
 The range of the energy integration must capture the major contributions to the
 integral, and not be so large that the adaptive algorithm has difficulty
@@ -1158,20 +1158,77 @@ finding the important range at an early stage.
 \label{ssec:q_tests}
 I implemented the Monte Carlo integration of $q_{\nu\bar{\nu}}$ as a driver
 around the matter ray tracing code described in Sec.~\ref{sec:f_algorithm},
-using code freely available in the open source Gnu Scientific Libary (GSL).
-\todo{cite}
-To test the integration let us return to the toy models presented in
+using code freely available in the open source GNU Scientific
+Libary\footnote{\url{http://www.gnu.org/software/gsl/}}.
+Rather than compute the integral with a pre-specified number of samples, $N$,
+the algorithm proceeds iteratively until its error estimate falls below
+a pre-specified accuracy threshold.
+The error is estimated, in the Vegas framework, from the variance in the
+samples of the integrand. 
+
+To test the integration let us revisit the toy models from
 Sec.~\ref{ssec:f_tests}.
 
 \subsubsection{Homogeneous Minkowski}
 \label{sssc:q_homo_mink}
 We may analytically compute $q_{\nu\bar{\nu}}$ in the homogeneous emitting
 medium in flat spactime presented in Sec.~\ref{sssc:f_homo_mink}.
+\todo{add notes from *.nb}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=16cm]{Figures/convergence_homogeneous_minkowski}
+  \caption[Convergence of $q_{\nu\bar{\nu}}$ in Homogeneous Minkowski Case]{
+    Convergence of the integration estimating $q_{\nu\bar{\nu}}$ in the
+    homogeneous Minkowski case.
+    The horizontal axis is the number of samples of the integrand, $N$;
+    the number of unique rays traced, therefore, is $2N$.
+    At five different accuracy thresholds (the five clusters), I have computed
+    the integral 12 times, to display the statistical scatter.
+    The Vegas estimates of the error are given as as error bars.
+    The legend labels each group of points by the accuracy threshold; but note,
+    at low accuracy, the algorithm is bad at guessing how many samples it needs,
+    so the threshold and the final error estimate disagree at low-$N$.
+    The 12 points in each cluster are plotted with a small, false scatter in $N$
+    to make them visually distinct.
+    The dashed lines show the correct value of $q_{\nu\bar{\nu}}$ and an
+    $N^{1/2}$-envelope (with an arbitrary vertical scaling to bound the points
+    at the highest resolutions).
+  }
+  \label{fig:convergence_homo_mink}
+\end{figure}
+
+Fig.~\ref{fig:convergence_homo_mink} shows the results of a suite of
+computations at increasing accuracy thresholds.
+The numerical estimate of $q_{\nu\bar{\nu}}$ converges to the analytical result
+faster than $N^{1/2}$ (the dotted envelope in the figure).
+For an accuracy of 10\% (in this simple case) we need to compute
+$\sym2000$ samples of the integrand.
 
 \subsubsection{Asano-Fukuyama Sphere}
 \label{sssc:q_af_sphere}
 We may also analytically compute $q_{\nu\bar{\nu}}$ outside the hot compact
 star presented in Sec.~\ref{sssc:f_af_sphere}.
+\todo{add notes from *.nb}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=16cm]{Figures/convergence_asano_fukuyama}
+  \caption[Convergence of $q_{\nu\bar{\nu}}$ in Asano-Fukuyama Sphere Case]{
+    Convergence of the integration estimating $q_{\nu\bar{\nu}}$ in the
+    hot compact star case.
+    See caption for Fig.~\ref{fig:convergence_homo_mink} for description.
+  }
+  \label{fig:convergence_af_sphere}
+\end{figure}
+
+Fig.~\ref{fig:convergence_af_sphere} shows the results of a suite of
+computations at increasing accuracy thresholds.
+Unlike the homogeneous Minkowski case, here the Vegas algorithm
+systematically underestimates its error.
+In fact, the integration clearly converges to the incorrect value
+underestimating $q_{\nu\bar{\nu}}$ by about 15\% at the highest resolution.
+\todo{catalog sources for error in this case}
 
 \section{$q_{\nu \bar{\nu}}$ for this Accretion Disk}
 \label{sec:q_this_case}
