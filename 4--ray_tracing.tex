@@ -27,15 +27,15 @@ $f_{\nu_i}(x^\alpha;p_k)$.
 
 Where the mean free path of the neutrinos is long with respect to local fluid
 \todo{show this is the case}
-scales at $x^\alpha$, $f(x^\alpha)$ is dependent upon the state of matter far
-away from $x^\alpha$. In lieue of solving the Boltzmann equation in full
+scales at $x^\alpha$, $f_\nu(x^\alpha)$ is dependent upon the state of matter
+far away from $x^\alpha$. In lieue of solving the Boltzmann equation in full
 \todo{ref eqn in Chap.~\ref{chap:intro}}
 (which would involve an evolution of a scalar field like those presented in
 Chap.~\ref{chap:leakage} for fluid and metric fields, but over a 6-dimensional
 phase space manifold with coordinates $\{x^j,p_k\}$, and therefore
 computationally out of reach today),
 we can capture this nonlocality with a ray tracing solution.
-In ray tracing, $f(x^\alpha;p_k)$ is computed by tracing a neutrino trajectory
+In ray tracing, $f_\nu(x^\alpha;p_k)$ is computed by tracing a neutrino trajectory
 backwards from $x^\alpha$ with a momentum $p_k$, keeping track of additions
 and depletions to the neutrino number density along that trajectory.
 Each ray yields an approximate solution to the Boltzmann equation at a
@@ -52,7 +52,7 @@ In this chapter I present a ray tracing algorithm for estimating
 $f_{\nu_i}(x^\alpha;p_k)$ in relativistic numerical spacetimes and fluid
 distributions, I calculate $f_{\nu_i}$ describing neutrino
 emission from the model accretion disk from Chap.~\ref{chap:leakage},
-and I use these $f$s to estimate $q_{\nu\bar{\nu}}$, the heating due to
+and I use these $f_\nu$s to estimate $q_{\nu\bar{\nu}}$, the heating due to
 neutrino-antineutrino annihilation in the funnel of the disk.
 Because of large uncertainties,
 this last calculation should be considered a proof-of-concept for future
@@ -67,10 +67,10 @@ disk. Secs.~\ref{sec:q_algorithm}~and~\ref{sec:q_this_case} describe the
 algorithm for and results from a neutrino-antineutrino annihilation heating
 calculation for this model.
 
-\section{Calculating $f_\nu$: Ray Tracing Algorithm}
+\section{Calculating $f_\nu$}
 \label{sec:f_algorithm}
 
-In the most comprehensive treatment, a ray tracing solution for $f$ is calculated
+In the most comprehensive treatment, a ray tracing solution for $f_\nu$ is calculated
 by solving the rendering equation backwards along a trajectory terminating at
 $x^a$ with momentum $p_k$:
 \todo{derive rendering eqn, or check/ref below}
@@ -90,7 +90,7 @@ All the neutrino masses are vanishingly small in the case of nuclear
 accretion disks, with fluid energy scales of a few MeV. So in the following we
 set $m_{\nu_i}=0$.
 
-As $f$ accumulates along the ray, the integrand in Eqn.~\ref{eqn:rendering}
+As $f_\nu$ accumulates along the ray, the integrand in Eqn.~\ref{eqn:rendering}
 gets attenuated by the exponential term, which is the optical depth defined in
 Chap.~\ref{chap:intro}.
 \todo{ref eqn}
@@ -133,7 +133,7 @@ interpolating in between slices. This greatly reduces the memory demands (each
 time slice comprises $\sym$1~GB of data) and complexity of the calculation.
 \todo{estimate disk changes over 1~ms: from response to leakage referee}
 
-\subsection{Geodesic Equations}
+\subsection{Geodesic and Opacity Equations}
 \label{ssec:geodesic}
 In a general spacetime like that of our disk model, neutrinos do not follow
 straight Euclidean paths, but curves that obey the geodesic equation,
@@ -309,7 +309,7 @@ I label momentum colatitude and azimuthal angles in the rotated frame as $A$
 and $B$ respectively. These angles are related to $\alpha$ and $\beta$ by a
 simple Euler rotation, the specifics of which are irrelevant to this thesis.
 
-\subsection{Numerical Integration}
+\subsection{Numerical Integration of the Ray Equations}
 \label{ssec:timestepping}
 Eqns.~\ref{eqn:geo_x}--\ref{eqn:geo_tau} are solved by discretizing time and
 performing a numerical integration.
@@ -356,15 +356,15 @@ $\tau(t)=1$, using a robust Newton-Raphson root finding algorithm.
 We examine the error associated with the uncertainty in the location of the
 neutrinosurface in Sec.~\ref{sssc:f_af_sphere}.
 
-\subsection{Code Tests}
+\subsection{Code Tests of $f_\nu$}
 \label{ssec:f_tests}
-To test our code, we compute $f$ in two scenarios for which the analytic solution
+To test our code, we compute $f_\nu$ in two scenarios for which the analytic solution
 is known.
 
 \subsubsection{Homogeneous Minkowski}
 \label{sssc:f_homo_mink}
 In a homogeneous medium of temperature $T$, opacity $\zeta$, and neutrino chemical
-potential $\eta$, on a flat spacetime manifold, $f$ is isotropic and homogeneous:
+potential $\eta$, on a flat spacetime manifold, $f_\nu$ is isotropic and homogeneous:
 \begin{equation}
   f(x^\alpha;p_k) \rightarrow f(\varepsilon)
   =(e^{\varepsilon/k_{\rm B}T-\eta}+1)^{-1}
@@ -389,7 +389,7 @@ $f_{\nu_i}=\{0.109,0.130,0.119\}$ for each species respectively,
 as expected. These results were exact to double precision because the fields
 varied smoothly, and interpolation was exact.
 
-\subsubsection{Asano-Fukuyama Sphere}
+\subsubsection{Hot Compact Star}
 \label{sssc:f_af_sphere}
 Outside of a hot, compact, non-rotating star in dynamical equilibrium, the
 spacetime is spherically symmetric and stationary. The only solution of that
@@ -412,7 +412,7 @@ It will be measured by a stationary observer at $r$
 as having a lower energy
 $\varepsilon=\varepsilon' \, \alpha(R_\nu)/\alpha(r)$.
 Therefore, for momentum angles in the direction of the neutrinosphere,
-$f(\varepsilon)=\left(\exp(\varepsilon/k_{\rm B}T_{\rm eff}-\eta)+1\right)^{1/2}$,
+$f_\nu(\varepsilon)=\left(\exp(\varepsilon/k_{\rm B}T_{\rm eff}-\eta)+1\right)^{1/2}$,
 with an effective temperature $T_{\rm eff}=T \, \alpha(R_\nu)/\alpha(r)$,
 where $T$ is the fluid temperature measured in the fluid rest frame.
 In terms of the conventional momentum variables $\{p_t,\alpha,\beta\}$
@@ -439,7 +439,7 @@ star,
 as derived by Asano-Fukuyama (2000).
 \todo{cite properly, and fix, this isn't your angle $A$}
 
-Fig.~\ref{fig:f_hot_ns} shows $f(p_t=20\,{\rm MeV})$ across all angles for
+Fig.~\ref{fig:f_hot_ns} shows $f_\nu(p_t=20\,{\rm MeV})$ across all angles for
 a patch of sky centered on the emitter. The spacetime and the emitter are
 characterized by $T=5$~MeV, $\eta=0.1$, $R_g=2\,M_\odot$, $R_\nu=3\,M_\odot$.
 To impose a sharp neutrinosphere at $R_\nu$, we use a step function opacity
@@ -447,7 +447,7 @@ with $\zeta=10^6\,{\rm Msun}^{-1}\,{\rm MeV}^{-2}$ inside the star.
 This scenario represents an unphysically compact star (in fact, this
 neutrinosphere coincides with the radius of circular neutrino orbits), but it
 serves its purpose here to stress-test the ray tracing code in strong gravity.
-For comparison, in the same figure we also show a ray tracing sampling of $f$
+For comparison, in the same figure we also show a ray tracing sampling of $f_\nu$
 at the same coordinate viewing position for the same star embedded in flatspace.
 Both the angular extent of the stars in Fig.~\ref{fig:f_hot_ns}, and the
 intensity of neutrinos emitted by their surfaces at this energy agree
@@ -461,10 +461,11 @@ fluid configurations, we expect to encounter discontinuities also (though
 probably not as extreme), and we may have to used fixed timesteps in those
 cases also.
 
-In Fig.~\ref{fig:f_hot_ns}, the Schwarzschild case, the variation in $f$
+In Fig.~\ref{fig:f_hot_ns}, the Schwarzschild case, the variation in $f_\nu$
 across the surface of the star is a spurious artifact of our finite timestep:
 the redshift is greater along directions whose rays yield an estimate of the
 neutrinosurface at $r<R_\nu$, and lesser for neutrinosurfaces at $r>R_\nu$.
+\todo{figure showing this effect}
 
 \begin{figure}
   \centering
@@ -476,8 +477,8 @@ neutrinosurface at $r<R_\nu$, and lesser for neutrinosurfaces at $r>R_\nu$.
     \centering
     \includegraphics[width=1\linewidth]{Figures/fnue_Alpha_vs_Beta-asano_fukuyama_flat}
   \end{subfigure}
-  \caption[Monochromatic sky map of $f$ for the hot compact star]{
-    $f$ across a patch of sky in a single energy band, $p_t=20$~MeV.
+  \caption[$f_\nu$ for a hot compact star: sky map at high energy]{
+    $f_\nu$ across a patch of sky in a single energy band, $p_t=20$~MeV.
     The source is a hot compact star: $R_g=2\,M_\odot$, $R_\nu=3\,M_\odot$,
     $T=5$~MeV, and $\eta=0.1$.
     The observer is stationary at Schwarzschild radius $5\,M_\odot$.
@@ -492,9 +493,9 @@ neutrinosurface at $r<R_\nu$, and lesser for neutrinosurfaces at $r>R_\nu$.
 Fig.~\ref{fig:f_spectrum_hot_ns} presents the energy spectrum emitted by this
 surface over the broad band $p_t\in[0.01,100]~MeV$, for both Schwarzschild
 and Minkowski cases.
-We also show the relative errors in $f(p_t)$, with respect to the analytic
-solution $f_{\rm ex}(p_t)$. The Minkowski calculation is exact to machine
-precision, because location of the neutrinosurface has no effect on $f$.
+We also show the relative errors in $f_\nu(p_t)$, with respect to the analytic
+solution $f_{\nu,\rm ex}(p_t)$. The Minkowski calculation is exact to machine
+precision, because location of the neutrinosurface has no effect on $f_\nu$.
 But the relative errors in the Schwarzschild case are large, and grow to
 20\% at 100~MeV. (It is important to keep in mind that this is not the case
 generally, but only when the neutrinosurface is in a steep gravitational
@@ -514,14 +515,14 @@ steeply upon the neutrino energies.
     \centering
     \includegraphics[width=1\linewidth]{Figures/fnueError_vs_E-asano_fukuyama}
   \end{subfigure}
-  \caption[Asymptotic energy spectrum of the hot compact star]{
+  \caption[$f_\nu$ for a hot compact star: asymptotic energy spectrum]{
     The $p_t$ spectrum of the hot compact star from the same viewing
-    position as in Fig.~\ref{fig:f_hot_ns}. These plots show $f$ sampled by
+    position as in Fig.~\ref{fig:f_hot_ns}. These plots show $f_\nu$ sampled by
     the $\cos A=0$, $B=0$ rays.
-    \emph{Top Figure}: $f(p_t)$ in the case of a curved and flat spacetime.
-    The exact distribution functions $f_{\rm ex}$ are represented as solid lines,
-    which lie directly beneath the data points.
-    \emph{Bottom Figure}: The relative error in $f$ for these two cases.
+    \emph{Top Figure}: $f_\nu(p_t)$ in the case of a curved and flat spacetime.
+    The exact distribution functions $f_{\nu, \rm ex}(p_t)$ are represented as solid
+    lines, which lie directly beneath the data points.
+    \emph{Bottom Figure}: The relative error in $f_\nu$ for these two cases.
     For the flat spacetime distribution function, the error bottoms out at
     machine roundoff.
   }
@@ -532,7 +533,7 @@ steeply upon the neutrino energies.
 \label{sec:f_this_case}
 
 Let us examine the neutrino emission from the post-merger accretion disk model
-presented in Chap.~\ref{chap:leakage}. Here we sample $f$ at two positions,
+presented in Chap.~\ref{chap:leakage}. Here we sample $f_\nu$ at two positions,
 on the rotation axis and on the equator, about 120~km from the black hole
 and at a late time, about 40~ms after merger. At this time the disk has reached
 a quasi-equilibrium accretion state, with most of the asymmetry of the merger
@@ -556,9 +557,9 @@ annihilation power calculation will provide a lower bound on jet energetics.
 \label{sssc:f_this_case_A}
 
 In Figs.~\ref{fig:f_disk_axis_13MeV}~and~\ref{fig:f_disk_axis_34MeV} I display
-$f(\Omega_i)$ over the whole sky, as viewed from the rotation axis, at the
+$f_\nu(\Omega_i)$ over the whole sky, as viewed from the rotation axis, at the
 characteristic energies of 13~MeV and 34~MeV. These figures are analagous to
-Fig.~\ref{fig:f_hot_ns}. I've sampled $f$ at these energies because the first is
+Fig.~\ref{fig:f_hot_ns}. I've sampled $f_\nu$ at these energies because the first is
 near the average neutrino energy (see for example
 Fig.~\ref{fig:neutrinos_by_species}), and the latter gives us a feel for the
 angular distribution of high-energy emission. At lower energies our opaque
@@ -584,7 +585,7 @@ $\nu_x \equiv \{\nu_\mu,\bar{\nu}_\mu,\nu_\tau,\bar{\nu}_\tau\}$.
     \centering
     \includegraphics[width=1\linewidth]{Figures/f_nux-A-13MeV}
   \end{subfigure}
-  \caption[Disk emission as seen from rotation axis: at average energy]{
+  \caption[$f_\nu$ for the disk, from the rotation axis: sky map at average energy]{
     Neutrino distribution functions from the accretion disk over the sky in a
     single energy band, $p_t=13$~MeV. The observer is stationary on the rotation
     axis at coordinate radius 120~km from the black hole. The panels from
@@ -607,7 +608,7 @@ $\nu_x \equiv \{\nu_\mu,\bar{\nu}_\mu,\nu_\tau,\bar{\nu}_\tau\}$.
     \centering
     \includegraphics[width=1\linewidth]{Figures/f_nux-A-34MeV}
   \end{subfigure}
-  \caption[Disk emission as seen from rotation axis: at high energy]{
+  \caption[$f_\nu$ for the disk, from the rotation axis: sky map at high energy]{
     Same as Fig.~\ref{fig:f_disk_axis_13MeV}, but in the energy band $p_t=34$~MeV.
     Left to right, the panels depict $f_{\nu_e}$, $f_{\nu_a}$, and $f_{\nu_x}$.
   }
@@ -649,7 +650,7 @@ Several observations:
     properties and a rough estimate of whether the neutrinos at that location are
     trapped or free: $\langle \tau_{\nu_i} \rangle$, the energy-averaged optical
     depth.
-    This skews the ray tracing calculation of $f$ at energies very different
+    This skews the ray tracing calculation of $f_\nu$ at energies very different
     than $\langle \varepsilon_{\nu_i} \rangle$.
     %At energies below
     %$\langle \varepsilon_{\nu_i} \rangle$, the neutrinosurface found by ray
@@ -668,7 +669,7 @@ Several observations:
 
     (Note, because of lower interaction rates for heavy lepton neutrinos,
     $\eta_{\nu_x}$ is set identically to zero in our leakage approximation.)
-    \todo{why does this make $f$ sharp?}
+    \todo{why does this make $f_\nu$ sharp?}
   \item $f_{\nu_a}$ and $f_{\nu_x}$ appear similar at these two energies.
     This may be a special coincidence of this late time, when $\nu_a$ and
     $\nu_x$ opacities are similar (see Fig.~\ref{fig:zeta_meridional}).
@@ -694,7 +695,7 @@ Several observations:
 
     However, our use of leakage chemical potentials to construct the neutrino
     distribution functions (as discussed in observation~\ref{item:eta}) may contribute
-    to the similarity of these two $f$s. Even though the $\nu_x$-surface is
+    to the similarity of these two $f_\nu$s. Even though the $\nu_x$-surface is
     a little deeper in the disk and at a slightly higher temperature than the
     $\nu_a$-surface (effectively boosting $\nu_x$ emission),
     its chemical potential is lower (effectively suppressing $\nu_x$ emission).
@@ -757,7 +758,7 @@ Several observations:
 \label{sssc:f_this_case_E}
 
 In Figs.~\ref{fig:f_disk_eq_13MeV}~and~\ref{fig:f_disk_eq_34MeV} I display
-$f(\Omega_i)$ over the whole sky, as viewed from the equator, at the
+$f_\nu(\Omega_i)$ over the whole sky, as viewed from the equator, at the
 same characteristic energies as in
 Figs.~\ref{fig:f_disk_axis_13MeV}~and~\ref{fig:f_disk_axis_34MeV}.
 
@@ -775,7 +776,7 @@ Figs.~\ref{fig:f_disk_axis_13MeV}~and~\ref{fig:f_disk_axis_34MeV}.
     \centering
     \includegraphics[width=1\linewidth]{Figures/f_nux-E-13MeV}
   \end{subfigure}
-  \caption[Disk emission as seen from equatorial plane: at average energy]{
+  \caption[$f_\nu$ for the disk, from the equatorial plane: sky map at average energy]{
     Neutrino distribution functions from the accretion disk over the sky in a
     single energy band, $p_t=13$~MeV. The observer is stationary in the
     equatorial plane at coordinate radius 120~km from the black hole.
@@ -799,7 +800,7 @@ Figs.~\ref{fig:f_disk_axis_13MeV}~and~\ref{fig:f_disk_axis_34MeV}.
     \centering
     \includegraphics[width=1\linewidth]{Figures/f_nux-E-34MeV}
   \end{subfigure}
-  \caption[Disk emission as seen from equatorial plane: at high energy]{
+  \caption[$f_\nu$ for the disk, from the equatorial plane: sky map at high energy]{
     Same as Fig.~\ref{fig:f_disk_eq_13MeV}, but in the energy band $p_t=34$~MeV.
     Left to right, the panels depict $f_{\nu_e}$, $f_{\nu_a}$, and $f_{\nu_x}$.
   }
@@ -829,7 +830,7 @@ Several observations:
 \begin{figure}
   \centering
   \includegraphics[width=10cm]{Figures/seeing_back_of_disk}
-  \caption[Schematic of ray bending around the disk]{
+  \caption[Cartoon of neutrino rays bending over the disk]{
     Cartoon reference of a meridional slice of the disk,
     explaining how the viewer on the right
     can see the far side of the neutrinosurface. The fluid is represented as
@@ -841,7 +842,7 @@ Several observations:
 \begin{figure}
   \centering
   \includegraphics[width=10cm]{Figures/seeing_disk_doppler_shift}
-  \caption[Schematic of doppler shift due to disk rotation]{
+  \caption[Cartoon of the doppler shift due to disk rotation]{
     Cartoon reference of an equatorial slice of the disk,
     explaining the doppler shift observed by the viewer on the
     right. The fluid velocity field is represented by arrows: longer is faster.
@@ -854,7 +855,7 @@ Several observations:
   \label{fig:schematic_ray_doppler}
 \end{figure}
 
-\section{Calculating $q_{\nu \bar{\nu}}$: Integration Algorithm}
+\section{Calculating $q_{\nu \bar{\nu}}$}
 \label{sec:q_algorithm}
 The standard model for gamma ray bursts consists of an ultrarelativistic jet
 driven by rapid accretion onto a stellar-mass black hole. One of the missing
@@ -971,7 +972,7 @@ energy, black hole spin, and accretion rate for their models. For nearly
 extremal spins and large accretion rates, they estimated this process was
 sufficient to generate GRBs with the observed energies.
 
-\subsection{Heating Integral}
+\subsection{Neutrino-Antineutrino Annihilation Equations}
 \label{ssec:nunubar_integral}
 Our goal is to calculate the total heating rate, $Q_{\nu \bar{\nu}}$ (erg~s$^{-1}$)
 due to $\nu\,\bar{\nu} \rightarrow e^{-}\,e^{+}$ by summing up the contributions
@@ -1019,7 +1020,7 @@ The annihilation rate is written in a tetrad as \cite{goodman87}:
 where $\diff^3p$ are the covariant components of the spatial momentum volume,
 $\diff p_x \diff p_y \diff p_z$.
 Eqn.~\ref{eqn:qdot_orig} is covariant since all of its constituents are
-invariants: $f$, $\diff^3p/p^t$, and $(p_{\nu \alpha} p_{\bar{\nu}}^\alpha)$.
+invariants: $f_\nu$, $\diff^3p/p^t$, and $(p_{\nu \alpha} p_{\bar{\nu}}^\alpha)$.
 \todo{ref Chap.~\ref{chap:intro}}
 
 $K$ is given in the Standard Model as:
@@ -1154,7 +1155,7 @@ integral, and not be so large that the adaptive algorithm has difficulty
 finding the important range at an early stage.
 \todo{add notes on energy bounds from equations.tex}
 
-\subsection{Code Tests}
+\subsection{Code Tests of $q_{\nu\bar{\nu}}$}
 \label{ssec:q_tests}
 I implemented the Monte Carlo integration of $q_{\nu\bar{\nu}}$ as a driver
 around the matter ray tracing code described in Sec.~\ref{sec:f_algorithm},
@@ -1178,7 +1179,7 @@ medium in flat spactime presented in Sec.~\ref{sssc:f_homo_mink}.
 \begin{figure}
   \centering
   \includegraphics[width=16cm]{Figures/convergence_homogeneous_minkowski}
-  \caption[Convergence of $q_{\nu\bar{\nu}}$ in Homogeneous Minkowski Case]{
+  \caption[Convergence of $q_{\nu\bar{\nu}}$ in the homogeneous Minkowski case]{
     Convergence of the integration estimating $q_{\nu\bar{\nu}}$ in the
     homogeneous Minkowski case.
     The horizontal axis is the number of samples of the integrand, $N$;
@@ -1205,7 +1206,7 @@ faster than $N^{1/2}$ (the dotted envelope in the figure).
 For an accuracy of 10\% (in this simple case) we need to compute
 $\sym2000$ samples of the integrand.
 
-\subsubsection{Asano-Fukuyama Sphere}
+\subsubsection{Hot Compact Star}
 \label{sssc:q_af_sphere}
 We may also analytically compute $q_{\nu\bar{\nu}}$ outside the hot compact
 star presented in Sec.~\ref{sssc:f_af_sphere}.
@@ -1214,7 +1215,7 @@ star presented in Sec.~\ref{sssc:f_af_sphere}.
 \begin{figure}
   \centering
   \includegraphics[width=16cm]{Figures/convergence_asano_fukuyama}
-  \caption[Convergence of $q_{\nu\bar{\nu}}$ in Asano-Fukuyama Sphere Case]{
+  \caption[Convergence of $q_{\nu\bar{\nu}}$ in the hot compact star case]{
     Convergence of the integration estimating $q_{\nu\bar{\nu}}$ in the
     hot compact star case.
     See caption for Fig.~\ref{fig:convergence_homo_mink} for description.
@@ -1261,7 +1262,7 @@ edges of this grid.
 \begin{figure}
   \centering
   \includegraphics[width=10cm]{Figures/annihilation-slice}
-  \caption[Grid Used for the Volume Integral of $q_{\nu\bar{\nu}}$]{
+  \caption[Grid used for the volume integral of $q_{\nu\bar{\nu}}$]{
     Meridional slice of the grid used to compute the spatial volume
     integral $Q_{\nu\bar{\nu}}=\int\diff^3 x\,q_{\nu\bar{\nu}}$ over one octant
     of the disk. The grid is composed of $4\times4\times9=144$~points,
@@ -1276,7 +1277,7 @@ edges of this grid.
 \begin{figure}
   \centering
   \includegraphics[width=13cm]{Figures/annihilation_rate_x-1}
-  \caption[$q_{\nu\bar{\nu}}$ at the Grid Points]{
+  \caption[$q_{\nu\bar{\nu}}$ at the grid points]{
     Meridional slice of the annihilation rate in the y-z plane of the grid
     depicted in Fig.~\ref{fig:q_grid}. The axes are labeled in units of
     $M_\odot\sim1.5$~km.
@@ -1284,7 +1285,7 @@ edges of this grid.
   \label{fig:q_rate_meridional}
 \end{figure}
 
-\subsection{Excluding some Points from the Integral}
+\subsection{Excluding Some Points from the Integral}
 \label{ssec:excluding_pts}
 
 The goal of our calculation is to estimate the free energy available to drive
@@ -1398,7 +1399,7 @@ numerical integration,
 \todo{estimate midpoint err, goes as $q_{\nu\bar{\nu}}''$}
 and the uncertainty is the volume integral of the uncertainties estimated by the
 Monte Carlo algorithm, which we guess to be an underestimate, from the results
-of the Asano-Fukuyama test in Sec.~\ref{sssc:q_af_sphere}.
+of the hot, compact star test in Sec.~\ref{sssc:q_af_sphere}.
 
 To order-of-magnitude, this power is maintained for the lifetime of the disk,
 $T_{\rm dep}\sim200$~ms (see Sec.~\ref{sec:scales}). Thus
