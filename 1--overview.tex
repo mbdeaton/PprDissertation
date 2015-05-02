@@ -2,6 +2,7 @@
 \label{chap:overview}
 
 \section{Why this Study?}
+\label{sec:why_this_study}
 
 Neutron stars and stellar-mass black holes form out of massive stars when they
 exhaust their nuclear fuel. White dwarfs form in the same way, but from less
@@ -52,10 +53,11 @@ and observations confirm \citep{will2014-review}
 that their orbit slowly shrinks. Orbital energy and angular momentum
 are transported away from the system by gravitational waves.
 
-Compact binaries come in three combinations: black hole--black hole, neutron
-star--black hole, and neutron star--neutron star. At the writing of this thesis,
+Compact binaries come in three combinations: black hole--black hole \bhbh,
+neutron star--black hole \nsbh, and neutron star--neutron star \nsns.
+At the writing of this thesis,
 the only known compact binary systems are ten neutron star--neutron star
-binaries \citep{post2014-evolution_compact_binaries}; no compact binaries
+binaries \nsns \citep{post2014-evolution_compact_binaries}; no compact binaries
 involving a black hole have yet been discovered.
 Becuase all the known systems comprise neutron stars---which are radio-visible as
 pulsars, blinking at exquisitely regular intervals---excellent orbital timing
@@ -77,17 +79,18 @@ at which time the quiescent binary will go through a number of violent changes.
 This is called merger.
 
 \subsection{How Common are Neutron Star--Black Hole Mergers?}
+\label{ssec:how_common}
 
 Astrophysicists use the small collection of known neutron star--neutron star
-binaries to predict the merger rate of such systems in the local universe.
+binaries \nsns to predict the merger rate of such systems in the local universe.
 From the ? known systems at the time of publication, Kalogera et al.\
-\citeyearpar{kalo2004-bns_merger_rate, kalo2004-erratum} extrapolate ?
+\citeyearpar{kalo2004-bns_merger_rate, kalo2004-erratum} extrapolated ?
 \todo{fill in}
 mergers per Milky-Way-equivalent-galaxy per million years.
-Neither black hole--black hole or neutron star--black hole merger rates can
-be extrapolated from observations.
+Neither black hole--black hole \bhbh nor neutron star--black hole \nsbh
+merger rates can be extrapolated from observations.
 
-However, one possible progenitor to such a system is known: Cygnus X-1.
+However, at least one possible progenitor to such a system is known: Cygnus X-1.
 Cygnus X-1 (discovered by ?
 \todo{citealt Bowyer+ 1965}
 )
@@ -97,36 +100,159 @@ main-sequence companion.
 \todo{cite Wong+ 2012}
 Several evolution scenarios are possible, with a small probability of forming
 a compact binary in close enough orbit to merge within the age of the Universe
-(about 1\% according to ?).
+(about 1\% likelihood according to ?).
 Dominik et al.\
 \todo{citet Belczynski+ 2011}
 explore these scenarios, and from their relative likelihoods, draw conclusions
-about the rate of neutron star--black hole mergers in our galaxy.
+about the rate of neutron star--black hole \nsbh mergers in our galaxy.
 In ? million years,
 \todo{check}
 the companion star will exhaust its nuclear fuel and its core will collapse,
 triggering a supernova. It may form a neutron star, which, if the asymmetry of
 the explosion isn't so great as to gravitationally unbind it from the black hole,
-will yield a neutron star--black hole binary. In less than 1\% of the possible
+will yield a neutron star--black hole \nsbh binary. In less than 1\% of the possible
 scenarios, the compact binary forms close enough to merge within the age of the
 Universe. If the only formation channel is through
-binaries like the one that formed the Cygnus X-1 system, there must not be many
-neutron star--black hole binaries in our galaxy, and the merger rate observable
+binaries like the one that formed the Cygnus X-1 system, there must be very few
+neutron star--black hole \nsbh binaries in our galaxy, and the merger rate observable
 by Advanced LIGO is 1 detection every 30-250~years.
 \todo{citet Belczynski+ 2011}
+\todo{introduce LIGO}
 
+%\subsubsection{Theoretical Answers}
+%\label{sssc:theory}
 The same astrophysicists have pursued a more comprehensive approach to this
 calculation through population synthesis studies: the modeling of large numbers
 of stars representative of populations observed in our own and nearby galaxies.
-The models are driven by nuclear physics, gravitational interactions, and
-supernova models to reach an ultimate compact object conclusion: binary or no,
-and if yes, then is it orbiting closely enough to merge withing the age of
-our Universe? The models are attended by large uncertainties, but they
-predict ? neutron star--black hole mergers per Milky-Way-equivalent-galaxy
-per Myr.
-\todo{check/cite Dominik+ 2013}
+The models attempt to capture the particular nuclear effects, gravitational
+interactions, stellar evolutions, and supernova dynamics of millions of binaries,
+to reach an ultimate conclusion about the compact remnants in each system:
+binary or no? and if yes, is the binary orbiting closely enough to merge in
+$10^{10}$~yrs, the age of our Universe?
+Population synthesis models are attended by large uncertainties,
+but for Milky-Way-equivalent galaxies, at the current of the Universe,
+Dominik et al. 2013\
+\todo{fix cite}
+predict ? neutron star--black hole \nsbh mergers per galaxy per Myr.
+\todo{compared to \nsns, much more common in low-z galaxies}
+This rate gives us a theoretical answer to the question, ``how common are
+neutron star--black hole mergers?''.
+
+%\subsubsection{Observational Answers}
+%\label{sssc:observation}
+These theoretical predictions may be complemented or challenged by observations.
+In the next few years, astronomers expect to record the final seconds to minutes
+\todo{check}
+of the gravitational wave signal emitted by a compact binary
+as it merges, using gravitational wave interferometers like LIGO, Virgo, and Geo.
+\todo{cite AdvLIGO white paper}
+Or if matter is at hand, that is, if one or both of the objects is a neutron
+star, they may observe electromagnetic or neutrino signals. Let's discuss
+electromagnetic signals here; in Sec.~\ref{ssec:neutrino_roles}, we will
+turn to neutrinos.
+
+A diverse family of electromagnetic signals is possible from a neutron
+star--neutron star \nsns or neutron star--black hole merger \nsbh:
+\begin{itemize}
+  \item Kilonova: Some of the neutron star material may be ejected and escape
+    from the system. As this neutron-rich matter expands and cools, exotic heavy
+    nuclei form like ice crystals in a winter pond. These nuclei only form in a
+    low-energy bath of free neutrons via rapid neutron capture, the r-process.
+    Later, these unstable nuclei decay and, like a nuclear power stack,
+    \todo{stack?}
+    heat the ejecta, causing it to emit photons with a
+    thermal spectrum, at optical or infrared frequencies.
+    \citep{
+      robe2011-transients,
+      metz2012-most_promising,
+      kase2013-opacities}.
+    \todo{more cite}
+
+    Recently space-based infrared telescopes have observed short glows that
+    fit these theoretical predictions, and are promising candidates of this
+    theoretically-predicted event.
+    \todo{cite Berger, and the other group ~2014}
+  \item Late radio afterglow: The distant neighborhood of the merger, the
+    circumburst medium, is often denser than the binary's immediate environment.
+    \todo{often?}
+    The circumburst medium may be simply the interstellar medium.
+    \todo{what else?}
+    As the ejecta rams into the denser medium, it experiences hydrodynamic
+    shocks, amplifying any seed magnetic fields, and causing the plasma to
+    emit radio-frequency synchrotron radiation.
+    \todo{synchrotron? how long? cite}
+    \todo{cite observations}
+  \item Early x-ray afterglow: If the progenitor is a neutron star--neutron
+    star binary \nsns, the immediate product of the merger may be
+    a supermassive neutron star,
+    \todo{cite}
+    more massive than the fundamental
+    limit discussed above ($M\lesssim2\,M_\odot$), but nevertheless quasi-stable
+    because it is rotating rapidly.
+    If so, the supermassive neutron star may emit magnetized winds that shock
+    into each other and emit thermal x-ray radiation. (Kumar-Rezolla 2015).
+    \todo{fix cite, add Metzger+}
+    \todo{cite observations}
+  \item Gamma ray burst: If a nuclear accretion disk forms---either after the
+    spin-down of the supermassive neutron star, or because a black hole forms
+    immediately after merger, or because the progenitor is a neutron star--black
+    hole \nsbh binary---some combination of magnetic and neutrino heating
+    could drive an ultrarelativistic jet. The jet, when it shocks into the
+    circumburst medium, or shocks internally, will emit high energy gamma ray
+    photons, highly beamed in the direction of the jet, due to its relativistic
+    speed. The burst of gamma ray emission lasts as long as the accretion is
+    active enough to drive the jet: about a second.
+
+    Many gamma ray bursts have
+    been observed, and fall roughly into two categories, long and short,
+    \todo{cite observations}
+    according to their length. The observed short gamma ray bursts have
+    properties that are well-modeled by this merger--disk--jet scenario,
+    \todo{cite old proposal paper}
+    and the astronomical community widely accepts the explanation.
+    \todo{cite widely accepts}
+    \todo{cite sgrbs}
+\end{itemize}
+
+Some of these electromagnetic signals are strong---in particular gamma ray
+bursts---and our observing horizon encompasses many millions? of galaxies.
+\todo{estimate this}
+With space-based telescopes like Swift?, Fermi?, and INTEGRAL?
+tens of short gamma ray bursts are observed per year.
+\todo{check/cite Nakar 2007}
+In an indirect sense, this rate gives us an observational answer to the question,
+``how common are neutron star--black hole mergers?''.
+But in the next few years a much more direct answer will be possible, as the
+advanced generation gravitational wave interferometers, LIGO and Virgo, begin to
+listen for the signature chirps of compact binary mergers. Unless we are greatly
+mistaken about compact binaries, these observatories will likely pick up
+? neutron star--neutron star \nsns,
+? neutron star--black hole \nsbh, and
+? black hole black hole \bhbh mergers per year.
+\todo{cite Abadie+}
+
+Of course it is possible the astrophysics community is mistaken.
+The physical processes linking compact binary mergers to these
+signals are not fully understood, an ignorance that partly motivates this thesis.
+In fact, until astronomers observe one of these electromagnetic signals in
+coincidence with a gravitational wave signal, it's possible (though very hard
+for this physicist to imagine) that the short
+gamma ray burst rate---providing the observational answer to our question
+above---has nothing to do with mergers of compact binaries of any kind.
+
+\subsubsection{Focusing in on Neutron Star--Black Hole Mergers}
+Though much in the next sections is applicable to any type of merger involving
+a neutron star, let us focus in on neutron star--black hole \nsbh
+mergers, the topic of this thesis. Sec.~\ref{sec:why_this_model} defends this
+focus more extensively than here.
+But briefly: in this study, we are interested in systems involving the
+strongest gravitational effects and nuclear matter. The first interest leads us
+to black holes, and the second interest leads us to neutron stars.
+We won't pursue neutron star--neutron star
+\nsns or black hole--black hole \bhbh binaries past this section.
 
 \subsection{What Roles May Neutrinos Play?}
+\label{ssec:neutrino_roles}
 
 %********************************************************************************
 % Remnant stuff from pre-first-draft
@@ -146,7 +272,10 @@ scattering cross section,
 %********************************************************************************
 
 \section{What's the History Behind this Study?}
+\label{sec:history}
 
 \section{Why this Particular Model?}
+\label{sec:why_this_model}
 
 \section{What's the Scope and Trajectory of this Thesis?}
+\label{sec:scope}
