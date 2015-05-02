@@ -995,9 +995,11 @@ due to $\nu\,\bar{\nu} \rightarrow e^{-}\,e^{+}$ by summing up the contributions
 of the deposition rate per volume for this process,
 $q_{\nu \bar{\nu}}(x^\alpha)$:
 \begin{equation}
-  Q_{\nu \bar{\nu}} \equiv \int \diff^3 x\,q_{\nu \bar{\nu}}(x^\alpha) \nonumber
+  \label{eqn:Q_vol}
+  Q_{\nu \bar{\nu}} \equiv \int \diff^3 x\,q_{\nu \bar{\nu}}(x^\alpha)
 \end{equation}
 $q_{\nu \bar{\nu}}(x^\alpha)$ is an inherently frame-dependent quantity but is
+\todo{add redshift factor for time}
 analogous to the frame-independent annihilation rate per volume,
 $n_{\nu \bar{\nu}}(x^\alpha)$:
 \begin{equation}
@@ -1143,27 +1145,32 @@ the sky.
 
 \subsection{Monte Carlo Integration of $q_{\nu\bar{\nu}}$}
 \label{ssec:monte_carlo}
-Eqn.~\ref{eqn:qdot_general} is six-dimensional, and integrating it is a
-computational challenge.
+The numerical solution to Eqn.~\ref{eqn:qdot_general} is a sum over
+six dimensions, a steep computational challenge.
 A straightforward trapezoidal integration with a grid of only 10
 points along each dimension requires $10^6$ samples of $f_\nu$ and
-$f_{\bar{\nu}}$, each requiring a separate geodesic integration taking
-$\sym1$~s; on one processor this would take weeks of walltime.
-Additionally, 10 points is a very low-resolution integration, and we wish
-to repeat this calcultion at many points throughout the spatial volume.
+$f_{\bar{\nu}}$, each requiring a separate geodesic integration possibly
+requiring as much as $\sym0.1$~s;
+on one processor this would take a day of walltime.
+Additionally, a resolution of only 10 points per dimension introduces large
+errors to our estimate; but doubling our resolution increases the wall time
+by a factor of $2^6$, to several months.
+Furthermore, we aim to repeat this calcultion at many points throughout the
+spatial volume to compute $Q_{\nu\bar{\nu}}$ (Eqn.~\ref{eqn:Q_vol}).
 
+One solution is to parallelize over rays, but before we follow that lead, we
+can formulate the integration more efficiently.
 One guiding clue to overcoming the challenge is that most of these $N$
 samples would contribute very little or nothing to the total integral.
 An adaptive Monte Carlo integration technique is ideal for such problems.
 We employ the Vegas algorithm,
 \todo{cite}
-\todo{explain why not parallelize}
 which specifies a procedure to randomly sample the integration space:
 homogeneously at first, then in iterated stages preferring more and more
 heavily those regions that contribute most to the integral.
 In tests with analytic integrands mimicking the expected distribution functions,
 I found the numerical estimate to converge to the true integral faster than
-$N^{1/2}$, as expected for a statistical estimate. This test required
+$N^{1/2}$, as expected for a statistical estimate. These tests required
 $N\sim10^4$ for 10\% accuracy.
 
 The range of the energy integration must capture the major contributions to the
@@ -1200,7 +1207,7 @@ medium in flat spactime presented in Sec.~\ref{sssc:f_homo_mink}.
     homogeneous Minkowski case.
     The horizontal axis is the number of samples of the integrand, $N$;
     the number of unique rays traced, therefore, is $2N$.
-    At five different accuracy thresholds (the five clusters), I have computed
+    At four different accuracy thresholds (the four clusters), I have computed
     the integral 12 times, to display the statistical scatter.
     The Vegas estimates of the error are given as as error bars.
     The legend labels each group of points by the accuracy threshold; but note,
@@ -1220,13 +1227,27 @@ computations at increasing accuracy thresholds.
 The numerical estimate of $q_{\nu\bar{\nu}}$ converges to the analytical result
 faster than $N^{1/2}$ (the dotted envelope in the figure).
 For an accuracy of 10\% (in this simple case) we need to compute
-$\sym2000$ samples of the integrand.
+$\sym3\times10^3$ samples of the integrand.
 
 \subsubsection{Hot Compact Star}
 \label{sssc:q_af_sphere}
 We may also analytically compute $q_{\nu\bar{\nu}}$ outside the hot compact
 star presented in Sec.~\ref{sssc:f_af_sphere}.
 \todo{add notes from *.nb}
+In that Section, we identified a spurious
+variation in $f_\nu$ across the neutrinosurface (seen in
+Fig.~\ref{fig:f_hot_ns}), due to the combination of a discrete jump in opacity
+at the surface, and the finite time steps used to integrate the rays
+(discussed in Sec.~\ref{ssec:timestepping}).
+In the integral of $q_{\nu\bar{\nu}}$ presented here, our standard settings
+for the Dormand-Prince time stepping (throttling $\Delta t\leq1.5\,M_\odot$)
+introduce a systematic error of 10--20\% in the integral which does not converge
+away with $N$, the number of rays traced.
+In order to push this systematic error in $f_\nu$ low enough to examine the
+error in our Monte Carlo algorithm for $q_{\nu\bar{\nu}}$,
+we have throttled the time stepping to $\Delta t \leq0.1\,M_\odot$.
+At the standard timestep settings, sampling the integrand $6\times10^4$ times
+takes 10~min; at this high resolution, it takes 5~hrs.
 
 \begin{figure}
   \centering
@@ -1235,6 +1256,8 @@ star presented in Sec.~\ref{sssc:f_af_sphere}.
     Convergence of the integration estimating $q_{\nu\bar{\nu}}$ in the
     hot compact star case.
     See caption for Fig.~\ref{fig:convergence_homo_mink} for description.
+    (Note, the relative vertical range in this figure is signicantly larger
+    than the range in Fig.~\ref{fig:convergence_homo_mink}.)
   }
   \label{fig:convergence_af_sphere}
 \end{figure}
@@ -1242,20 +1265,18 @@ star presented in Sec.~\ref{sssc:f_af_sphere}.
 Fig.~\ref{fig:convergence_af_sphere} shows the results of a suite of
 computations at increasing accuracy thresholds.
 Unlike the homogeneous Minkowski case, here the Vegas algorithm
-systematically underestimates its error.
-In fact, the integration clearly converges to the incorrect value
-underestimating $q_{\nu\bar{\nu}}$ by about 15\% at the highest resolution.
-\todo{catalog sources for error in this case}
+systematically underestimates $q_{\nu\bar{\nu}}$ at low resolutions.
+For an accuracy of 10\% in this more realistic case, we need to compute
+$\sym3\times10^4$ samples of the integrand.
+\todo{catalog other sources for error in this case}
 
 \section{$q_{\nu \bar{\nu}}$ for this Accretion Disk}
 \label{sec:q_this_case}
 We calculate $q_{\nu\bar{\nu}}$ above the accretion disk, on a unigrid, to make
-an estimate of
-\begin{equation}
-  Q_{\nu\bar{\nu}}=\int\diff^3 x\,q_{\nu\bar{\nu}},
-\end{equation}
+an estimate of $Q_{\nu\bar{\nu}}$ (Eqn.~\ref{eqn:Q_vol}):
 the power at infinite separation from the source, available to drive a jet.
-In cartesian coordinates, $\diff^3 x=\sqrt{-g}\, \diff x\,\diff y\,\diff z$.
+In cartesian coordinates, the volume integration is decomposed
+$\diff^3 x=\sqrt{-g}\, \diff x\,\diff y\,\diff z$.
 \todo{add redshift factor for time}
 Because of the approximate axial- and reflection-symmetry of the disk, we only
 calculate $q_{\nu\bar{\nu}}$ over one octant and multiply $Q_{\nu\bar{\nu}}$ by
