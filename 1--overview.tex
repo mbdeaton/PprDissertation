@@ -260,10 +260,10 @@ gravitational energy and gains kinetic and thermal energy, which escapes
 as radiation. This energy transfer is immense. The velocity of gas in circular
 Kepplerian orbit around mass $M_{\rm BH}$ at radius $r$ is
 $v=(GM_{\rm BH}/r)^{1/2}$, and its specific energy is
-\begin{eqnarray}
-  e &=& \frac{1}{2}v^2-\frac{GM_{\rm BH}}{r} \nonumber \\
-  &=& -\frac{GM_{\rm BH}}{2r}, \nonumber
-\end{eqnarray}
+\begin{align}
+  e &= \frac{1}{2}v^2-\frac{GM_{\rm BH}}{r} \nonumber \\
+  &= -\frac{GM_{\rm BH}}{2r}, \nonumber
+\end{align}
 where $G$ is Newton's gravitational constant.
 Because the gas velocity varies with $r$, the disk shears against itself. If the
 fluid is viscous (which is likely, due to turbulence, magnetic fields, or even
@@ -274,7 +274,7 @@ effect is that gas in the inner disk moves a little closer to the black hole,
 increasing its specific energy:
 \begin{equation}
   \Delta e = \frac{GM_{\rm BH}}{2}
-  \left(\frac{1}{r_{\rm final}}-\frac{1}{r_{\rm initial}}\right) \nonumber
+  \left(\frac{1}{r_{\rm final}}-\frac{1}{r_{\rm initial}}\right). \nonumber
 \end{equation}
 This process transports gas inward until it plunges into the black hole.
 If most of the disk accretes, the total increase in the energy of the gas
@@ -283,10 +283,10 @@ is $E_{\rm acc}\sim M_{\rm disk} \Delta e$. How much is that?
 We may estimate $r_{\rm initial}$ by the radius of the disk. Simulations give
 \todo{cite}
 characteristic scales of:
-\begin{eqnarray}
-  R_{\rm disk} &\sim& 100\,{\rm km} \nonumber \\
-  M_{\rm disk} &\sim& 0.01\text{--}0.5\,M_\odot. \nonumber
-\end{eqnarray}
+\begin{align}
+  R_{\rm disk} &\sim 100\,{\rm km} \nonumber \\
+  M_{\rm disk} &\sim 0.01\text{--}0.5\,M_\odot. \nonumber
+\end{align}
 And we may estimate the inner edge of the disk by
 \begin{eqnarray}
   r_{\rm final} &\sim& 1\text{--}9 \times \frac{GM_{\rm BH}}{c^2} \nonumber \\
@@ -298,62 +298,292 @@ in the direction of the disk's rotation, the closer may the gas approach before 
 plunges into the black hole.
 Thus the gravitational energy released by a stellar-mass accretion disk is
 \begin{equation}
-  E_{\rm acc} \sim 10^{51\text{--}54} \,{\rm erg}.
+  E_{\rm acc} \sim 10^{51\text{--}54} \,{\rm erg}. \nonumber
 \end{equation}
 This energy is initially transferred into the bulk motion of the gas, as it
 spirals in toward the black hole. But turbulence and viscosity transfer it to
 smaller scales: ordered kinetic energy becomes disordered thermal energy.
 The disk heats up and radiates this energy at a supernova-scale luminosity:
 \begin{equation}
+  \label{eqn:L_order_mag}
   L \sim \frac{E_{\rm acc}}{100\,{\rm ms}}
   \sim 10^{52\text{--}55}
-  \,{\rm erg \, s}^{-1}, \nonumber
+  \,{\rm erg \, s}^{-1},
 \end{equation}
 where we have used an accretion timescale of 100~ms, as determined by simulations.
 \todo{cite}
 Surprisingly, unlike most hot objects in the universe, the enormous energy output
 of an accretion disk is not carried away by photons.
+\todo{mention significance of compactness in this analysis}
 
+\subsubsection{Radiative Energy Transport}
+\label{sssc:nu_E_transport}
 Photons scatter off of free ions and over a characteristic length of
-$\lambda_\gamma\sim(Y_e n_b\sigma_{\rm T})^{-1}$, where $Y_e$ is the local number
-ratio of electrons to baryons, $n_b$ is the baryon number density, and
-$\sigma_{\rm T}\approx6.6\times10^{-25}\,{\rm cm}^2$ is the cross-section
-for photons scattering elastically off of electrons. The disk being slightly
+$\lambda_\gamma\sim(2Y_e n_b\sigma_{\rm T})^{-1}$, where $2Y_e$ is the local
+number ratio of ions to baryons, $n_b$ is the baryon number density, and
+$\sigma_{\rm T}=6.6\times10^{-25}\,{\rm cm}^2$ is the cross section
+for photons scattering elastically off of electrons. The disk being
 neutron-rich, $Y_e$ is in the range of 0.1. And typical densities are a
 few orders of magnitude less than the central density of a neutron star,
 or $\rho\sim10^{11}\,{\rm g\,cm}^{-3}$,
 so that $n_b=\rho/m_U\approx10^{-4}\,{\rm fm}^{-3}$.
 A disk's photon optical depth (that is, the square root of the number of times
-a photons scatters before it leaves the disk) is of order
-\begin{eqnarray}
-  \tau_\gamma &\sim& \frac{R_{\rm disk}}{\lambda_\gamma} \nonumber \\
-  &\approx& (10^7\,{\rm cm})(0.1)(10^{35}\,{\rm cm}^{-3})(10^{-24}\,{\rm cm}^2) \nonumber \\
-  &\approx& 10^{17}
-\end{eqnarray}
+a photon scatters before it leaves the disk) is of order
+\begin{align}
+  \tau_\gamma &\sim \frac{R_{\rm disk}}{\lambda_\gamma} \nonumber \\
+  &\approx (10^7\,{\rm cm})(0.1)(10^{35}\,{\rm cm}^{-3})(10^{-24}\,{\rm cm}^2)
+  \approx 10^{17}, \nonumber
+\end{align}
+(where we have disregarded factors close to 1)
+and the timescale for a photon to escape is
+$T_{\gamma,\rm esc}\sim\tau_\gamma^2\lambda_\gamma/c\approx1$~Myr, or ten
+trillion times longer than the lifetime of the disk.
 Photons can't carry away the thermal energy of the disk: they're trapped in it.
 
-%********************************************************************************
-% Remnant stuff from pre-first-draft
-
-However, neutrinos are freely produced in the neutron-rich matter. The
-interactions that dominate neutrino opacity are scattering and absorption onto
-nucleons and nuclei \citep[Sec.\ 11.7]{shap1983-bh_wd_ns}, all of which processes
-scale like $\sigma_0(\varepsilon/m_e c^2)^2$. Here $\sigma_0$ is the weak
-scattering cross section,
-\begin{align}
+But neutrinos can. Neutrinos are freely produced in the neutron-rich matter.
+The dominant weak interactions contributing to their scattering
+are proportional (times a numerical factor close to 1)
+\todo{too simplistic}
+to the weak scattering cross section:
+\begin{equation}
   \sigma_0
-  &\equiv \frac{4}{\pi}\left(\frac{\hbar}{m_e c}\right)^{-4}
-  \left(\frac{G_F}{m_e c^2}\right)^2 \\
-  &\sim   1.76 \times 10^{-44} \,\, {\rm cm}^2.
+  \equiv \frac{4}{\pi}\left(\frac{\hbar}{m_e c}\right)^{-4}
+  \left(\frac{G_F}{m_e c^2}\right)^2
+  \approx 1.8 \times 10^{-44} \,\, {\rm cm}^2, \nonumber
+\end{equation}
+and scale with neutrino energy like $(\varepsilon_\nu/m_e c^2)^2$
+\citep{tubb1975-neutrino_opacities,shap1983-bh_wd_ns}.
+Neutrinos scatter primarily off of the free nucleons in the disk, so their
+characteristic scattering length is $\lambda_\nu\sim(n_b\sigma_0)^{-1}$,
+where $Y_e$ is the local number ratio of electrons to baryons.
+A disk's typical neutrino optical depth is therefore
+\begin{align}
+  \tau_\nu
+  &\sim \tau_\gamma \frac{\sigma_0}{\sigma_T} \left(\frac{\varepsilon_\nu}{m_e c^2}\right)^2 \nonumber \\
+  &\approx 0.01\times\left(\frac{\varepsilon_\nu}{\rm MeV}\right)^2. \nonumber
 \end{align}
-(See, for example, \citealt{tubb1975-neutrino_opacities}.)
-%********************************************************************************
+In the post-merger accretion disk, fluid temperatures are $\sym10$~MeV (which
+gives us the name `nuclear' accretion disk, since temperatures are comparable to
+nuclear binding energies), and $\tau_\nu\sim1$.
+Neutrinos are neither totally trapped nor totally free: they play a
+significant role in energy transport in the disk.
+In fact, simulations of nuclear accretion disks, with realistic neutrino
+treatments (such as that presented in Chap.~\ref{chap:leakage}) yield neutrino
+luminosities comparable to the power estimate from Eqn.~\ref{eqn:L_order_mag},
+indicating that neutrinos serve to drain the gravitational energy released by
+accretion.
+
+\subsubsection{Composition Changes}
+\label{sssc:composition}
+But neutrinos don't just transport energy in and away from the accretion disk.
+Because they carry lepton charge, neutrino absorptions change fluid composition
+via the charged-current reactions:
+\begin{align}
+  \nu_e \, n \rightarrow e^{-} \, p       & \qquad {\rm increasing}\,Y_e, \nonumber \\
+  \bar{\nu}_e \, p \rightarrow e^{+} \, n & \qquad {\rm decreasing}\,Y_e. \nonumber
+\end{align}
+where $\nu_e$ and $\bar{\nu}_e$ are electron-type neutrino and antineutrino,
+$e^{-}$ and $e^{+}$ are electron and positron, and $n$ and $p$
+are neutron and proton, respectively.
+And neutrino emission, via the reverse reactions, also changes composition.
+As $Y_e$ changes, the thermodynamic properties of the fluid change.
+\todo{add discussion of first law}
+
+If the fluid is hot, both neutrino and antineutrino luminosities are high,
+and near the emission surface, they will annihilate at high enough efficiencies
+(via $\nu\,\bar{\nu}\rightarrow e^{-}\,e^{+}$) to create a lepton pair plasma.
+Neutrino annihilation heating is one process by which accretion may
+power an ultrarelativistic jet, forming a gamma ray burst, as described in
+Sec.~\ref{ssec:how_common}, and explored in our model in
+Sec.~\ref{sec:q_this_case}.
+\todo{cite early Piran paper}
+
+\subsubsection{Neutrino Oscillations}
+\label{sssc:neutrino_osc}
+Also, when neutrino number densities are high,
+\todo{necessary in vacuum oscillations?}
+neutrinos can interact in a more subtle way: converting from one flavor into
+another, by a process called neutrino oscillation.
+(The Standard Model of particle physics predicts three neutrino flavors,
+corresponding to the three generations of leptons: electrons, muons, and tauons.
+\todo{`generations'?}
+Each neutrino has a corresponding antineutrino, yielding six distinct neutrino
+species: $\nu_e$, $\bar{\nu}_e$, $\nu_\mu$, $\bar{\nu}_\mu$, $\nu_\tau$,
+and $\bar{\nu}_\tau$.)
+\todo{mass$\neq$flavor eigenstates}
+Neutrino flavor oscillations were first proposed in 197?
+\todo{find/cite}
+and were later found to explain the long-standing solar physics problem in which
+neutrino observatories measured an otherwise unexplainable deart of $\nu_?$-type
+\todo{which $\nu$?}
+neutrinos from the Sun. Further theoretical explorations in the context of
+supernovae have revealed that
+\todo{cite}
+the presence of matter can significantly amplify the oscillation likelihood.
+Another amplification of the electron-type oscillation can arise if the
+$\bar{\nu}_e$ self-interaction potential is greater than the $\nu_e$ potential.
+\todo{cite Malkus+2014}
+(The self-interaction potential at any given point in space is a function of
+neutrino energies, number densities, and the angular spread of incoming
+neutrinos.) All of these conditions may obtain in and around a post-merger
+nuclear accretion disk. Collective oscillations would change the neutrino
+signal detected from a nearby merger, and could suppress or amplify neutrino
+interactions with nearby matter, for example the nucleosynthesis processes
+described below.
+
+\subsubsection{Nucleosynthesis}
+\label{sssc:nucleosynthesis}
+The eventual fate of matter in a neutron star--black hole merger is to drain
+across the one-way boundary of the horizon. From then on, its only effect on
+the universe outside the black hole is a gravitational effect.
+However, in some mergers, depending on the intrinsic sizes and spins of the
+two bodies, and on the eccentricity of their final orbits, some fraction of the
+neutron star matter may be ejected and escape, as mentioned in
+Sec.~\ref{ssec:how_common} \citep{latt1974-bhns_ejecta}.
+Matter may become gravitationally unbound from the central bodies by dynamical
+ejection or by radiation pressure, or by plasma interactions with magnetic
+fields.
+Such matter, originally free baryons and leptons, will go through a change of
+composition as it leaves the merger environment, expanding and cooling.
+Heavier nuclei will form from its free nucleon and light-nuclei constituents.
+This process, called nucleosynthesis, can be dramatically modified by neutrino
+irradiation, both heating up the escaping fluid, and changing its composition.
+For example, with simplifying assumptions for their accretion disk model,
+Surman et al.\ 2014
+\todo{fix cite}
+showed in one case, that $\nu_e$ radiation dominated over $\bar{\nu}_e$
+unexpectedly, causing large amounts of $^{}56$Ni to form, instead of the
+heavier lanthanides expected when $\bar{\nu}_e$ dominates.
+
+\subsubsection{Direct Detection}
+\label{sssc:nu_detection}
+Finally, neutrinos emitted during merger and accretion could be detected by
+existing and future neutrino observatories. Neutrinos, as we showed earlier,
+carry away most of the thermal energy generated in a neutron star--neutron star
+\nsns or neutron star--black hole \nsbh merger, because photons are trapped in
+the dense matter. And neutrinos are produced copiously in nuclear matter at
+temperatures above $\sym1$~MeV.
+\todo{check/cite}
+Neutrino luminosities are of the order $10^{53}\,{\rm erg\,s}^{-1}$. Even
+though neutrinos interact very weakly with matter, detectors are in operation
+that could detect a neutrino signal this strong from a merger in the
+Milky Way Galaxy.
+\todo{cite Caballero/McGlaughlin 2009}.
 
 \section{What's the History Behind this Study?}
 \label{sec:history}
+Clearly, neutrinos are interesting and important players in neutron star--black
+hole mergers. What has the astrophysics community already learned about them
+in this context?\footnote{
+this section reproduced from \citealt[Sec.~1]{deat2013-leakage}}
 
 \section{Why this Particular Model?}
 \label{sec:why_this_model}
+In this thesis, I focus our attention on neutron star--black hole mergers, and in
+particular, on one model of such a merger, with a specific set of initial
+parameters. In this section, I explain that narrow focus.
+
+Neutron star--neutron star \nsns and neutron star--black hole \nsbh mergers are
+similar in many respects. They both evolve through an epoch dominated by
+gravitational wave emission: inspiral, during which their orbits rapidly decay.
+In both types of mergers, the neutron stars experience strong tidal forces,
+distorting them into oblate spheres, and finally disrupting them.
+And except for very low mass neutron star--neutron star \nsns binaries, with
+total masses not exceeding the maximum neutron star mass, $\sym2\,M_\odot$,
+all instances of both types of merger end up finally in the same state, a
+single black hole with not matter nearby.
+
+But the epoch between neutron star disruption and final black hole quiescence
+may be quite distinct between these two classes of mergers. Generally, neutron
+star--neutron star \nsns mergers yield a rapidly spinning blob of more than
+$2\,M_\odot$ of matter, a supramassive neutron star,
+\todo{super or supra?}
+supported against collapse, briefly, by centrifugal effects.
+On the other hand, neutron star--black hole \nsbh mergers transition directly
+to the disk stage, or else the neutron star is swallowed whole immediately upon
+disrupting, and no disk forms.
+
+In this work I focus on neutron star--black hole mergers \nsbh, where the
+accretion epoch plays a central role. Furthermore, though both classes of
+merger can disperse nuclear matter into the interstellar medium via winds and
+dynamical ejection, the latter effect can be much more significant
+in neutron star--black hole
+mergers because of the greater compactness, and therefore stronger
+tidal forces due to the black hole. In this and future work, I am especially
+interested in this dynamical ejecta, its role in galactic nucleosynthesis,
+and its potential to emit a detectable flash of light. Also, though by most
+\todo{cite low bhbh rate predictions}
+predictions neutron star--black hole mergers are the least likely compact
+binary merger in the nearby universe (see Sec.~\ref{ssec:how_common}),
+they are more easily detectable by LIGO and Virgo. This is because the
+strength of the peak gravitational wave signal scales with the total mass,
+\todo{check}
+and the average stellar mass black hole is likely many times as massive as the
+average neutron star ($10\,M_\odot$ vs.\ $2\,M_\odot$).
+\todo{cite mass predictions}
+\todo{this last bit is weak, needs more nuance: e.g.\ frequency bucket...}
+
+In this work I present one model of a neutron star--black hole merger,
+with a high black hole dimensionless spin of
+$a^* \equiv J_{\rm BH}c/GM_{\rm BH}^2 =0.9$ aligned with the binary's orbital
+angular momentum,
+component masses of $M_{\rm BH}=5.6\,M_\odot$ and
+$M_{\rm NS}=1.4\,M_\odot$,
+and a neutron star radius of 12.7~km,
+so that the mass ratio is $q \equiv M_{\rm BH}/M_{\rm NS}=4$,
+and the neutron star compactness is
+$\mathcal{C}_{\rm NS} \equiv G M_{\rm NS}/R_{\rm NS}c^2=0.16$.
+We are particularly interested in these binary parameters because such a system
+yields a massive accretion disk.
+
+Heuristically it makes sense that $a*$, $q$, $M_{\rm BH}$, and
+$\mathcal{C}_{\rm NS}$ have an effect on the amount of matter remaining outside
+the black hole after tidal forces cause the neutron star to disrupt.
+Tidal forces behave approximately as $M_{\rm BH} R_{\rm NS}/r^3$,
+which can be evaluated at the radius of the last stable circular orbit,
+inside of which the neutron star plunges, 
+\begin{equation}
+  \label{eqn:tidal_forces}
+  F_{\rm tidal} \propto
+  \left(q \,\mathcal{C}_{\rm NS}\, M_{\rm BH} \,f(a^*)^3\right)^{-1},
+\end{equation}
+where $f(a^*) \equiv M_{\rm BH}/r_{\rm ISCO}(a^*)$ decreases monotonically with increasing
+prograde spin, and $r_{\rm ISCO}$ is the radius of the last (a.k.a\ inner-most)
+stable circular orbit. Even this simple relationship indicates that
+tidal disruption forces at the last stable circular orbit are greater for smaller
+$q$, smaller $C_{\rm NS}$, smaller $M_{\rm BH}$, and larger $a^*$.
+Simulations across the parameter space confirm these trends.
+\todo{cite}
+
+In fact, these four parameters are not independent. Since the compactness of a
+cold neutron star is completely specified by its mass\footnote{we are
+assuming the equation of state of neutron star matter is known}, we can write
+Eqn.~\ref{eqn:tidal_forces} as
+\begin{equation}
+  F_{\rm tidal} \propto
+  \left(q^2 \,\mathcal{C}_{\rm NS}(M_{\rm NS})\, M_{\rm NS}\, f(a^*)^3\right)^{-1},
+\end{equation}
+which describes a three-dimensional parameter space of possible mergers:
+$\{q,M_{\rm NS},a^*\}$.
+Furthermore, these parameters are constrained by observed populations. We
+choose to study $M_{\rm NS}=1.4\,M_{\odot}$, a canonical neutron star mass, near
+the center of the observed masses.
+\todo{check/cite stellarcollapse.org}
+This choice fixes the compactness of the star, and leaves $q$ and $a^*$
+independently specifiable.
+Field populations of black holes are observed to lie in the mass range ?--?,
+and spin range ?--?.
+\todo{fill in/cite Ott+ 2014 bayesian analysis SN endstates, or \"Ozel}
+To maximize disk mass we choose a black hole mass toward the bottom of this
+range, $M_{\rm BH}=5.6\,M_\odot$, and a black hole spin toward the top of this
+range, $a^*=0.9$.
+
+Using phenomenological models fit to numerical simulations,
+\cite{fouc2012-disk_mass} and \cite{pann2010-disk_mass} independently published
+disk mass predictions parameterized by $\{q,M_{\rm NS},a^*\}$.
+Using Foucart's model, we predict a disk mass of
+$M_{\rm disk,predict}\sim ?\,M_\odot$.
+\todo{calculate, fill in}.
 
 \section{What's the Scope and Trajectory of this Thesis?}
 \label{sec:scope}
