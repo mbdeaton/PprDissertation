@@ -193,7 +193,7 @@ star--neutron star \nsns or neutron star--black hole merger \nsbh:
     into each other and emit thermal x-ray radiation. (Kumar-Rezolla 2015).
     \todo{fix cite, add Metzger+}
     \todo{cite observations}
-  \item Gamma ray burst: If a nuclear accretion disk forms---either after the
+  \item Gamma ray burst: If an accretion disk forms---either after the
     spin-down of the supermassive neutron star, or because a black hole forms
     immediately after merger, or because the progenitor is a neutron star--black
     hole \nsbh binary---some combination of magnetic and neutrino heating
@@ -253,6 +253,84 @@ We won't pursue neutron star--neutron star
 
 \subsection{What Roles May Neutrinos Play?}
 \label{ssec:neutrino_roles}
+Some neutron star--black hole mergers produce stellar mass accretion disks.
+As matter in the disk flows from large distances to the
+inner edge of the disk, where it plunges into the black hole, it loses
+gravitational energy and gains kinetic and thermal energy, which escapes
+as radiation. This energy transfer is immense. The velocity of gas in circular
+Kepplerian orbit around mass $M_{\rm BH}$ at radius $r$ is
+$v=(GM_{\rm BH}/r)^{1/2}$, and its specific energy is
+\begin{eqnarray}
+  e &=& \frac{1}{2}v^2-\frac{GM_{\rm BH}}{r} \nonumber \\
+  &=& -\frac{GM_{\rm BH}}{2r}, \nonumber
+\end{eqnarray}
+where $G$ is Newton's gravitational constant.
+Because the gas velocity varies with $r$, the disk shears against itself. If the
+fluid is viscous (which is likely, due to turbulence, magnetic fields, or even
+radiative stresses),
+\todo{cite each of these}
+the fast inner regions slow down, and the slow outer regions speed up. The net
+effect is that gas in the inner disk moves a little closer to the black hole,
+increasing its specific energy:
+\begin{equation}
+  \Delta e = \frac{GM_{\rm BH}}{2}
+  \left(\frac{1}{r_{\rm final}}-\frac{1}{r_{\rm initial}}\right) \nonumber
+\end{equation}
+This process transports gas inward until it plunges into the black hole.
+If most of the disk accretes, the total increase in the energy of the gas
+is $E_{\rm acc}\sim M_{\rm disk} \Delta e$. How much is that?
+
+We may estimate $r_{\rm initial}$ by the radius of the disk. Simulations give
+\todo{cite}
+characteristic scales of:
+\begin{eqnarray}
+  R_{\rm disk} &\sim& 100\,{\rm km} \nonumber \\
+  M_{\rm disk} &\sim& 0.01\text{--}0.5\,M_\odot. \nonumber
+\end{eqnarray}
+And we may estimate the inner edge of the disk by
+\begin{eqnarray}
+  r_{\rm final} &\sim& 1\text{--}9 \times \frac{GM_{\rm BH}}{c^2} \nonumber \\
+  &\sim& 1.5\text{--}13.5 \,{\rm km}\times \left(\frac{M_{\rm BH}}{M_\odot}\right), \nonumber
+\end{eqnarray}
+the radius of last stable circular orbit around the black hole. The range of this
+radius represents its dependence on the black hole's spin: the higher the spin
+in the direction of the disk's rotation, the closer may the gas approach before it
+plunges into the black hole.
+Thus the gravitational energy released by a stellar-mass accretion disk is
+\begin{equation}
+  E_{\rm acc} \sim 10^{51\text{--}54} \,{\rm erg}.
+\end{equation}
+This energy is initially transferred into the bulk motion of the gas, as it
+spirals in toward the black hole. But turbulence and viscosity transfer it to
+smaller scales: ordered kinetic energy becomes disordered thermal energy.
+The disk heats up and radiates this energy at a supernova-scale luminosity:
+\begin{equation}
+  L \sim \frac{E_{\rm acc}}{100\,{\rm ms}}
+  \sim 10^{52\text{--}55}
+  \,{\rm erg \, s}^{-1}, \nonumber
+\end{equation}
+where we have used an accretion timescale of 100~ms, as determined by simulations.
+\todo{cite}
+Surprisingly, unlike most hot objects in the universe, the enormous energy output
+of an accretion disk is not carried away by photons.
+
+Photons scatter off of free ions and over a characteristic length of
+$\lambda_\gamma\sim(Y_e n_b\sigma_{\rm T})^{-1}$, where $Y_e$ is the local number
+ratio of electrons to baryons, $n_b$ is the baryon number density, and
+$\sigma_{\rm T}\approx6.6\times10^{-25}\,{\rm cm}^2$ is the cross-section
+for photons scattering elastically off of electrons. The disk being slightly
+neutron-rich, $Y_e$ is in the range of 0.1. And typical densities are a
+few orders of magnitude less than the central density of a neutron star,
+or $\rho\sim10^{11}\,{\rm g\,cm}^{-3}$,
+so that $n_b=\rho/m_U\approx10^{-4}\,{\rm fm}^{-3}$.
+A disk's photon optical depth (that is, the square root of the number of times
+a photons scatters before it leaves the disk) is of order
+\begin{eqnarray}
+  \tau_\gamma &\sim& \frac{R_{\rm disk}}{\lambda_\gamma} \nonumber \\
+  &\approx& (10^7\,{\rm cm})(0.1)(10^{35}\,{\rm cm}^{-3})(10^{-24}\,{\rm cm}^2) \nonumber \\
+  &\approx& 10^{17}
+\end{eqnarray}
+Photons can't carry away the thermal energy of the disk: they're trapped in it.
 
 %********************************************************************************
 % Remnant stuff from pre-first-draft
