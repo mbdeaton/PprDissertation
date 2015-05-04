@@ -154,15 +154,14 @@ star--neutron star \nsns or neutron star--black hole merger \nsbh:
     from the system. As this neutron-rich matter expands and cools, exotic heavy
     nuclei form like ice crystals in a winter pond. These nuclei only form in a
     low-energy bath of free neutrons via rapid neutron capture, the r-process.
-    Later, these unstable nuclei decay and, like a nuclear power stack,
-    \todo{stack?}
+    Later, these unstable nuclei decay and, like a nuclear power reactor,
     heat the ejecta, causing it to emit photons with a
     thermal spectrum, at optical or infrared frequencies.
     \citep{
+      li1998-transients,
       robe2011-transients,
       metz2012-most_promising,
       kase2013-opacities}.
-    \todo{more cite}
 
     Recently space-based infrared telescopes have observed short glows that
     fit these theoretical predictions, and are promising candidates of this
@@ -364,7 +363,7 @@ nuclear binding energies), and $\tau_\nu\sim1$.
 Neutrinos are neither totally trapped nor totally free: they play a
 significant role in energy transport in the disk.
 In fact, simulations of nuclear accretion disks, with realistic neutrino
-treatments (such as that presented in Chap.~\ref{chap:leakage}) yield neutrino
+treatments (see Sec.~\ref{sec:history} and Chap.~\ref{chap:leakage}) yield neutrino
 luminosities comparable to the power estimate from Eqn.~\ref{eqn:L_order_mag},
 indicating that neutrinos serve to drain the gravitational energy released by
 accretion.
@@ -471,7 +470,44 @@ Milky Way Galaxy.
 Clearly, neutrinos are interesting and important players in neutron star--black
 hole mergers. What has the astrophysics community already learned about them
 in this context?\footnote{
-this section reproduced from \citealt[Sec.~1]{deat2013-leakage}}
+some of this section is reproduced from \citealt[Sec.~1]{deat2013-leakage}}
+
+Because the accretion disk spans neutrino-opaque and neutrino-transparent regimes
+(see Sec.~\ref{sec:neutrino_roles}), a full six-dimensional evolution of the
+neutrino fields (1 energetic + 3 spatial + 2 angular dimensions) is needed
+to completely describe the coupling between radiation and matter.
+This is impossible with current computational resources. Fortunately, many of
+the essential features of the radiation can be captured using a simple
+leakage scheme. Rather than performing actual radiation transport, leakage
+schemes remove energy and alter lepton number at rates based on the local
+free-emission and diffusion rates. Leakage certainly neglects some arguably
+important effects (for example, neutrino-driven winds), but it captures
+the basic energetics and composition drift of the post-merger system.
+For an analysis of leakage in core-collapse supernova simulations,
+see Ott et al.\ 2012.
+\todo{fix cite}
+\todo{say: we focus our review on leakage sims...}
+
+Neutrino leakage simulations have been used to build models of neutron
+star--neutron star \nsns mergers for nearly two decades
+\citep{
+ruff1996-leakage_part1,
+ruff1997-leakage_part2,
+ross2002-leakage_part1,
+ross2003-leakage_part2}.
+\citet{jank1999-leakage_bhns} and \citet{ross2004-leakage_bhns} developed models
+of neutron star--black hole \nsbh mergers using Newtonian gravity, with
+phenomenological treatments of relativistic effects like the back reaction of
+gravitational waves on the fluid, and the orbital instability at radii close to
+the black hole.
+These models predict neutrino luminosities of $10^{51\text{--}53}\rm\,erg\,s^{-1}$.
+
+Leakage techniques have recently been incorporated into general relativistic
+simulations of stellar core collapse \citep{2011ApJ...737....6S, Ott:2012mr} and
+neutron star--neutron star \nsns mergers \citep{Sekiguchi:2011zd,Kiuchi:2012mk}. 
+But the first relativistic neutron star--black hole simulations with a
+nuclear treatment of the fluid and neutrino feedback were presented in
+\cite{deat2013-leakage}, reproduced in Chap.~\ref{chap:leakage}.
 
 \section{Why this Particular Model?}
 \label{sec:why_this_model}
