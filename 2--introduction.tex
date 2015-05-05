@@ -5,6 +5,57 @@
 
 \section{General Relativistic Hydrodynamics}
 \label{sec:gr_hydro}
+Fluid dynamics are described in curved spacetime by the general relativistic
+hydrodynamics equations:
+\begin{align}
+  \label{eqn:hydro_mass}
+  \nabla_\alpha \rho u^\alpha &= 0 \\
+  \label{eqn:hydro_mom}
+  \nabla_\alpha T^{\alpha\beta} &= 0,
+\end{align}
+where $\nabla_\alpha$ is the covariant derivative,
+$\rho$ the rest mass density,
+$u^\alpha$ the four-velocity,
+and $T^{\alpha\beta}$ the stress-energy tensor:
+\begin{equation}
+  \label{eqn:stress_energy}
+  T^{\alpha\beta} = \rho h u^\alpha u^\beta + P \psi^{\alpha\beta},
+\end{equation}
+Here we have used $h=1+\epsilon+P/\rho c^2$ the specific enthalpy,
+$\epsilon$ the specific energy,
+$P$ the pressure, and
+$\psi^{\alpha\beta}$ the inverse of the spacetime metric.
+Eqns.~\ref{eqn:hydro_mass} and~\ref{eqn:hydro_mom} elegantly express the
+conservation of mass and energy-momentum respectively.
+
+Using the foliation of spacetime presented in Sec.~\ref{ssec:adm_metric}, we may
+write these equations in conservative hyperbolic form,
+using coordinate derivatives:
+\begin{align}
+  \label{eqn:adm_hydro_mass}
+  \partial_t \rho_* + \partial_j \rho_* v^j &= 0 \\
+  \label{eqn:adm_hydro_mom}
+  \partial_t \tilde{S}_i + \partial_j(\alpha\sqrt{g}T^j_i) &=
+  \frac{1}{2}\alpha\sqrt{g}T^{\mu\gamma}\partial_i\psi_{\mu\gamma} \\
+  \label{eqn:adm_hydro_ener}
+  \partial_t \tilde{\tau} + \partial_j(\alpha^2\sqrt{g}T^{0j}-\rho_*v^j) &=
+  -\alpha\sqrt{g}T^{\mu\gamma}\nabla_\mu n_\gamma.
+\end{align}
+which express conservation of mass, momentum, and energy on the spatial slice.
+In this form, we have introduced the conservative variables
+\begin{align}
+  \label{eqn:rhostar}
+  \rho_*       &\equiv -\sqrt{g} n_\mu u^\mu \rho &&= \sqrt{g}W\rho \\
+  \label{eqn:tildeS}
+  \tilde{S_i}  &\equiv -\sqrt{g} n_\mu T^\mu_i    &&= \rho_* h u_i \\
+  \label{eqn:tildetau}
+  \tilde{\tau} &\equiv  \sqrt{g} n_\mu n_\gamma T^{\mu\gamma} - \rho_*
+  &&= \rho_*(u^t h-1)-\sqrt{g}P,
+\end{align},
+where $W=\alpha u^t$ is the general relativistic Lorentz factor.
+
+These are the hydrodynamic equations we solve to determine the evolution of
+our model.
 
 \section{General Relativistic Radiation Transport}
 \label{sec:rad_transport}
