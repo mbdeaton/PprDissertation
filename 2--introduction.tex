@@ -77,7 +77,7 @@ to a covariant formulation appropriate to situations with strong gravity.
 
 \subsection{Flat Spacetime}
 \todo{cite Mihalas-Mihalas}
-The basic unit of radiation is the specific intensity,
+The basic quantity of radiation is the specific intensity,
 \begin{equation}
   \mathcal{I}(t,x^j;\nu,\Omega_k) \qquad \qquad
   {\rm erg}\,{\rm str}^{-1}\,{\rm cm}^{-2}\,{\rm Hz}^{-1}\,{\rm s}^{-1}, \nonumber
@@ -111,12 +111,71 @@ over a time $\diff t$ centered on $t$ is
   \diff E &= \mathcal{I}(t,x^j;\nu,\Omega_k)\,
   \mu\, \diff\Omega\, \diff a\, \diff\nu\, \diff t \\
   \label{eqn:beam_energy_I_eps}
-  &= \frac{1}{h} \mathcal{I}(t,x^j;\varepsilon,\Omega_k)\,
+  &= \frac{1}{h} \mathcal{I}(t,x^j;p_k)\,
   \mu\, \diff\Omega\, \diff a\, \diff\varepsilon\, \diff t,
 \end{align}
 where $\mu\equiv a^i\Omega_i$ is the cosine of the angle between $a^i$ and
 $\Omega^i$, and in Euclidean space $\Omega_i=\Omega^i$.
+\todo{add schematic}
 
+\subsubsection{The Particle Picture}
+Much of what follows borrows from the particle picture of the radiation field.
+By quantizing our cotangent bundle $T^*M$ into states (in other words
+quantum phase space), we may arrive at a particle formulation that is completely
+analagous to the continuum picture.
 
+The basic quantity of radiation in the particle picture is the distribution
+function, $f(t,x^j;p_k)$, the number of particles per state in phase space.
+Since each neutrino quantum state has a volume $h^{-3}$, where $h$ is Planck's
+constant\footnote{the volume would be $2h^{-3}$ for photons, which exhibit two
+distinct helicities},
+the number of particles per phase space volume $\diff^3x\,\diff^3p$ is
+\begin{equation}
+  \diff N = \frac{1}{h^3} f \,\diff^3 x\, \diff^3p.
+\end{equation}
+Because $h$ has units length$\times$momentum, we can see that $f$ is
+dimensionless.
+
+How much energy is in the radiation occupying a particular phase space volume?
+The energy carried by $\diff N$ particles centered on $\{x^j,p_k\}$
+is $\varepsilon\,\diff N$,
+where $\varepsilon=pc$ and $p\equiv (p_ip^i)^{-1/2}$.
+In spherical polar coordinates we may write
+$\diff^3p=p^2\,\diff p\,\diff\Omega=\frac{\varepsilon^2}{c^3}\,\diff\varepsilon\,\diff\Omega$.
+And we may identify $\diff^3x$
+with the spatial volume occupied by a beam of particles
+moving in direction $\Omega_k$,
+passing through a surface $\diff a$
+oriented by $a^i$,
+over a time $\diff t$ centered on $t$,
+so that $\diff^3x=c\,\diff t\,\mu\,\diff a$.
+\todo{add schematic}
+So in the particle picture, we have
+\begin{equation}
+  \label{eqn:beam_energy_f}
+  \diff E = \frac{\varepsilon^3}{h^3c^2} f(t,x^j;p_k)\,
+  \diff t\,\mu\,\diff a\, \diff\varepsilon\,\diff\Omega.
+\end{equation}
+Comparing Eqn.~\ref{eqn:beam_energy_I_eps} to Eqn.~\ref{eqn:beam_energy_f},
+it's clear that
+\begin{equation}
+  \mathcal{I}=\frac{\varepsilon^3}{(hc)^2}f. \nonumber
+\end{equation}
+Below, we stick to the particle picture, formulating everything in terms of $f$.
+
+\subsubsection{How $f$ Changes}
+According to Liouville's Theorem,
+\todo{cite}
+absent any particle interactions with each other or with the medium, the density
+of particles in phase space is constant along streamlines, $p_k$ This may be
+expressed as an advection equation:
+\begin{align}
+  \frac{1}{c}\partial_t f + \Omega^k\nabla_k f &= 0 \\
+  p^\alpha\nabla_\alpha f &= 0,
+\end{align}
+where we have used the 4-momentum in the second form.
+
+When particles interact with the medium, we can describe the changes to $f$ with
+source and sink terms.
 
 \subsection{Curved Spacetime}
