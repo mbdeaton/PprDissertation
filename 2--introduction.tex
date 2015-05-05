@@ -5,8 +5,8 @@
 
 \section{General Relativistic Hydrodynamics}
 \label{sec:gr_hydro}
-Fluid dynamics are described by the hydrodynamics equations. In flat spacetime,
-for a nonviscous, isentropic fluid:
+Fluid dynamics are described by the hydrodynamics equations. In
+Euclidean space, for a nonviscous fluid:
 \begin{align}
   \label{eqn:hydro_flat_mass}
   \partial_t \rho + \nabla_i S^i       &= 0 \\
@@ -30,8 +30,8 @@ equation, the equation of state, relating pressure to internal energy and
 density, $P(u,\rho)$.
 For an ideal monatomic gas,
 we are more familiar with the parametric form of the equation
-of state, the two equations $P(\rho,T)=3\rho k_{\rm B} T/(2m_U)$ and
-$u(\rho,T)=\rho k_{\rm B} T/m_U$.
+of state, the two equations $P(\rho,T)=\frac{3}{2m_U}\rho k_{\rm B} T$ and
+$u(\rho,T)=\frac{1}{m_U}\rho k_{\rm B} T$.
 
 The five dynamical equations
 express for a fluid the conservation of
@@ -40,9 +40,54 @@ momentum, Eqn.~\ref{eqn:hydro_flat_mom}, and
 energy, Eqn.~\ref{eqn:hydro_flat_ener}.
 As such, they all take the form of hyperbolic conservation equations,
 \begin{equation}
-  \partial_t \vec{U} + \nabla_i \vec{F^i} = \vec{S}
+  \label{eqn:cons_hyper}
+  \partial_t \mathcal{U} + \nabla_i \mathcal{F}^i = \mathcal{S},
 \end{equation}
-where $\vec{U}$ is the conserved quantity, $\vec{F^i}$
+where $\mathcal{U}$ is the conserved quantity,
+$\mathcal{F}^i$ its flux, and
+$\mathcal{S}$ a source term pumping or draining the conserved quantity.
+
+A hyperbolic equation is fully specified by its initial conditions. In this case
+that means choosing an initial configuration $\vec{\mathcal{U}}(t=0)$,
+or alternately, specifying the five primitive variables
+$\rho(t=0)$, $T(t=0)$, and $v(t=0)$ throughout the physical domain.
+Boundary conditions are required to define the behavior of the equations on
+the domain boundaries.
+
+A hyperbolic equation like Eqn.~\ref{eqn:cons_hyper}, may be solved via the
+method of lines, computing the conservative fields across a spatial domain at
+later times, $t>0$ by assuming the spatial dependence at $t=0$ is known. In
+one dimension:
+\begin{equation}
+  \frac{\diff}{\diff t} \mathcal{U} = -\partial_i
+\end{equation}
+
+\subsubsection{Relativistic Minkowski}
+But in fact, these equations fail when $v$ is close to $c$.
+\todo{demonstrate?}
+We may write them in their relativistic form:
+\begin{align}
+  \label{eqn:hydro_sr_mass}
+  \nabla_\alpha \rho u^\alpha &= 0 \\
+  \label{eqn:hydro_sr_mom}
+  \nabla_\alpha T^{\alpha \beta} &= 0.
+\end{align}
+Here we have introduced $\nabla_\alpha:=(\frac{1}{c}\partial_t,\nabla_i)$,
+$u^\alpha:=\gamma(c,v^i)$ the fluid 4-velocity,
+$\gamma\equiv(1-v^2/c^2)^{-1/2}$ the Lorentz factor, and
+$T^{\alpha\beta}$ the stress-energy tensor:
+\begin{eqnarray}
+  \label{eqn:se_tensor}
+  T^{\alpha\beta} = T_{\rm fluid}^{\alpha\beta} + T_{\rm other}^{\alpha\beta} \\
+  T_{\rm fluid}^{\alpha\beta} = (\rho+\frac{u+P}{c^2})u^\alpha u^\beta+P\eta^{\alpha\beta}, \\
+\end{eqnarray}
+where $\eta^{\alpha\beta}=\eta_{\alpha\beta}:={\rm diag}(-1,1,1,1)$ is the
+Minkowski metric, and
+$T_{\rm other}^{\alpha\beta}$ is the stress-energy tensor of other fields, like
+the radiation field.
+Eqns.~\ref{eqn:hydro_sr_mass} and~\ref{eqn:hydro_sr_mom} elegantly express the
+conservation of rest mass and momentum-energy.
+\todo{what are the conservatives here?}
 
 \section{General Relativistic Radiation Transport}
 \label{sec:rad_transport}
