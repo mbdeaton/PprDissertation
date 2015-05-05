@@ -5,6 +5,11 @@
 
 \section{General Relativistic Hydrodynamics}
 \label{sec:gr_hydro}
+Here we introduce the equations describing the transport of particle number,
+momentum, and energy by massive particles in the continuum limit, that is
+\todo{specify ``continuum limit''}
+a fluid.
+
 Fluid dynamics are described in curved spacetime by the general relativistic
 hydrodynamics equations:
 \begin{align}
@@ -27,6 +32,7 @@ $P$ the pressure, and
 $\psi^{\alpha\beta}$ the inverse of the spacetime metric.
 Eqns.~\ref{eqn:hydro_mass} and~\ref{eqn:hydro_mom} elegantly express the
 conservation of mass and energy-momentum respectively.
+\todo{add: ``in fact, familiar hydro in flat space in disguise...''}
 
 Using the foliation of spacetime presented in Sec.~\ref{ssec:adm_metric}, we may
 write these equations in conservative hyperbolic form,
@@ -51,12 +57,66 @@ In this form, we have introduced the conservative variables
   \label{eqn:tildetau}
   \tilde{\tau} &\equiv  \sqrt{g} n_\mu n_\gamma T^{\mu\gamma} - \rho_*
   &&= \rho_*(u^t h-1)-\sqrt{g}P,
-\end{align},
+\end{align}
 where $W=\alpha u^t$ is the general relativistic Lorentz factor.
 
 These are the hydrodynamic equations we solve to determine the evolution of
 our model.
+\todo{describe numerical solution}
+\todo{add metric ev}
 
 \section{General Relativistic Radiation Transport}
 \label{sec:rad_transport}
+Here we introduce the equations describing the transport of particle number,
+momentum, and energy by massless particles in the continuum limit, that is,
+\todo{specify ``continuum limit''}
+by a field.
 
+We begin with the familiar equations in flat spacetime, and then extend this
+to a covariant formulation appropriate to situations with strong gravity.
+
+\subsection{Flat Spacetime}
+\todo{cite Mihalas-Mihalas}
+The basic unit of radiation is the specific intensity,
+\begin{equation}
+  \mathcal{I}(t,x^j;\nu,\Omega_k) \qquad \qquad
+  {\rm erg}\,{\rm str}^{-1}\,{\rm cm}^{-2}\,{\rm Hz}^{-1}\,{\rm s}^{-1}, \nonumber
+\end{equation}
+where $\{t,x^j\}$ is the time and spatial position of interest,
+$\nu=c/\lambda$ the frequency\footnote{not the neutrino symbol as elsewhere},
+related to the energy by Planck's constant $\varepsilon=h\nu$, and
+$\Omega_k$ a normalized direction vector. Though a three-vector, $\Omega_k$
+has only two degrees of freedom, which may be made explicit by parameterizing
+in two angles; for example in cartesian components
+$\Omega_k:=(\sin\alpha\cos\beta,\sin\alpha\sin\beta,\cos\alpha)$.
+
+$\mathcal{I}$ is a time-dependent scalar field on a six-dimensional manifold,
+$\{x^j,p_k\}$, with $p_k\equiv\frac{h\nu}{c}\Omega_k$.
+We may visualize this space as an infinite bundle of rays---actually the
+cotangent bundle $T^*M$ to the spatial manifold $M:\{x^j\}$---and $\mathcal{I}$
+assigns a weight to each ray, telling us how much of the radiation field has
+momentum $p_k$ at point $x^j$. A ray is an element of $T^*M$,
+and a beam is a bundle of rays, or a subset of $T^*M$.
+
+How much energy is in a beam?
+The energy transported by beam at $x^j$,
+in a direction $\Omega_k$,
+spread across a solid angle $\diff\Omega=\cos\alpha\,\diff\alpha\,\diff\beta$,
+passing through a surface $\diff a$
+oriented by normalized direction vector $a^i$,
+within a frequency band $\diff \nu$,
+over a time $\diff t$ centered on $t$ is
+\begin{align}
+  \label{eqn:beam_energy_I_nu}
+  \diff E &= \mathcal{I}(t,x^j;\nu,\Omega_k)\,
+  \mu\, \diff\Omega\, \diff a\, \diff\nu\, \diff t \\
+  \label{eqn:beam_energy_I_eps}
+  &= \frac{1}{h} \mathcal{I}(t,x^j;\varepsilon,\Omega_k)\,
+  \mu\, \diff\Omega\, \diff a\, \diff\varepsilon\, \diff t,
+\end{align}
+where $\mu\equiv a^i\Omega_i$ is the cosine of the angle between $a^i$ and
+$\Omega^i$, and in Euclidean space $\Omega_i=\Omega^i$.
+
+
+
+\subsection{Curved Spacetime}
