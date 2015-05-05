@@ -235,7 +235,6 @@ for this physicist to imagine) that the short
 gamma ray burst rate---providing the observational answer to our question
 above---has nothing to do with mergers of compact binaries of any kind.
 
-\subsubsection{Focusing in on Neutron Star--Black Hole Mergers}
 Though much in the next sections is applicable to any type of merger involving
 a neutron star, let us focus in on neutron star--black hole \nsbh
 mergers, the topic of this thesis. Sec.~\ref{sec:why_this_model} defends this
@@ -253,13 +252,17 @@ As matter in the disk flows from large distances to the
 inner edge of the disk, where it plunges into the black hole, it loses
 gravitational energy and gains kinetic and thermal energy, which escapes
 as radiation. This energy transfer is immense. The velocity of gas in circular
-Kepplerian orbit around mass $M_{\rm BH}$ at radius $r$ is
-$v=(GM_{\rm BH}/r)^{1/2}$, and its specific energy is
+Kepplerian orbit around mass $M_{\rm BH}$ at radius $r$
+(easy to remember by the 1-2-3 rule: $GM_{\rm BH}^1=\Omega^2r^3$) is
+\begin{equation}
+  v = \Omega r  = (GM_{\rm BH}/r)^{1/2}, \nonumber
+\end{equation}
+where $G$ is Newton's gravitational constant.
+Its specific energy is therefore
 \begin{align}
   e &= \frac{1}{2}v^2-\frac{GM_{\rm BH}}{r} \nonumber \\
-  &= -\frac{GM_{\rm BH}}{2r}, \nonumber
+  &= -\frac{GM_{\rm BH}}{2r}. \nonumber
 \end{align}
-where $G$ is Newton's gravitational constant.
 Because the gas velocity varies with $r$, the disk shears against itself. If the
 fluid is viscous (which is likely, due to turbulence, magnetic fields, or even
 radiative stresses),
@@ -374,8 +377,10 @@ But neutrinos don't just transport energy in and away from the accretion disk.
 Because they carry lepton charge, neutrino absorptions change fluid composition
 via the charged-current reactions:
 \begin{align}
-  \nu_e \, n \rightarrow e^{-} \, p       & \qquad {\rm increasing}\,Y_e, \nonumber \\
-  \bar{\nu}_e \, p \rightarrow e^{+} \, n & \qquad {\rm decreasing}\,Y_e. \nonumber
+  \label{eqn:beta_n_to_p}
+  \nu_e \, n \rightarrow e^{-} \, p       & \qquad {\rm increasing}\,Y_e, \\
+  \label{eqn:beta_p_to_n}
+  \bar{\nu}_e \, p \rightarrow e^{+} \, n & \qquad {\rm decreasing}\,Y_e.
 \end{align}
 where $\nu_e$ and $\bar{\nu}_e$ are electron-type neutrino and antineutrino,
 $e^{-}$ and $e^{+}$ are electron and positron, and $n$ and $p$
@@ -465,10 +470,127 @@ that could detect a neutrino signal this strong from a merger in the
 Milky Way Galaxy.
 \todo{cite Caballero/McGlaughlin 2009}.
 
+\section{How Long Does it Take?}
+\label{sec:timescales}
+The main timescale of a neutron star--black hole merger is the dynamical
+timescale. This is the time over which gravity causes changes to the fluid.
+As we will see, it is essentially unchanging throughout the merger.
+This is an astonishing fact, since at the beginning, the fluid is essentially
+static in the neutron star, and at the end it is highly dynamical, in the disk.
+The dynamical timescales associated with these two fluid configurations are:
+\begin{align}
+  T_{\rm dyn,star} &\approx (G\rho)^{-1/2} \nonumber \\
+  T_{\rm dyn,disk} &\approx 2\pi/\Omega. \nonumber
+\end{align}
+where $G$ is Newton's gravitational constant, $\rho$ the star's density,
+and $\Omega$ the angular frequency of the disk.
+Before merger, the neutron star's central density is
+$\rho\sim10^{14}\,{\rm g\,cm}^{-3}$---thus $T_{\rm dyn,star}\approx0.5$~ms.
+After merger, the bulk of the disk orbits the black hole at a distance of
+a few horizon radii, where the Kepplerian orbital angular frequency for a black
+hole of a few solar masses is
+$\Omega\sim1000\,{\rm rad\,s^{-1}}$---thus $T_{\rm dyn,disk}\approx0.5$~ms.
+
+(As an aside, we can see the correspondence between these two dynamical
+timescales by using Keppler's law, $GM=\Omega^2 R^3$, from
+Sec.~\ref{sec:neutrino_roles},
+to write $\Omega^{-1}=(R^3/GM)^{1/2}=(G\rho)^{-1/2}$.
+In this sense, the fact that $T_{\rm dyn}$ doesn't change over the different
+epochs of the merger is not so surprising, since the fundamental gravitational
+scales of the problem, mass and length, are basically of order $1\,M_\odot$
+and $10$~km throughout.)
+
+So the main timescale of a neutron star--black hole merger is of order
+$T\sim1$~ms.
+For a physical description of the changes occuring in a complex system---like
+the one at hand, involving gravity, electromagnetism, nuclear interactions, and
+radiation---timescales guide us in making powerful simplifications.
+If a particular subset of physics has a timescale
+$T_{\rm slow\, process}\gg T$, we can ignore it:
+its related physical quantities may be fixed at their initial level.
+If some other subset of physics has a timescale
+$T_{\rm fast\, process}\ll T$, we can also ignore it:
+its related physical quantities may be averaged over a cycle (if the process
+is periodic) or set at some quasi-equilibrium value (if the process is secular).
+
+\subsubsection{Gravitational Radiation}
+The gravitational radiation timescale is how long it takes for gravitational
+waves to change the system. We may also think of it as the time till merger.
+The relativistic dynamics of the merger
+are nonlinear, and when the binary is in close orbit, this timescale can only
+be computed numerically. However, at large separations, when the bodies are
+moving much slower than the speed of light, $v/c\ll1$, a linear approximation
+\todo{PN? what order?}
+can be made (see for example, \citealt[Sec.~16.4]{shap1983-bh_wd_ns}):
+\begin{equation}
+  T_{\rm grav} \approx \frac{5}{256}\frac{c^5}{G^3}\frac{R^4}{M^2\mu},
+\end{equation}
+where $M=m_1+m_2$, and $\mu \equiv m_1 m_2/(m_1+m_2)$, and $a$ is the semi-major
+axis of the orbit, $R$ for extreme mass ratio binaries, and $2R$ for equal mass
+binaries.
+\todo{is that right?}
+Even when the binary is in close orbit, this approximation is correct to order
+of magnitude.
+\todo{calculate for our system}
+
+Gravitational radiation is, therefore, an important process to consider in the
+merger.
+
+\subsubsection{Particle Interactions}
+Strong nuclear forces act on a timescale of $10^{-21}\,{\rm s}$ at the high
+\todo{check/cite}
+densities of the neutron star, and the high temperatures and densities of the
+merger. This is the timescale over which
+nuclei form and dissociate. It is so small compared to the main timescale of
+of the merger, that we may consider the nuclear reactions to be in equilibrium.
+This is the nuclear statistical equilibrium assumption, by which the fluid's
+composition of relative particle species may be entirely parameterized by a
+single parameter, the electron fraction $Y_e$.
+
+But the weak force is much...weaker.
+The weak timescale, or how long it takes $Y_e$ to change due to the charged
+current reactions (Eqns.~\ref{eqn:beta_n_to_p} and~\ref{eqn:beta_p_to_n} and
+their reverse processes) is
+\begin{equation}
+  T_{\rm weak} \approx \frac{M}{m_U} \frac{\langle Y_e \rangle}{R_\nu},
+\end{equation}
+where $M$ is the total fluid mass, $m_U$ the average nucleonic mass,
+$\langle Y_e \rangle$ the average electron fraction, and
+$R_\nu \equiv R_{\nu_e}-R_{\bar{\nu}_e}$ the net lepton number carried
+away by neutrinos.
+Simulations, like the one presented in this thesis (see
+Fig.~\ref{fig:neutrinos_by_species}, have shown that
+$R_\nu\gtrsim10^{57}\,{\rm s}^{-1}$.
+For a fraction of a solar mass of material, $M/m_U\sim10^{56}$~baryons.
+The electron fraction of a neutron star is very low, and we may estimate
+$\langle Y_e \rangle\sim0.1$. Thus $T_{\rm weak}\sim10$~ms. Of course, to
+compute this estimate, we assume the disk changes homogeneously; in fact,
+some regions radiate neutrinos more luminously than others, and the weak
+timescale in more luminous regions is much shorter.
+Weak processes, then, are important to consider in the merger.
+
+%\subsubsection{Radiation}
+%The radiation timescale is the time over which the radiation field responds
+%to changes in the matter. If the matter is transparent, that is the neutrino
+%mean free path $\lambda_\nu$ is larger than the length scale of fluid variations
+%$L$, neutrinos emitted from one side travel to the other side in
+%a light-crossing time,
+%\begin{equation}
+%  T_{\rm rad,\, free} \approx \frac{L}{c}.
+%\end{equation}
+%If, however, the matter is opaque, that is the neutrino mean free path is
+%smaller than fluid length scales, neutrinos emitted from deep within the fluid
+%experience many scatterings before escaping to the outer reaches. The radiation
+%field changes on a diffusion timescale,
+%\begin{equation}
+%  T_{\rm rad,\,diff} \approx \frac{\lambda_\nu}{c}.
+%\end{equation}
+
 \section{What's the History Behind this Study?}
 \label{sec:history}
-Clearly, neutrinos are interesting and important players in neutron star--black
-hole mergers. What has the astrophysics community already learned about them
+As we found in the previous sections, neutrinos are interesting and important
+players in neutron star--black hole mergers.
+What has the astrophysics community already learned about them
 in this context?\footnote{
 some of this section is reproduced from \citealt[Sec.~1]{deat2013-leakage}}
 
@@ -633,8 +755,7 @@ neutrino-driven jet which could power a short gamma ray burst
 (Chap.~\ref{chap:ray_tracing}, Secs.~\ref{sec:q_algorithm}--\ref{sec:q_this_case}).
 This chain of inquiry is recapped in Chap.~\ref{chap:conclusion}.
 
-In addition to two reference sections on conventions (Sec.~\ref{sec:conventions})
-and timescales (Sec.~\ref{sec:timescales}),
+In addition to a reference section on conventions (Sec.~\ref{sec:conventions}),
 Chap.~\ref{chap:intro} provides a technical introduction to the two physical
 frameworks for the model presented here:
 fluid dynamics (Sec.~\ref{sec:gr_hydro}) and
