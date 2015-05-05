@@ -74,9 +74,10 @@ by a field.
 
 We begin with the familiar equations in flat spacetime, and then extend this
 to a covariant formulation appropriate to situations with strong gravity.
+We follow closely the treatment by Mihalas \& Mihalas.
+\todo{fix cite}
 
 \subsection{Flat Spacetime}
-\todo{cite Mihalas-Mihalas}
 The basic quantity of radiation is the specific intensity,
 \begin{equation}
   \mathcal{I}(t,x^j;\nu,\Omega_k) \qquad \qquad
@@ -183,7 +184,7 @@ source and sink terms.
 Let $k(\varepsilon,f)$ be the opacity, or cross section per unit mass of the
 medium, so that $k(\varepsilon,f)\rho f$ is the number of particles of energy
 $\varepsilon$ absorbed or scattered per length traversed by the ray.
-\todo{invoking 'ray' in particle picture?}
+\todo{clarify 'ray' in particle picture}
 (If we think of $k$ in terms of the cross-sections of absorption and scattering
 processes, we may write $\rho k = n(\sigma_{\rm abs}+\sigma_{\rm scatt})$, where
 $n$ is the number density of the particles in the medium participating in this
@@ -197,14 +198,40 @@ Also, note that we may analyze $k$ and $\eta$ by individual processes causing th
 absorption, scattering, or emission; then these terms are sums.
 
 Our equation of continuity, Eqn.~\ref{eqn:f_advection},
-with source and sinks terms is now
+with source and sink terms is now
 \begin{equation}
-  \label{eqn:f_continuity}
+  \label{eqn:f_boltzmann}
   p^\alpha\nabla_\alpha f = \frac{1}{c}
   \left( \left(\frac{hc}{\varepsilon}\right)^2\eta - \varepsilon k \rho f\right).
 \end{equation}
 In cgs $k$ has units cm$^2$~g$^{-1}$ and $\eta$ has units erg~cm$^{-3}$.
 This is the Boltzmann equation of transport.
 \todo{cite}
+We may find solutions by integrating this equation along rays using the length
+parameterization $\Omega^i\nabla_i f=\diff f/\diff s$ with the rays defined by
+the geodesic equations in Euclidean space:
+\begin{equation}
+  \label{eqn:geo_straight_ray}
+  \frac{\diff x^j}{\diff s}=p^j, \qquad {\rm and} \qquad
+  \frac{\diff p_k}{\diff s}=0.
+\end{equation}
+With this parameterizations, Eqn.~\ref{eqn:f_boltzmann} becomes
+\begin{equation}
+  \frac{1}{c} \partial_t f + \frac{\diff}{\diff s} f =
+  (hc)^2 \frac{\eta}{\varepsilon^2} - \chi f,
+\end{equation}
+where we have used $\chi\equiv\rho k$.
+\todo{derive rendering equation}
+
+\subsubsection{Optical Depth}
+A ray of radiation passing through a medium will attenuate due to scattering and
+absorption. If there is no emission and $f$ is changing quickly with respect to
+fluid changes ($T_{\rm rad} \ll T_{\rm dyn}$, in our context)
+\todo{write up $T_{\rm rad}$}
+Eqn.~\ref{eqn:f_boltzmann} becomes
+\begin{equation}
+  \left(\frac{\diff}{\diff s} - \chi\right)f=0.
+\end{equation}
+\todo{derive optical depth integral, $\tau$}
 
 \subsection{Curved Spacetime}
