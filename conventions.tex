@@ -92,3 +92,36 @@ used as a label, not as a tensor index.
   }
   \label{tab:constants}
 \end{table}
+
+\subsection{Foliating Spacetime}
+\label{ssec:adm_metric}
+In everything that follows we employ the 3+1 splitting of the spacetime metric,
+\todo{cite Arnowitt et al.\ 1962}
+\begin{equation}
+  -d\tau^2 \equiv \alpha^2dt^2 + g_{ij}(dx^i+\beta^idt)(dx^j+\beta^jdt).
+\end{equation}
+The cartesian decomposition of the metric and its inverse is
+\begin{equation}
+  \psi_{\mu\gamma} :=
+  \left(
+  \begin{matrix}
+    -\alpha^2 + \beta^i \beta_i  & \beta_i \\
+    \beta_j                      & g_{ij}
+  \end{matrix}
+  \right)
+  \qquad
+  \psi^{\mu\gamma} :=
+  \left(
+  \begin{matrix}
+    -\frac{1}{\alpha^2}          & \frac{\beta^j}{\alpha^2} \\
+    \frac{\beta^i}{\alpha^2}     & g^{ij} - \frac{\beta^i \beta^j}{\alpha^2}
+  \end{matrix}
+  \right)
+\end{equation}
+
+where $\beta_i=\beta^j g_{ij}$, and $g^{ij}g_{ik}=\delta^{j}_{k}$.
+This decomposition generates a foliation of the spacetime manifold into
+three-dimensional spacelike submanifolds, whose coordinates are related
+by the timelike congruence $n^\mu=dx^\mu/\alpha dt$, or in cartesian
+decomposition, $n^\mu:=(1/\alpha,-\beta^i/\alpha)$.
+
