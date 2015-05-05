@@ -5,7 +5,45 @@
 
 \section{General Relativistic Hydrodynamics}
 \label{sec:gr_hydro}
+Fluid dynamics are described by the hydrodynamics equations. In flat spacetime,
+for a nonviscous, isentropic fluid:
+\begin{align}
+  \label{eqn:hydro_flat_mass}
+  \partial_t \rho + \nabla_i S^i       &= 0 \\
+  \label{eqn:hydro_flat_mom}
+  \partial_t S^j +  \nabla_i T^{ij}    &= f^j \rho \\
+  \label{eqn:hydro_flat_ener}
+  \partial_t (\frac{1}{2}\rho v^2+u) + \nabla_i(\frac{1}{2}\rho v^2+u+P)v^i &= \rho f_i v^i.
+\end{align}
+Here $\rho$ is mass density,
+$S^i\equiv \rho v^i$ momentum density,
+$T^{ij}\equiv \rho v^i v^j + P\delta^{ij}$ the stress tensor,
+$f^j=f_j$ the sum of forces per unit mass acting on the fluid,
+such as radiation pressure or gravity,
+$u$ the specific internal energy, and
+$P$ the pressure.
+The total specific energy is $e=\rho v^2/2+u$.
 
-\section{Radiation Transport}
+This system of five equations (Eqn.~\ref{eqn:hydro_flat_mom} is a composition
+of three equations) and six variables $\{\rho,u,P,v^i\}$ is closed by a sixth
+equation, the equation of state, relating pressure to internal energy and
+density, $P(u,\rho)$.
+For an ideal monatomic gas,
+we are more familiar with the parametric form of the equation
+of state, the two equations $P(\rho,T)=3\rho k_{\rm B} T/(2m_U)$ and
+$u(\rho,T)=\rho k_{\rm B} T/m_U$.
+
+The five dynamical equations
+express for a fluid the conservation of
+mass, Eqn.~\ref{eqn:hydro_flat_mass},
+momentum, Eqn.~\ref{eqn:hydro_flat_mom}, and
+energy, Eqn.~\ref{eqn:hydro_flat_ener}.
+As such, they all take the form of hyperbolic conservation equations,
+\begin{equation}
+  \partial_t \vec{U} + \nabla_i \vec{F^i} = \vec{S}
+\end{equation}
+where $\vec{U}$ is the conserved quantity, $\vec{F^i}$
+
+\section{General Relativistic Radiation Transport}
 \label{sec:rad_transport}
 
