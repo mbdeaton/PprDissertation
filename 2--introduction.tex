@@ -167,15 +167,44 @@ Below, we stick to the particle picture, formulating everything in terms of $f$.
 According to Liouville's Theorem,
 \todo{cite}
 absent any particle interactions with each other or with the medium, the density
-of particles in phase space is constant along streamlines, $p_k$ This may be
-expressed as an advection equation:
+of particles in phase space is constant along streamlines, $\Omega_k$ This may be
+expressed as a continuity equation for the distribution function,
+the advection equation:
 \begin{align}
   \frac{1}{c}\partial_t f + \Omega^k\nabla_k f &= 0 \\
+  \label{eqn:f_advection}
   p^\alpha\nabla_\alpha f &= 0,
 \end{align}
-where we have used the 4-momentum in the second form.
+where we have used the 4-momentum in the second form. In flat space cartesian
+coordinates, we may write it $p^\alpha:=(\varepsilon/c,p^k)$.
 
 When particles interact with the medium, we can describe the changes to $f$ with
 source and sink terms.
+Let $k(\varepsilon,f)$ be the opacity, or cross section per unit mass of the
+medium, so that $k(\varepsilon,f)\rho f$ is the number of particles of energy
+$\varepsilon$ absorbed or scattered per length traversed by the ray.
+\todo{invoking 'ray' in particle picture?}
+(If we think of $k$ in terms of the cross-sections of absorption and scattering
+processes, we may write $\rho k = n(\sigma_{\rm abs}+\sigma_{\rm scatt})$, where
+$n$ is the number density of the particles in the medium participating in this
+process).
+And let $\eta(\varepsilon,f)$ be the emissivity, so that
+$\eta(\varepsilon,f)/\varepsilon$ is the number of particles emitted per
+unit volume at energy $\varepsilon$.
+Opacity and emissivity are functions of $\varepsilon$ for obvious reasons, and
+of $f$ because the processes of stimulated emission and absorption.
+Also, note that we may analyze $k$ and $\eta$ by individual processes causing the
+absorption, scattering, or emission; then these terms are sums.
+
+Our equation of continuity, Eqn.~\ref{eqn:f_advection},
+with source and sinks terms is now
+\begin{equation}
+  \label{eqn:f_continuity}
+  p^\alpha\nabla_\alpha f = \frac{1}{c}
+  \left( \left(\frac{hc}{\varepsilon}\right)^2\eta - \varepsilon k \rho f\right).
+\end{equation}
+In cgs $k$ has units cm$^2$~g$^{-1}$ and $\eta$ has units erg~cm$^{-3}$.
+This is the Boltzmann equation of transport.
+\todo{cite}
 
 \subsection{Curved Spacetime}
