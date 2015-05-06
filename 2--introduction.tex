@@ -217,12 +217,12 @@ the geodesic equations in Euclidean space:
   \frac{\diff x^j}{\diff s}=p^j, \qquad {\rm and} \qquad
   \frac{\diff p_k}{\diff s}=0.
 \end{equation}
-With this parameterizations, Eqn.~\ref{eqn:f_boltzmann} becomes
+With this parameterization, Eqn.~\ref{eqn:f_boltzmann} becomes
 \begin{equation}
+  \label{eqn:f_boltzmann_ray}
   \frac{1}{c} \partial_t f + \frac{\diff}{\diff s} f =
-  (hc)^2 \frac{\eta}{\varepsilon^2} - \chi f,
+  \frac{(hc)^2}{\varepsilon^3}\eta - \rho k f,
 \end{equation}
-where we have used $\chi\equiv\rho k$.
 \todo{derive rendering equation}
 
 \subsubsection{Optical Depth}
@@ -230,10 +230,11 @@ A ray of radiation passing through a medium will attenuate due to scattering and
 absorption. If there is no emission and $f$ is changing quickly with respect to
 fluid changes ($T_{\rm rad} \ll T_{\rm dyn}$, in our context)
 \todo{write up $T_{\rm rad}$}
-Eqn.~\ref{eqn:f_boltzmann} becomes
+Eqn.~\ref{eqn:f_boltzmann_ray} becomes
 \begin{equation}
   \left(\frac{\diff}{\diff s} - \chi\right)f=0.
 \end{equation}
+where we have used $\chi\equiv\rho k$.
 \todo{derive optical depth integral, $\tau$}
 
 \subsection{Curved Spacetime}
@@ -241,7 +242,7 @@ The preceding formalism may be extended to curved spacetimes by a suitable
 covariant reformulation. Following Lindquist (1966)\footnote{with two slight
 modifications in that 1) we use the covariant 4-momentum $p_\alpha$ to construct
 a more natural phase space volume element $\diff V\,\diff P$ below, and 2) we
-include the projection of the momentum onto the observers worldline,
+include the projection of the momentum onto the observer's worldline,
 $-p_\mu U^\mu$, in Eqn.~\ref{eqn:covariant_dV} where it seems to fit more
 naturally}
 \todo{fix cite}
