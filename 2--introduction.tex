@@ -184,21 +184,15 @@ coordinates, we may write it $p^\alpha:=(\varepsilon/c,p^k)$.
 When particles interact with the medium, we can describe the changes to $f$ with
 source and sink terms.
 Let $k(\varepsilon,f)$ be the opacity, or cross section per unit mass of the
-medium, so that $k(\varepsilon,f)\rho f$ is the number of particles of energy
+medium, so that $k\rho f$ is the number of particles of energy
 $\varepsilon$ absorbed or scattered per length traversed by the ray.
 \todo{clarify 'ray' in particle picture}
-(If we think of $k$ in terms of the cross-sections of absorption and scattering
-processes, we may write $\rho k = n(\sigma_{\rm abs}+\sigma_{\rm scatt})$, where
-$n$ is the number density of the particles in the medium participating in this
-process).
 And let $\eta(\varepsilon,f)$ be the emissivity, so that
-$\eta(\varepsilon,f)/\varepsilon$ is the number of particles emitted per
+$\eta/\varepsilon$ is the number of particles emitted per
 unit volume at energy $\varepsilon$.
 Opacity and emissivity are functions of $\varepsilon$ for obvious reasons, and
-of $f$ because the processes of stimulated emission and absorption.
-Also, note that we may analyze $k$ and $\eta$ by individual processes causing the
-absorption, scattering, or emission; then these terms are sums.
-
+functions of $f$ because the processes of emission and absorption that these
+objects describe may be stimulated by the radiation field.
 Our equation of continuity, Eqn.~\ref{eqn:f_advection},
 with source and sink terms is now
 \begin{equation}
@@ -206,11 +200,20 @@ with source and sink terms is now
   p^\alpha\nabla_\alpha f = \frac{1}{c}
   \left( \left(\frac{hc}{\varepsilon}\right)^2\eta - \varepsilon k \rho f\right).
 \end{equation}
-In cgs $k$ has units cm$^2$~g$^{-1}$ and $\eta$ has units erg~cm$^{-3}$.
-This is the Boltzmann equation of transport.
+In cgs, $k$ is measured in cm$^2$~g$^{-1}$ and $\eta$ is measured in
+erg~cm$^{-3}$. This is the Boltzmann equation of transport.
 \todo{cite}
+
+We may think of $k$ in terms of the cross-sections of absorption and scattering
+processes; then we could write $\rho k = n(\sigma_{\rm abs}+\sigma_{\rm scatt})$,
+where $n$ is the number density of the particles in the medium participating in
+this process.
+Also, note that we may analyze $k$ and $\eta$ by individual processes causing the
+absorption, scattering, or emission; then these terms are sums.
+
 We may find solutions by integrating this equation along rays using the length
-parameterization $\Omega^i\nabla_i f=\diff f/\diff s$ with the rays defined by
+parameterization $\diff s=c\,\diff t$, so that
+$\Omega^i\nabla_i f=\diff f/\diff s$, with the rays defined by
 the geodesic equations in Euclidean space:
 \begin{equation}
   \label{eqn:geo_straight_ray}
@@ -227,10 +230,11 @@ With this parameterization, Eqn.~\ref{eqn:f_boltzmann} becomes
 
 \subsubsection{Optical Depth}
 A ray of radiation passing through a medium will attenuate due to scattering and
-absorption. If there is no emission and $f$ is changing quickly with respect to
-fluid changes ($T_{\rm rad} \ll T_{\rm dyn}$, in our context)
-\todo{write up $T_{\rm rad}$}
-Eqn.~\ref{eqn:f_boltzmann_ray} becomes
+absorption. If there is no emission, and $f$ is changing quickly with respect to
+fluid changes ($\lambda/c \ll T_{\rm dyn}$, in our context, where
+$\lambda=(\rho k)^{-1}$ is the mean free path, and $T_{\rm dyn}$ is the timescale
+of fluid changes presented in Sec.~\ref{sec:timescales})
+Eqn.~\ref{eqn:f_boltzmann_ray} simplifies to
 \begin{equation}
   \left(\frac{\diff}{\diff s} - \chi\right)f=0.
 \end{equation}
@@ -241,7 +245,7 @@ We find that $u(s)=\exp\left(-\tau(A,B)\right)$, where
 \begin{equation}
   \label{eqn:tau_flatspace}
   \Omega^j\nabla_j \tau = \chi, \qquad {\rm or} \qquad
-  \tau(A,B) \equiv \int_A^B \diff s\, \chi.
+  \tau \equiv \int_A^B \diff s\, \chi.
 \end{equation}
 While traveling from A to B, the number of particles in the beam attenuates by
 the factor $\exp(-\tau)$.
@@ -253,9 +257,10 @@ modifications in that 1) we use the covariant 4-momentum $p_\alpha$ to construct
 a more natural phase space volume element $\diff V\,\diff P$ below, and 2) we
 include the projection of the momentum onto the observer's worldline,
 $-p_\mu U^\mu$, in Eqn.~\ref{eqn:covariant_dV} where it seems to fit more
-naturally}
-\todo{fix cite}
-We extend our manifold to four-dimensional spacetime
+naturally},
+and also drawing on Ipser-Thorne (1968)
+\todo{fix cites}
+we extend our manifold to four-dimensional spacetime
 $M^4:\{x^\alpha\}$. The cotangent bundle, or phase space, is now
 $T^*M:\{x^\alpha,p_\beta\}$.
 We imagine an observer in this spacetime with 4-velocity $U^\lambda$.
@@ -342,5 +347,5 @@ The optical depth equation, Eqn.~\ref{eqn:tau_flatspace}, becomes
 \begin{equation}
   \label{eqn:tau_covariant}
   p^\alpha\nabla_\alpha \tau = \frac{h}{c} \mathcal{A}, \qquad {\rm or} \qquad
-  \tau(A,B) \equiv \frac{h}{c} \int_A^B \diff \lambda\, \mathcal{A}.
+  \tau \equiv \frac{h}{c} \int_A^B \diff \lambda\, \mathcal{A}.
 \end{equation}
