@@ -133,6 +133,7 @@ constant\footnote{the volume would be $2h^{-3}$ for photons, which exhibit two
 distinct helicities},
 the number of particles per phase space volume $\diff^3x\,\diff^3p$ is
 \begin{equation}
+  \label{eqn:dN_flatspace}
   \diff N = \frac{1}{h^3} f \,\diff^3 x\, \diff^3p.
 \end{equation}
 Because $h$ has units length$\times$momentum, we can see that $f$ is
@@ -284,4 +285,20 @@ basis 1-forms.
 Again $\diff p_x\, \diff p_y\, \diff p_z/p^t$ is a scalar,
 which confirms that we have
 constructed a Lorentz invariant momentum volume.
+
+Then the invariant distribution function is the number of particle worldlines
+passing through the invariant six-volume $\diff V\,\diff P$, scaled to a quantum
+state by $h^3$:
+\begin{align}
+  \label{eqn:dN_covariant}
+  \diff N &= \frac{1}{h^3} f\, \diff V \, \diff P\\
+  \label{eqn:dN}
+  &= \frac{1}{h^3} f\,
+  \diff x\,\diff y\,\diff z\, \diff p_x\, \diff p_y\, \diff p_z\,
+  \frac{U^t}{p^t} (-p_\mu U^\mu),
+\end{align}
+which is the covariant form of Eqn.~\ref{eqn:dN_flatspace}. The correspondence
+may be seen by evaluating Eqn.~\ref{eqn:dN} in the locally flat Lorentz frame of
+the observer, for whom $U^\alpha:=(1,0,0,0)$, and
+$p_\mu U^\mu=p_tU^t=p_t=-p^t$.
 
