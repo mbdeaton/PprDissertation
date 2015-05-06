@@ -1163,8 +1163,8 @@ can formulate the integration more efficiently.
 One guiding clue to overcoming the challenge is that most of these $N$
 samples would contribute very little or nothing to the total integral.
 An adaptive Monte Carlo integration technique is ideal for such problems.
-We employ the Vegas algorithm,
-\todo{cite}
+We employ the Vegas algorithm
+(described in detail in \citealt[Sec.~7.9]{pres2007-nr_3rd_ed}),
 which specifies a procedure to randomly sample the integration space:
 homogeneously at first, then in iterated stages preferring more and more
 heavily those regions that contribute most to the integral.
