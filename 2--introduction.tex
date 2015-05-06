@@ -94,7 +94,8 @@ $\Omega_k:=(\sin\alpha\cos\beta,\sin\alpha\sin\beta,\cos\alpha)$.
 $\mathcal{I}$ is a time-dependent scalar field on a six-dimensional manifold,
 $\{x^j,p_k\}$, with $p_k\equiv\frac{h\nu}{c}\Omega_k$.
 We may visualize this space as an infinite bundle of rays---actually the
-cotangent bundle $T^*M$ to the spatial manifold $M:\{x^j\}$---and $\mathcal{I}$
+cotangent bundle $T^*M$ to the three-dimensional
+spatial manifold $M^3:\{x^j\}$---and $\mathcal{I}$
 assigns a weight to each ray, telling us how much of the radiation field has
 momentum $p_k$ at point $x^j$. A ray is an element of $T^*M$,
 and a beam is a bundle of rays, or a subset of $T^*M$.
@@ -235,3 +236,52 @@ Eqn.~\ref{eqn:f_boltzmann} becomes
 \todo{derive optical depth integral, $\tau$}
 
 \subsection{Curved Spacetime}
+The preceding formalism may be extended to curved spacetimes by a suitable
+covariant reformulation. Following Lindquist (1966)\footnote{with two slight
+modifications in that 1) we use the covariant 4-momentum $p_\alpha$ to construct
+a more natural phase space volume element $\diff V\,\diff P$ below, and 2) we
+include the projection of the momentum onto the observers worldline,
+$-p_\mu U^\mu$, in Eqn.~\ref{eqn:covariant_dV} where it seems to fit more
+naturally}
+\todo{fix cite}
+We extend our manifold to four-dimensional spacetime
+$M^4:\{x^\alpha\}$. The cotangent bundle, or phase space, is now
+$T^*M:\{x^\alpha,p_\beta\}$.
+We imagine an observer in this spacetime with 4-velocity $U^\lambda$.
+
+Our observer measures a spatial
+volume $\diff V$ spanned by the three spacelike vectors
+$\diff_1x^\alpha$, $\diff_2x^\beta$, $\diff_3x^\gamma$
+(not differentials, but with names that look suggestively like differentials)
+at $x^\mu$:
+\begin{align}
+  \label{eqn:covariant_dV}
+  -U_\lambda\,\diff V &= \sqrt{-\psi} \, \epsilon_{\alpha\beta\gamma\lambda}\,
+  \diff_1x^\alpha\, \diff_2x^\beta\, \diff_3x^\gamma (-p_\mu U^\mu) \\
+  \label{eqn:dV}
+  \diff V       &= \sqrt{-\psi} \, U^t \diff x\,\diff y\,\diff z\, (-p_\mu U^\mu),
+\end{align}
+where in the first equation, $\epsilon_{\alpha\beta\gamma\lambda}$ is the
+totally antisymmetric tensor, and in the second equation we have
+chosen to use the three cartesian basis vectors to span the volume.
+$U^t \diff x\,\diff y\,\diff z$ is a scalar,
+\todo{check this}
+as are $\sqrt{-\psi}$ and the scalar product, which confirms that we have
+constructed a Lorentz invariant spatial volume.
+
+Our observer
+measures a momentum volume $\diff P$ spanned by three timelike 1-forms
+$\diff_1p_\alpha$, $\diff_2p_\beta$, $\diff_3p_\gamma$ at $p_\mu$
+\begin{align}
+  \label{eqn:covariant_dP}
+  p^\lambda\, \diff P &= \frac{1}{\sqrt{-\psi}} \, \epsilon^{\alpha\beta\gamma\lambda}\,
+  \diff_1p_\alpha\, \diff_2p_\beta\, \diff_3p_\gamma \\
+  \label{eqn:dP}
+  \diff P &= \frac{1}{\sqrt{-\psi}} \, \frac{1}{p^t} \diff p_x\, \diff p_y\, \diff p_z,
+\end{align}
+where again, in the second equation we have chosen to use the cartesian momentum
+basis 1-forms.
+Again $\diff p_x\, \diff p_y\, \diff p_z/p^t$ is a scalar,
+which confirms that we have
+constructed a Lorentz invariant momentum volume.
+
