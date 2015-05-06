@@ -235,7 +235,16 @@ Eqn.~\ref{eqn:f_boltzmann_ray} becomes
   \left(\frac{\diff}{\diff s} - \chi\right)f=0.
 \end{equation}
 where we have used $\chi\equiv\rho k$.
-\todo{derive optical depth integral, $\tau$}
+This is a linear first-order differential equation, which we may solve by
+assuming an integrating factor $u(s)$ such that $u\chi=\diff u/\diff s$.
+We find that $u(s)=\exp\left(-\tau(A,B)\right)$, where
+\begin{equation}
+  \label{eqn:tau_flatspace}
+  \Omega^j\nabla_j \tau = \chi, \qquad {\rm or} \qquad
+  \tau(A,B) \equiv \int_A^B \diff s\, \chi.
+\end{equation}
+While traveling from A to B, the number of particles in the beam attenuates by
+the factor $\exp(-\tau)$.
 
 \subsection{Curved Spacetime}
 The preceding formalism may be extended to curved spacetimes by a suitable
@@ -317,4 +326,21 @@ $\mathcal{E}\equiv h^2\eta/\varepsilon^2$, measured in erg~s$^2$~cm$^{-3}$,
 and the invariant opacity is
 $\mathcal{A}\equiv \varepsilon k \rho/h$, measured in cm$^{-1}$~s$^{-1}$.
 
+We may integrate this equation along rays using the length parameterization
+$\diff\lambda=c\,\diff t/p^t$ with the rays defined by the geodesic equations in
+curved spacetime:
+\begin{equation}
+  \label{eqn:geo_curved_ray}
+  \frac{\diff x^\alpha}{\diff \lambda}=p^\alpha, \qquad {\rm and} \qquad
+  \frac{\diff p_\beta}{\diff \lambda} =-\psi_{\alpha\beta}\Gamma^\alpha_{\mu\gamma} p^\mu p^\gamma,
+\end{equation}
+where $\Gamma^\alpha_{\mu\gamma}$ are the standard connection coefficients.
+\todo{check geo eqns}
+
 \subsubsection{Optical Depth}
+The optical depth equation, Eqn.~\ref{eqn:tau_flatspace}, becomes
+\begin{equation}
+  \label{eqn:tau_covariant}
+  p^\alpha\nabla_\alpha \tau = \frac{h}{c} \mathcal{A}, \qquad {\rm or} \qquad
+  \tau(A,B) \equiv \frac{h}{c} \int_A^B \diff \lambda\, \mathcal{A}.
+\end{equation}
