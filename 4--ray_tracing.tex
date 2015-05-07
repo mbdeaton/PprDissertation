@@ -321,9 +321,10 @@ A first-order ordinary differential equation has the form
 \end{equation}
 which may be discretized into timesteps.
 The value of $u$ at the $n$-th timestep is updated to its value
-$\Delta t$ later by a fifth-order-accurate Dormand-Prince algorithm,
+$\Delta t$ later by a fifth-order-accurate Runge-Kutta algorithm
+\citep{dorm1978-runge_kutta},
+\todo{add 1980 paper}
 represented here abstractly as DP5[...]:
-\todo{cite?}
 \begin{equation}
   u^{n+1} = {\rm DP5}[L,u^n,\Delta t].
 \end{equation}
