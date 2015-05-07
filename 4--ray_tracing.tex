@@ -29,9 +29,9 @@ Where the mean free path of the neutrinos is long with respect to local fluid
 \todo{show this is the case}
 scales at $x^\alpha$, $f_\nu(x^\alpha)$ is dependent upon the state of matter
 far away from $x^\alpha$. In lieue of solving the Boltzmann equation in full
-\todo{ref eqn in Chap.~\ref{chap:intro}}
-(which would involve an evolution of a scalar field like those presented in
-Chap.~\ref{chap:leakage} for fluid and metric fields, but over a 6-dimensional
+(Eqn.~\ref{eqn:f_boltzmann_covariant},
+which would involve an evolution of a scalar field like those presented in
+Sec.~\ref{sec:gr_hydro} for fluid and metric fields, but over a 6-dimensional
 phase space manifold with coordinates $\{x^j,p_k\}$, and therefore
 computationally out of reach today),
 we can capture this nonlocality with a ray tracing solution.
@@ -80,8 +80,7 @@ $x^a$ with momentum $p_k$:
   \exp\left(-\int_{x^a}^\lambda  \diff \lambda' \, \mathcal{A}(p_k)\right)
 \end{equation}
 where $\mathcal{E}$ and $\mathcal{A}$ are the invariant emissivity and opacity
-defined in Chap.~\ref{chap:intro}.
-\todo{ref eqns}
+defined in Sec.~\ref{sec:rad_transport}.
 For isotropic scattering, $p_k$ only enters $\mathcal{E}$ and $\mathcal{A}$ in the
 form $-p_\beta u^\beta$, the neutrino energy in the rest frame of the fluid.
 Furthermore, $p_\beta$ may be calculated from $p_i$ by invoking the neutrino mass,
@@ -92,8 +91,7 @@ set $m_{\nu_i}=0$.
 
 As $f_\nu$ accumulates along the ray, the integrand in Eqn.~\ref{eqn:rendering}
 gets attenuated by the exponential term, which is the optical depth defined in
-Chap.~\ref{chap:intro}.
-\todo{ref eqn}
+Eqn.~\ref{eqn:tau_covariant}.
 At large optical depths, the integrand vanishes exponentially, because fluid
 properties on the far side of opaque matter cannot affect the neutrino
 distribution function on this side. The exponential behavior of the integrand
@@ -145,8 +143,7 @@ straight Euclidean paths, but curves that obey the geodesic equation,
 This second-order equation may be split into two coupled first-order equations
 by choosing the affine parameterization $\lambda$ such that
 $dx^\alpha/d\lambda=p^\alpha$ and
-$dp^\beta/d\lambda=\Gamma^\beta_{\alpha\gamma}p^\alpha p^\gamma$.
-\todo{umm, check p eqn}
+$dp^\beta/d\lambda=-\Gamma^\beta_{\alpha\gamma}p^\alpha p^\gamma$.
 The connection coefficients may be calculated from derivatives of the metric,
 \begin{eqnarray}
   \label{eqn:christoffel}
