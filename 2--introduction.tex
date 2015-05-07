@@ -83,7 +83,7 @@ The basic quantity of radiation is the specific intensity,
   \mathcal{I}(t,x^j;\nu,\Omega_k) \qquad \qquad
   {\rm erg}\,{\rm str}^{-1}\,{\rm cm}^{-2}\,{\rm Hz}^{-1}\,{\rm s}^{-1}, \nonumber
 \end{equation}
-where $\{t,x^j\}$ is the time and spatial position of interest,
+where $\{t,x^j\}$ is the time and position of interest,
 $\nu=c/\lambda$ the frequency\footnote{not the neutrino symbol as elsewhere},
 related to the energy by Planck's constant $\varepsilon=h\nu$, and
 $\Omega_k$ a normalized direction vector. Though a three-vector, $\Omega_k$
@@ -98,15 +98,15 @@ cotangent bundle $T^*M$ to the three-dimensional
 spatial manifold $M^3:\{x^j\}$---and $\mathcal{I}$
 assigns a weight to each ray, telling us how much of the radiation field has
 momentum $p_k$ at point $x^j$. A ray is an element of $T^*M$,
-and a beam is a bundle of rays, or a subset of $T^*M$.
+and a beam is a subset of $T^*M$.
 
 How much energy is in a beam?
-The energy transported by beam at $x^j$,
+The energy transported by a beam at $x^j$,
 in a direction $\Omega_k$,
 spread across a solid angle $\diff\Omega=\cos\alpha\,\diff\alpha\,\diff\beta$,
 passing through a surface $\diff a$
 oriented by normalized direction vector $a^i$,
-within a frequency band $\diff \nu$,
+within a frequency band $\diff \nu$ centered on $\nu$,
 over a time $\diff t$ centered on $t$ is
 \begin{align}
   \label{eqn:beam_energy_I_nu}
@@ -124,7 +124,7 @@ $\Omega^i$, and in Euclidean space $\Omega_i=\Omega^i$.
 Much of what follows borrows from the particle picture of the radiation field.
 By quantizing our cotangent bundle $T^*M$ into states (in other words
 quantum phase space), we may arrive at a particle formulation that is completely
-analagous to the continuum picture.
+analogous to the continuum picture.
 
 The basic quantity of radiation in the particle picture is the distribution
 function, $f(t,x^j;p_k)$, the number of particles per state in phase space.
@@ -170,7 +170,7 @@ Below, we stick to the particle picture, formulating everything in terms of $f$.
 According to Liouville's Theorem,
 \todo{cite}
 absent any particle interactions with each other or with the medium, the density
-of particles in phase space is constant along streamlines, $\Omega_k$ This may be
+of particles in phase space is constant along streamlines, $\Omega_k$. This may be
 expressed as a continuity equation for the distribution function,
 the advection equation:
 \begin{align}
@@ -178,8 +178,8 @@ the advection equation:
   \label{eqn:f_advection}
   p^\alpha\nabla_\alpha f &= 0,
 \end{align}
-where we have used the 4-momentum in the second form. In flat space cartesian
-coordinates, we may write it $p^\alpha:=(\varepsilon/c,p^k)$.
+where we have used the four-momentum in the second form. In flat space,
+we may write it $p^\alpha:=(\varepsilon/c,p^k)$.
 
 When particles interact with the medium, we can describe the changes to $f$ with
 source and sink terms.
@@ -241,6 +241,7 @@ Eqn.~\ref{eqn:f_boltzmann_ray} simplifies to
 where we have used $\chi\equiv\rho k$.
 This is a linear first-order differential equation, which we may solve by
 assuming an integrating factor $u(s)$ such that $u\chi=\diff u/\diff s$.
+\todo{clarify}
 We find that $u(s)=\exp\left(-\tau(A,B)\right)$, where
 \begin{equation}
   \label{eqn:tau_flatspace}
@@ -253,7 +254,7 @@ the factor $\exp(-\tau)$.
 \subsection{Curved Spacetime}
 The preceding formalism may be extended to curved spacetimes by a suitable
 covariant reformulation. Following Lindquist (1966)\footnote{with two slight
-modifications in that 1) we use the covariant 4-momentum $p_\alpha$ to construct
+modifications in that 1) we use the covariant four-momentum $p_\alpha$ to construct
 a more natural phase space volume element $\diff V\,\diff P$ below, and 2) we
 include the projection of the momentum onto the observer's worldline,
 $-p_\mu U^\mu$, in Eqn.~\ref{eqn:covariant_dV} where it seems to fit more
@@ -263,7 +264,7 @@ and also drawing on Ipser-Thorne (1968)
 we extend our manifold to four-dimensional spacetime
 $M^4:\{x^\alpha\}$. The cotangent bundle, or phase space, is now
 $T^*M:\{x^\alpha,p_\beta\}$.
-We imagine an observer in this spacetime with 4-velocity $U^\lambda$.
+We imagine an observer in this spacetime with four-velocity $U^\lambda$.
 
 Our observer measures a spatial
 volume $\diff V$ spanned by the three spacelike vectors
@@ -281,7 +282,6 @@ where in the first equation, $\epsilon_{\alpha\beta\gamma\lambda}$ is the
 totally antisymmetric tensor, and in the second equation we have
 chosen to use the three cartesian basis vectors to span the volume.
 $U^t \diff x\,\diff y\,\diff z$ is a scalar,
-\todo{check this}
 as are $\sqrt{-\psi}$ and the scalar product, which confirms that we have
 constructed a Lorentz invariant spatial volume.
 
@@ -340,7 +340,6 @@ curved spacetime:
   \frac{\diff p_\beta}{\diff \lambda} =-\psi_{\alpha\beta}\Gamma^\alpha_{\mu\gamma} p^\mu p^\gamma,
 \end{equation}
 where $\Gamma^\alpha_{\mu\gamma}$ are the standard connection coefficients.
-\todo{check geo eqns}
 
 \subsubsection{Optical Depth}
 The optical depth equation, Eqn.~\ref{eqn:tau_flatspace}, becomes

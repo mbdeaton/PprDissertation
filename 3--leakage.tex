@@ -18,7 +18,7 @@ the Spectral Einstein Code (SpEC).
 We employ our standard two-grid pseudospectral/finite difference approach,
 described in detail in earlier papers
 \citep{sche2006-dual_frames,duez2008-first_spec_bhns,hemb2012-dynamical_excision,fouc2013-compactness_and_spin}
-and briefly summarized here. The spacetime is described by the 4-metric and
+and briefly summarized here. The spacetime is described by the four-metric and
 its time derivative, which we evolve in the generalized harmonic formulation using a multidomain
 pseudospectral algorithm \citep{lind2007-gen_harmonic}.
 The coordinates are evolved by enforcing the `frozen' gauge condition described
@@ -43,13 +43,13 @@ $\rho$, $T$, and $Y_e$ using an EOS table (see
 Section~\ref{sec:EOS} below).  From these, one can compute the specific
 enthalpy $h=1+\epsilon+P/\rho$.  From $v^i$, one can compute the Lorentz
 factor $W=\alpha u^t$, $\alpha$ being the lapse and $u^t$ being the time
-component of the 4-velocity.  The hydrodynamic evolution equations take
+component of the four-velocity.  The hydrodynamic evolution equations take
 the form of conservation laws for a set of `conservative' variables.  These
 include a density variable, $\rho_*=\sqrt{g}W\rho$, an energy variable,
 $\tilde\tau=\rho_*(hW-1)-\sqrt{g}P$, a momentum variable
 $\tilde S_i=\rho_*hu_i$, and a composition variable $\rho_*Y_e$, where
-$\gamma$ is the determinant of the 3-metric, and $u_i$ are the covariant
-components of the 4-velocity.  Note that we do not include neutrino
+$\gamma$ is the determinant of the three-metric, and $u_i$ are the covariant
+components of the four-velocity.  Note that we do not include neutrino
 pressure or energy in the definitions of $\tilde\tau$ and $\tilde S_i$;
 the neutrino radiation field appears only through source terms in the
 evolution equations (see Section~\ref{sec:leakage}).
@@ -769,7 +769,7 @@ in order to concentrate resolution near the black hole (see \citealt{duez2009-3d
 \label{fig:disruptionsnapshots}
 \end{figure}
 
-For a stationary spacetime, $u_t$ (the projection of the 4-velocity along
+For a stationary spacetime, $u_t$ (the projection of the four-velocity along
 the timelike Killing vector field) is a constant of motion for geodesics. 
 Assuming the space is also asymptotically flat, $u_t$ gives the Lorentz
 factor ($\gamma=-u_t$) of the particles as they escape to infinity.  To the
