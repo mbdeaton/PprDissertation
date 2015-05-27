@@ -19,7 +19,7 @@ Spatial tensors are given indices from the Latin alphabet ($a,b...$);
 they exist on a three-dimensional manifold. Spacetime tensors are given indices from
 the Greek alphabet ($\alpha,\beta...$); they exist on a four-dimensional manifold.
 In instances of coordinate index notation, it follows naturally that
-$\alpha,\beta...\in\{1,2,3\}$ and $a,b...\in\{0,1,2,3\}$.
+$a,b...\in\{1,2,3\}$ and $\alpha,\beta...\in\{0,1,2,3\}$.
 
 Of course some symbols have labels other than their tensor indices.
 In particular, I use subscript labels before tensor indeces (e.g.\ the
@@ -27,6 +27,10 @@ momentum of a neutrino is $p_{\nu \alpha}$). I allow context to clarify when
 an index ranges over some set other than dimension (e.g.\ the momentum of the
 i-th flavor of neutrino is $p_{\nu_i \alpha}$). The subscript $\nu$ is always
 used as a label, not as a tensor index.
+
+Repeated up and down indices imply a contraction. For example
+in cartesian representation, $\beta_i\beta^i$ is computed component-wise by
+$\beta_x\beta^x+\beta_y\beta^y+\beta_z\beta^z$.
 
 \begin{table}
   \centering

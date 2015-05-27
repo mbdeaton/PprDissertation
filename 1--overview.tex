@@ -52,7 +52,7 @@ are transported away from the system by gravitational waves.
 Compact binaries come in three combinations: black hole--black hole \bhbh,
 neutron star--black hole \nsbh, and neutron star--neutron star \nsns.
 At the writing of this thesis,
-the only known compact binary systems are ten neutron star--neutron star
+the only known compact binary systems are about ten neutron star--neutron star
 \nsns binaries \citep{post2014-evolution_compact_binaries}; no compact binaries
 involving a black hole have yet been discovered.
 Because all the known systems comprise neutron stars---which are radio-visible as
@@ -350,7 +350,8 @@ for photons scattering elastically off of electrons. The disk being
 neutron-rich, $Y_e$ is in the range of 0.1. And typical densities are a
 few orders of magnitude less than the central density of a neutron star,
 or $\rho\sim10^{11}\,{\rm g\,cm}^{-3}$,
-so that $n_b=\rho/m_U\approx10^{-4}\,{\rm fm}^{-3}$.
+so that $n_b=\rho/m_U\approx10^{-4}\,{\rm fm}^{-3}$,
+where $m_U$ is the average nucleonic mass.
 A disk's photon optical depth (that is, the square root of the number of times
 a photon scatters before it leaves the disk) is of order
 \begin{align}
@@ -378,8 +379,7 @@ to the weak scattering cross section:
 and scale with neutrino energy like $(\varepsilon_\nu/m_e c^2)^2$
 \citep{tubb1975-neutrino_opacities,shap1983-bh_wd_ns}.
 Neutrinos scatter primarily off of the free nucleons in the disk, so their
-characteristic scattering length is $\lambda_\nu\sim(n_b\sigma_0)^{-1}$,
-where $Y_e$ is the local number ratio of electrons to baryons.
+characteristic scattering length is $\lambda_\nu\sim(n_b\sigma_0)^{-1}$.
 A disk's typical neutrino optical depth is therefore
 \begin{align}
   \tau_\nu
@@ -544,7 +544,7 @@ moving much slower than the speed of light, $v/c\ll1$, a linear approximation
 \todo{PN? what order?}
 can be made (see for example, \citealt[Sec.~16.4]{shap1983-bh_wd_ns}):
 \begin{equation}
-  T_{\rm grav} \approx \frac{5}{256}\frac{c^5}{G^3}\frac{R^4}{M^2\mu},
+  T_{\rm grav} \approx \frac{5}{256}\frac{c^5}{G^3}\frac{a^4}{M^2\mu},
 \end{equation}
 where $M=m_1+m_2$, and $\mu \equiv m_1 m_2/(m_1+m_2)$, and $a$ is the semi-major
 axis of the orbit, $R$ for extreme mass ratio binaries, and $2R$ for equal mass
@@ -554,6 +554,15 @@ Even when the binary is in close orbit, this approximation is correct to order
 of magnitude.
 \todo{calculate for our system}
 
+In the case of a neutron star--black hole \nsbh binary, the mass of the black hole
+dominates, so that $M\sim M_{\rm BH}$ and $\mu\sim M_{\rm NS}\sim1\,M_\odot$;
+field populations of black holes are observed to have masses around
+$M_{\rm BH}\sim10\,M_\odot$.
+Separation near merger may be approximated
+by the radius of the black hole's innermost stable circular orbit,
+or $6\,G M_{\rm BH}/c^2\approx90$~km for a nonspinning black hole.
+These round numbers yield $T_{\rm grav}\approx10$~ms, which is larger, but still
+commensurate with $T_{\rm dyn}$.
 Gravitational radiation is, therefore, an important process to consider in the
 merger.
 
@@ -568,19 +577,19 @@ This is the nuclear statistical equilibrium assumption, by which the fluid's
 composition of relative particle species may be entirely parameterized by a
 single parameter, the electron fraction $Y_e$.
 
-But the weak force is much...weaker.
+But the weak force is much weaker.
 The weak timescale, or how long it takes $Y_e$ to change due to the charged
 current reactions (Eqns.~\ref{eqn:beta_n_to_p} and~\ref{eqn:beta_p_to_n} and
 their reverse processes) is
 \begin{equation}
   T_{\rm weak} \approx \frac{M}{m_U} \frac{\langle Y_e \rangle}{R_\nu},
 \end{equation}
-where $M$ is the total fluid mass, $m_U$ the average nucleonic mass,
+where $M$ is the total fluid mass,
 $\langle Y_e \rangle$ the average electron fraction, and
 $R_\nu \equiv R_{\nu_e}-R_{\bar{\nu}_e}$ the net lepton number carried
 away by neutrinos.
 Simulations, like the one presented in this thesis (see
-Fig.~\ref{fig:neutrinos_by_species}, have shown that
+Fig.~\ref{fig:neutrinos_by_species}), have shown that
 $R_\nu\gtrsim10^{57}\,{\rm s}^{-1}$.
 For a fraction of a solar mass of material, $M/m_U\sim10^{56}$~baryons.
 The electron fraction of a neutron star is very low, and we may estimate
