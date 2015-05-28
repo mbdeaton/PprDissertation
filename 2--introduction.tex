@@ -7,7 +7,6 @@
 \label{sec:gr_hydro}
 Here we introduce the equations describing the transport of particle number,
 momentum, and energy by massive particles in the continuum limit, that is
-\todo{specify ``continuum limit''}
 a fluid.
 
 Fluid dynamics are described in curved spacetime by the general relativistic
@@ -32,7 +31,6 @@ $P$ the pressure, and
 $\psi^{\alpha\beta}$ the inverse of the spacetime metric.
 Eqns.~\ref{eqn:hydro_mass} and~\ref{eqn:hydro_mom} elegantly express the
 conservation of mass and energy-momentum respectively.
-\todo{add: ``in fact, familiar hydro in flat space in disguise...''}
 Additionally, fluid composition changes by the charged-current interactions
 (Eqns.~\ref{eqn:beta_n_to_p} and~\ref{eqn:beta_p_to_n} and their inverse processes),
 and the corresponding lepton number conservation is expressed as an additional
@@ -68,17 +66,14 @@ where $W=\alpha u^t$ is the general relativistic Lorentz factor.
 These are the hydrodynamic equations we solve to determine the evolution of
 our model. The numerical algorithm we employ to solve them is described
 in \citet[App.~A]{fouc2013-compactness_and_spin}.
-\todo{describe numerical solution}
 The equations and algorithm used to compute the
 evolution of the spacetime metric is described in
 \citet{lind2007-gen_harmonic}.
-\todo{add metric ev}
 
 \section{General Relativistic Radiation Transport}
 \label{sec:rad_transport}
 Here we introduce the equations describing the transport of particle number,
 momentum, and energy by massless particles in the continuum limit, that is,
-\todo{specify ``continuum limit''}
 by a field.
 
 We begin with the familiar equations in flat spacetime, and then extend this
@@ -126,7 +121,6 @@ over a time $\diff t$ centered on $t$ is
 \end{align}
 where $\mu\equiv a^i\Omega_i$ is the cosine of the angle between $a^i$ and
 $\Omega^i$, and in Euclidean space $\Omega_i=\Omega^i$.
-\todo{add schematic}
 
 \subsubsection{The Particle Picture}
 Much of what follows borrows from the particle picture of the radiation field.
@@ -160,7 +154,6 @@ passing through a surface $\diff a$
 oriented by $a^i$,
 over a time $\diff t$ centered on $t$,
 so that $\diff^3x=c\,\diff t\,\mu\,\diff a$.
-\todo{add schematic}
 So in the particle picture, we have
 \begin{equation}
   \label{eqn:beam_energy_f}
@@ -186,7 +179,6 @@ the advection equation:
   p^\alpha\nabla_\alpha f &= 0,
 \end{align}
 where we have used the four-momentum in the second form.
-\todo{confirm/rederive}
 In flat space, we may write it $p^\alpha:=(\varepsilon/c,p^k)$.
 
 When particles interact with the medium, we can describe the changes to $f$ with
@@ -194,7 +186,6 @@ source and sink terms.
 Let $k(\varepsilon,f)$ be the opacity, or cross section per unit mass of the
 medium, so that $k\rho f$ is the number of particles of energy
 $\varepsilon$ absorbed or scattered per length traversed by the ray.
-\todo{clarify 'ray' in particle picture}
 And let $\eta(\varepsilon,f)$ be the emissivity, so that
 $\eta/\varepsilon$ is the number of particles emitted per
 unit volume at energy $\varepsilon$.
@@ -233,7 +224,6 @@ With this parameterization, Eqn.~\ref{eqn:f_boltzmann} becomes
   \frac{1}{c} \partial_t f + \frac{\diff}{\diff s} f =
   \frac{(hc)^2}{\varepsilon^3}\eta - \rho k f,
 \end{equation}
-\todo{derive rendering equation}
 
 \subsubsection{Optical Depth}
 A ray of radiation passing through a medium will attenuate due to scattering and
@@ -248,7 +238,6 @@ Eqn.~\ref{eqn:f_boltzmann_ray} simplifies to
 where we have used $\chi\equiv\rho k$.
 This is a linear first-order differential equation, which we may solve by
 assuming an integrating factor $u(s)$ such that $u\chi=\diff u/\diff s$.
-\todo{clarify}
 We find that $u(s)=\exp\left(-\tau(A,B)\right)$, where
 \begin{equation}
   \label{eqn:tau_flatspace}
