@@ -66,8 +66,12 @@ In this form, we have introduced the conservative variables
 where $W=\alpha u^t$ is the general relativistic Lorentz factor.
 
 These are the hydrodynamic equations we solve to determine the evolution of
-our model.
+our model. The numerical algorithm we employ to solve them is described
+in \citet[App.~A]{fouc2013-compactness_and_spin}.
 \todo{describe numerical solution}
+The equations and algorithm used to compute the
+evolution of the spacetime metric is described in
+\citet{lind2007-gen_harmonic}.
 \todo{add metric ev}
 
 \section{General Relativistic Radiation Transport}
@@ -283,7 +287,7 @@ at $x^\mu$:
 where in the first equation, $\epsilon_{\alpha\beta\gamma\lambda}$ is the
 totally antisymmetric tensor, and in the second equation we have
 chosen to use the three cartesian basis vectors to span the volume.
-$U^t \diff x\,\diff y\,\diff z$ is a scalar,
+$U^t \,\diff x\,\diff y\,\diff z$ is a scalar,
 as are $\sqrt{-\psi}$ and the scalar product, which confirms that we have
 constructed a Lorentz invariant spatial volume.
 

@@ -76,8 +76,8 @@ $x^a$ with momentum $p_k$:
 \todo{derive rendering eqn, or check/ref below}
 \begin{equation}
   \label{eqn:rendering}
-  f(x^\alpha;p_k) = \int_{x^a}^{\rm far\,away} \diff \lambda \, \mathcal{E}(p_k)
-  \exp\left(-\int_{x^a}^\lambda  \diff \lambda' \, \mathcal{A}(p_k)\right)
+  f(x^\alpha;p_k) = c \int_{x^a}^{\rm far\,away} \diff \lambda \, \mathcal{E}(p_k)
+  \exp\left(-\frac{h}{c}\int_{x^a}^\lambda  \diff \lambda' \, \mathcal{A}(p_k)\right)
 \end{equation}
 where $\mathcal{E}$ and $\mathcal{A}$ are the invariant emissivity and opacity
 defined in Sec.~\ref{sec:rad_transport}.
@@ -114,7 +114,7 @@ We use $\eta$ estimated by the leakage scheme (Eqn.~\ref{mu_nu}).
 \todo{other choices for $\eta$}
 
 Because neutrino scattering processes scale with
-$\varepsilon^2=(-p_{\nu}^\beta u^\beta)^2$,
+$\varepsilon^2=(-p_{\nu\beta} u^\beta)^2$,
 \todo{ref intro}
 we use the energy-factored opacity $\zeta=\chi/\varepsilon^2$, where $\chi$ is
 the cumulative opacity:
@@ -159,17 +159,18 @@ of this problem (a few MeV, see Fig.~\ref{fig:neutrinos_by_species}), the
 geodesics are essentially null.
 \todo{say why this matters}
 
-We integrate the geodesic equations parameterized by coordinate time,
+We integrate the geodesic equations parameterized by evolution coordinate time,
 using the formulation introduced by \cite{hugh1994-eh_finding}.
 The extensive framework to integrate the \citeauthor{hugh1994-eh_finding}\
-equations through a numerical spacetime demands efficient handling of
-pointwise interpolation of metric fields to arbitrary positions, reading from
-disk and reconstructing into memory the metric data dumped from a previous
-simulation, and accurate integration of a system of ordinary differential
+equations through a numerical spacetime demands the efficient handling of
+pointwise interpolation of metric fields to arbitrary positions, the reading from
+disk and reconstructing into memory of the metric data dumped from a previous
+simulation, and the accurate integration of a system of ordinary differential
 equations.
 All of this was implemented by a graduate student at Cornell, Andy Bohn, in order
-to find event horizons and compute gravitational lensing; the latter was
-published in \cite{bohn2015-lensing}.
+to find event horizons and compute gravitational lensing in numerical spacetimes
+for the SXS Collaboration;
+gravitational lensing work was published in \cite{bohn2015-lensing}.
 I merged my ray tracing code with his general and efficient framework.
 
 In addition to equations for $x^j$ and $p_k$, we integrate $\tau$, the optical
@@ -456,7 +457,7 @@ For this test we use a fixed timestep, $\Delta t = 0.2\,M_\odot$,
 because the adaptive timestepper described in Sec.~\ref{ssec:timestepping} is
 not very effective with discontinuous fields, like $\zeta$. In physical
 fluid configurations, we expect to encounter discontinuities also (though
-probably not as extreme), and we may have to used fixed timesteps in those
+probably not as extreme), and we may have to use fixed timesteps in those
 cases also.
 
 In Fig.~\ref{fig:f_hot_ns}, the Schwarzschild case, the variation in $f_\nu$
@@ -490,9 +491,9 @@ neutrinosurface at $r<R_\nu$, and lesser for neutrinosurfaces at $r>R_\nu$.
 \end{figure}
 
 Fig.~\ref{fig:f_spectrum_hot_ns} presents the energy spectrum emitted by this
-surface over the broad band $p_t\in[0.01,100]~MeV$, for both Schwarzschild
+surface over the broad band $p_t\in[0.01,100]$~MeV, for both Schwarzschild
 and Minkowski cases.
-We also show the relative errors in $f_\nu(p_t)$, with respect to the analytic
+We also show the relative errors in $f_\nu(p_t)$, with respect to the exact analytic
 solution $f_{\nu,\rm ex}(p_t)$. The Minkowski calculation is exact to machine
 precision, because location of the neutrinosurface has no effect on $f_\nu$.
 But the relative errors in the Schwarzschild case are large, and grow to
@@ -888,9 +889,9 @@ processes:
     centrifugally accelerate plasma, tapping the rotational energy of the
     disk itself \citep{blan1982-blandford_payne}.
   \item \emph{Neutrino heating}: Highly energetic neutrino-antineutrino pairs
-    can annihilate into into electron-positron pairs
+    can annihilate into electron-positron pairs
     ($\nu \, \bar{\nu} \rightarrow e^{-} \, e^{+}$)
-    with excess energy from the interaction going into the kinetic energy of the
+    with the excess energy from the interaction going into the kinetic energy of the
     lepton pair.
     This process is particularly efficient at high neutrino energies and large
     collision angles, conditions found in the funnel of the accretion disk.
@@ -991,8 +992,10 @@ of the deposition rate per volume for this process,
 $q_{\nu \bar{\nu}}(x^\alpha)$:
 \begin{equation}
   \label{eqn:Q_vol}
-  Q_{\nu \bar{\nu}} \equiv \int \diff^3 x\,q_{\nu \bar{\nu}}(x^\alpha)
+  Q_{\nu \bar{\nu}} \equiv \int \diff^3 x\,\sqrt{-\psi_{tt}}q_{\nu \bar{\nu}}(x^\alpha),
 \end{equation}
+where the redshift factor of $\sqrt{-\psi_{tt}}$ is included to account for the time
+dilation from evolution coordinate time to the asymptotic time at infinite separation.
 $q_{\nu \bar{\nu}}(x^\alpha)$ is an inherently frame-dependent quantity but is
 \todo{add redshift factor for time}
 analogous to the frame-independent annihilation rate per volume,
@@ -1046,7 +1049,7 @@ the difference arising because only $e$-type neutrinos can interact with
 matter via the charged-current at energies less than $m_\mu\sim100$~MeV
 and $m_\tau\sim2000$~MeV.
 \todo{is this right?}
-The Fermi constant is $G_F^2 = 5.29 \times 10^{-44} \text{cm}^2 \text{MeV}^{-2}$,
+The Fermi constant is $G_F^2 = 5.29 \times 10^{-44}\, \text{cm}^2 \,\text{MeV}^{-2}$,
 and the Weinberg angle is $\sin^2 \theta = 0.23$.
 \todo{cite constants}
 
@@ -1203,7 +1206,7 @@ medium in flat spactime presented in Sec.~\ref{sssc:f_homo_mink}.
     the number of unique rays traced, therefore, is $2N$.
     At four different accuracy thresholds (the four clusters), I have computed
     the integral 12 times, to display the statistical scatter.
-    The Vegas estimates of the error are given as as error bars.
+    The Vegas estimates of the error are given as error bars.
     The legend labels each group of points by the accuracy threshold; but note,
     at low accuracy, the algorithm is bad at guessing how many samples it needs,
     so the threshold and the final error estimate disagree at low-$N$.
@@ -1275,8 +1278,11 @@ $\diff^3 x=\sqrt{-g}\, \diff x\,\diff y\,\diff z$.
 Because of the approximate axial- and reflection-symmetry of the disk, we only
 calculate $q_{\nu\bar{\nu}}$ over one octant and multiply $Q_{\nu\bar{\nu}}$ by
 eight.
-\todo{explain treatment of on-axis points}
 The octant is shown in a meridional slice in Fig.~\ref{fig:q_grid}.
+Specifically, for the grid shown,
+we compute the integral using 1/4 of the volume of the on-axis points,
+and 1/2 of the volume of the on-meridian points,
+so that the volume integral over the grid represents 1/8 of the total power.
 Because of the steep dependence of the annihilation rate on the relative angles
 between incoming neutrino trajectories, $q_{\nu\bar{\nu}}$ falls off steeply
 with distance from the bright inner region of the funnel: the rate decreases with
