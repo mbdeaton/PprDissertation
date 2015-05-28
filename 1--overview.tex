@@ -218,6 +218,7 @@ star--neutron star \nsns or neutron star--black hole merger \nsbh:
     One strong connection between these observations and the model proposed here
     is that short gamma ray bursts predominantly originate from galaxies with
     old stellar populations, precisely the galaxies in which we expect the most
+    \todo{Matt wants further explanation}
     compact binaries.
 \end{itemize}
 Some of these electromagnetic signals are strong---in particular gamma ray
@@ -234,7 +235,7 @@ In an indirect sense, this rate gives us an observational answer to the question
 But in the next few years a much more direct answer will be possible, as the
 advanced generation gravitational wave interferometers, Advanced LIGO and Virgo,
 begin to record and search gravitational strain data for the signature chirps of
-compact binary mergers. Unless astrophysicsists are fundamentally
+compact binary mergers. Unless astrophysicists are fundamentally
 mistaken about the formation of compact binaries, the three-detector network of
 Advanced LIGO's two instruments plus Advanced Virgo, when operating at design
 sensitivity, will likely detect neutron star--black hole \nsbh mergers at a
@@ -290,14 +291,14 @@ Its specific energy is therefore
   &= -\frac{GM_{\rm BH}}{2r}. \nonumber
 \end{align}
 Because the gas velocity varies with $r$, the disk shears against itself. If the
-fluid is viscous (which is likely, due to turbulence, magnetic fields, or even
-radiative stresses),
+fluid is effectively viscous (which is likely, due to turbulence, magnetic
+fields, or even radiative stresses),
 \todo{cite each of these}
-the fast inner regions slow down, and the slow outer regions speed up. The net
-effect is that gas in the inner disk moves a little closer to the black hole,
-increasing its specific energy:
+the gas in the inner disk gives up some of its angular momentum to gas a little
+further out. The net effect is that the inner gas moves a little closer to the black hole,
+decreasing its specific energy:
 \begin{equation}
-  \Delta e = \frac{GM_{\rm BH}}{2}
+  \Delta e = -\frac{GM_{\rm BH}}{2}
   \left(\frac{1}{r_{\rm final}}-\frac{1}{r_{\rm initial}}\right). \nonumber
 \end{equation}
 This process transports gas inward until it plunges into the black hole.
@@ -325,8 +326,8 @@ Thus the gravitational energy released by a stellar-mass accretion disk is
   E_{\rm acc} \sim 10^{51\text{--}54} \,{\rm erg}. \nonumber
 \end{equation}
 This energy is initially transferred into the bulk motion of the gas, as it
-spirals in toward the black hole. But turbulence and viscosity transfer it to
-smaller scales: ordered kinetic energy becomes disordered thermal energy.
+spirals in toward the black hole. But turbulence transfers it to smaller scales,
+converting ordered kinetic energy into disordered thermal energy.
 The disk heats up and radiates this energy at a supernova-scale luminosity:
 \begin{equation}
   \label{eqn:L_order_mag}
@@ -345,6 +346,7 @@ of an accretion disk is not carried away by photons.
 Photons scatter off of free ions and over a characteristic length of
 $\lambda_\gamma\sim(2Y_e n_b\sigma_{\rm T})^{-1}$, where $2Y_e$ is the local
 number ratio of ions to baryons, $n_b$ is the baryon number density, and
+\todo{Matt thinks this is wrong}
 $\sigma_{\rm T}=6.6\times10^{-25}\,{\rm cm}^2$ is the cross section
 for photons scattering elastically off of electrons. The disk being
 neutron-rich, $Y_e$ is in the range of 0.1. And typical densities are a
@@ -484,7 +486,7 @@ carry away most of the thermal energy generated in a neutron star--neutron star
 the dense matter. And neutrinos are produced copiously in nuclear matter with
 a temperature above $\sym0.5$~MeV,
 the energy equivalent of an electron's or positron's mass,
-required for the neutrino-producing charged current reactions
+required for the neutrino-producing charged-current reactions
 (Eqns.~\ref{eqn:beta_n_to_p} and~\ref{eqn:beta_p_to_n} in reverse).
 Neutrino luminosities are of the order $10^{53}\,{\rm erg\,s}^{-1}$. Even
 though neutrinos interact very weakly with matter, detectors are in operation
@@ -570,7 +572,7 @@ merger.
 Strong nuclear forces act on a very small timescale at the high
 densities of the neutron star, and the high temperatures and densities of the
 merger. This is the timescale over which
-nuclei form and dissociate. At temperatures below $\sym0.5$~MeV, it is so small
+nuclei form and dissociate. At temperatures above $\sym0.5$~MeV, it is so small
 that we may consider the nuclear reactions to be in equilibrium over the
 timescales of fluid changes \citep{stei2013-eos_from_ns_obs}.
 This is the nuclear statistical equilibrium assumption, by which the fluid's
@@ -578,8 +580,8 @@ composition of relative particle species may be entirely parameterized by a
 single parameter, the electron fraction $Y_e$.
 
 But the weak force is much weaker.
-The weak timescale, or how long it takes $Y_e$ to change due to the charged
-current reactions (Eqns.~\ref{eqn:beta_n_to_p} and~\ref{eqn:beta_p_to_n} and
+The weak timescale, or how long it takes $Y_e$ to change due to the
+charged-current reactions (Eqns.~\ref{eqn:beta_n_to_p} and~\ref{eqn:beta_p_to_n} and
 their reverse processes) is
 \begin{equation}
   T_{\rm weak} \approx \frac{M}{m_U} \frac{\langle Y_e \rangle}{R_\nu},

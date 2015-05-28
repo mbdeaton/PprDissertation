@@ -52,7 +52,7 @@ $\beta_x\beta^x+\beta_y\beta^y+\beta_z\beta^z$.
     $v^i$                 & Lagrangian velocity       & a.k.a.\ transport velocity, $v^i=u^i/u^t$ \\
     $u^\alpha$            & fluid four-velocity       & $u^a=dx^a/d\tau$ \\
     $U^\alpha$            & observer four-velocity    & used if we want to distinguish from $u^\alpha$ \\
-    $d\tau$               & spacetime interval        & $d\tau=-dx^a dx^b \psi_{ab}$ \\
+    $d\tau$               & spacetime interval        & $d\tau=(-dx^a dx^b \psi_{ab})^{1/2}$ \\
     $W$                   & Lorentz factor            & $\alpha u^t$ (if no gravity $W=1/\sqrt{1-v^2}$) \\
     $\tau$                & optical depth             & \\
     $Q_\nu$               & local energy emission rate& \\
@@ -103,13 +103,18 @@ $\beta_x\beta^x+\beta_y\beta^y+\beta_z\beta^z$.
 
 \subsection{Foliating Spacetime}
 \label{ssec:adm_metric}
-In everything that follows we employ the 3+1 splitting of the spacetime metric
+The interval between events separated by the vector $dx^\alpha$ is
+computed with the spacetime metric, $\psi_{\alpha\beta}$, thus
+\begin{equation}
+  d\tau^2 = -\psi_{\alpha\beta} dx^\alpha dx^\beta.
+\end{equation}
+In everything that follows we employ the 3+1 splitting of the metric
 \citep[Chap.~7]{witt1962-book_with_adm_intro}\footnote{this book is now out of
 print, but the relevant chapter is available on the arXiv \citep{arno2008-adm}.},
 \begin{equation}
   -d\tau^2 \equiv \alpha^2dt^2 + g_{ij}(dx^i+\beta^idt)(dx^j+\beta^jdt).
 \end{equation}
-The cartesian decomposition of the metric and its inverse is
+The decomposition of the metric and its inverse is
 \begin{equation}
   \psi_{\mu\gamma} :=
   \left(
@@ -130,6 +135,6 @@ The cartesian decomposition of the metric and its inverse is
 where $\beta_i=\beta^j g_{ij}$, and $g^{ij}g_{ik}=\delta^{j}_{k}$.
 This decomposition generates a foliation of the spacetime manifold into
 three-dimensional spacelike submanifolds, whose coordinates are related
-by the timelike congruence $n^\mu=dx^\mu/\alpha dt$, or in cartesian
-decomposition, $n^\mu:=(1/\alpha,-\beta^i/\alpha)$.
+by the timelike congruence $n^\mu=dx^\mu/\alpha dt$, or component-wise,
+$n^\mu:=(1/\alpha,-\beta^i/\alpha)$.
 
