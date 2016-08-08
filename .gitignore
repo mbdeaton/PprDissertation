@@ -20,3 +20,6 @@
 *.blg
 *.lof
 *.lot
+
+# Mac system files
+.DS_Store
